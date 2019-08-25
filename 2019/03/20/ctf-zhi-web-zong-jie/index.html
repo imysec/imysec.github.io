@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>CTF之web总结 | 忆时光</title>
+  <meta name="keywords" content=" web , ctf ">
+  <meta name="description" content="CTF之web总结 | 忆时光">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="与其临渊羡鱼，不如退而结网。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://l1395851238.github.io/about/index.html">
+<meta property="og:site_name" content="忆时光">
+<meta property="og:description" content="与其临渊羡鱼，不如退而结网。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-03T02:55:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="与其临渊羡鱼，不如退而结网。">
+
+
+<link rel="icon" href="/img/avatar1.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>忆时光</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/l1395851238" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:1395851238@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=1395851238&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(52)</small></div></li>
+    
+        
+            
+            <li><div data-rel="工具">工具<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Web">Web<small>(15)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Github">Github<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="漏洞复现">漏洞复现<small>(10)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="CTF">CTF<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Linux">Linux<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="docker">docker<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="PHP">PHP<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="SQL注入">SQL注入<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="提权">提权<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="读书笔记">读书笔记<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a style="border-right: 1px solid #fff; width: 49%" class="about site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="52">
+<input type="hidden" id="yelog_site_word_count" value="54.7k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">web</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">渗透测试</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">DVWA</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">渗透</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">HTTP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">漏洞复现</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">ctf</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">XSS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">PHP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">源码泄露</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">php</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">SQL注入</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">提权</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">CTF</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">文件上传</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">文件包含</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">正则表达式</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="工具 " href="/2019/03/20/awvs-de-ji-ben-shi-yong/" data-tag="web,渗透测试" data-author="">
+            <span class="post-title" title="AWVS的基本使用">AWVS的基本使用</span>
+            <span class="post-date" title="2019-03-20 18:30:01">2019/03/20</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/14/dvwa-zhi-command-injection/" data-tag="渗透测试,DVWA" data-author="">
+            <span class="post-title" title="DVWA之Command Injection">DVWA之Command Injection</span>
+            <span class="post-date" title="2019-04-14 21:25:28">2019/04/14</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/17/dvwa-zhi-file-inclusion/" data-tag="DVWA,渗透" data-author="">
+            <span class="post-title" title="DVWA之File Inclusion">DVWA之File Inclusion</span>
+            <span class="post-date" title="2019-04-17 21:12:01">2019/04/17</span>
+        </a>
+        
+        <a class="Github " href="/2018/07/31/github-shang-chuan/" data-tag="Github" data-author="">
+            <span class="post-title" title="GitHub上传">GitHub上传</span>
+            <span class="post-date" title="2018-07-31 15:50:40">2018/07/31</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/22/dvwa-zhi-sql-injecion/" data-tag="DVWA,渗透" data-author="">
+            <span class="post-title" title="DVWA之SQL Injecion">DVWA之SQL Injecion</span>
+            <span class="post-date" title="2019-04-22 15:24:17">2019/04/22</span>
+        </a>
+        
+        <a class="Web " href="/2018/07/27/http-xiao-xi-tou/" data-tag="web,HTTP" data-author="">
+            <span class="post-title" title="HTTP消息头">HTTP消息头</span>
+            <span class="post-date" title="2018-07-27 21:15:29">2018/07/27</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/08/01/jboss-lou-dong-fu-xian/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="JBOSS漏洞复现">JBOSS漏洞复现</span>
+            <span class="post-date" title="2019-08-01 15:02:15">2019/08/01</span>
+        </a>
+        
+        <a class="CTF " href="/2019/05/16/iscc2019-web/" data-tag="web,ctf" data-author="">
+            <span class="post-title" title="ISCC2019-Web">ISCC2019-Web</span>
+            <span class="post-date" title="2019-05-16 17:47:06">2019/05/16</span>
+        </a>
+        
+        <a class="Linux " href="/2018/08/10/linux-ru-men-xue-xi/" data-tag="linux" data-author="">
+            <span class="post-title" title="Linux入门学习">Linux入门学习</span>
+            <span class="post-date" title="2018-08-10 19:55:30">2018/08/10</span>
+        </a>
+        
+        <a class="Linux " href="/2018/07/27/linux-ji-chu-ming-ling/" data-tag="linux" data-author="">
+            <span class="post-title" title="Linux基础命令">Linux基础命令</span>
+            <span class="post-date" title="2018-07-27 21:12:31">2018/07/27</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="Weblogic复现之XML Decoder反序列化">Weblogic复现之XML Decoder反序列化</span>
+            <span class="post-date" title="2019-07-26 19:45:04">2019/07/26</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="Weblogic复现之任意文件上传">Weblogic复现之任意文件上传</span>
+            <span class="post-date" title="2019-07-24 18:57:00">2019/07/24</span>
+        </a>
+        
+        <a class="" href="/2019/08/03/xss-xue-xi/" data-tag="XSS" data-author="">
+            <span class="post-title" title="XSS学习">XSS学习</span>
+            <span class="post-date" title="2019-08-03 15:58:01">2019/08/03</span>
+        </a>
+        
+        <a class="Web " href="/2019/03/23/web-shen-tou-ce-shi-xin-xi-shou-ji-zong-jie/" data-tag="渗透" data-author="">
+            <span class="post-title" title="Web渗透测试-信息收集总结">Web渗透测试-信息收集总结</span>
+            <span class="post-date" title="2019-03-23 14:30:22">2019/03/23</span>
+        </a>
+        
+        <a class="" href="/2019/05/20/cookie-zhu-ru/" data-tag="" data-author="">
+            <span class="post-title" title="cookie注入">cookie注入</span>
+            <span class="post-date" title="2019-05-20 16:12:34">2019/05/20</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/08/02/apache-lou-dong-fu-xian/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="apache漏洞复现">apache漏洞复现</span>
+            <span class="post-date" title="2019-08-02 15:42:43">2019/08/02</span>
+        </a>
+        
+        <a class="docker " href="/2019/05/13/docker-fu-xian-ctf/" data-tag="docker" data-author="">
+            <span class="post-title" title="docker复现ctf">docker复现ctf</span>
+            <span class="post-date" title="2019-05-13 10:18:11">2019/05/13</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/04/git-xie-lu/" data-tag="PHP,源码泄露" data-author="">
+            <span class="post-title" title="git泄露">git泄露</span>
+            <span class="post-date" title="2019-04-04 18:32:04">2019/04/04</span>
+        </a>
+        
+        <a class="" href="/2018/07/27/hello-hexo/" data-tag="" data-author="">
+            <span class="post-title" title="hello,Hexo">hello,Hexo</span>
+            <span class="post-date" title="2018-07-27 14:42:40">2018/07/27</span>
+        </a>
+        
+        <a class="PHP " href="/2019/03/30/php-wei-xie-yi/" data-tag="php" data-author="">
+            <span class="post-title" title="php伪协议">php伪协议</span>
+            <span class="post-date" title="2019-03-30 21:15:28">2019/03/30</span>
+        </a>
+        
+        <a class="PHP " href="/2019/03/27/php-xu-lie-hua-yu-fan-xu-lie-hua/" data-tag="php" data-author="">
+            <span class="post-title" title="php序列化与反序列化">php序列化与反序列化</span>
+            <span class="post-date" title="2019-03-27 19:33:32">2019/03/27</span>
+        </a>
+        
+        <a class="PHP " href="/2018/07/27/php-ruo-lei-xing/" data-tag="php" data-author="">
+            <span class="post-title" title="php弱类型">php弱类型</span>
+            <span class="post-date" title="2018-07-27 21:16:42">2018/07/27</span>
+        </a>
+        
+        <a class="" href="/2019/08/23/shishi/" data-tag="" data-author="">
+            <span class="post-title" title="shishi">shishi</span>
+            <span class="post-date" title="2019-08-23 21:04:24">2019/08/23</span>
+        </a>
+        
+        <a class="工具 " href="/2019/03/29/sqlmap-de-ji-ben-shi-yong/" data-tag="web,SQL注入" data-author="">
+            <span class="post-title" title="sqlmap的基本使用">sqlmap的基本使用</span>
+            <span class="post-date" title="2019-03-29 20:05:23">2019/03/29</span>
+        </a>
+        
+        <a class="SQL注入 " href="/2018/10/26/sql-zhu-ru-zhi-mang-zhu/" data-tag="SQL注入" data-author="">
+            <span class="post-title" title="sql注入之盲注">sql注入之盲注</span>
+            <span class="post-date" title="2018-10-26 19:46:59">2018/10/26</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/29/tomcat-fu-xian/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="tomcat复现之远程代码执行漏洞">tomcat复现之远程代码执行漏洞</span>
+            <span class="post-date" title="2019-07-29 14:20:44">2019/07/29</span>
+        </a>
+        
+        <a class="SQL注入 " href="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/" data-tag="SQL注入" data-author="">
+            <span class="post-title" title="sql注入之手工注入">sql注入之手工注入</span>
+            <span class="post-date" title="2019-04-01 23:02:49">2019/04/01</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="tomcat复现之弱口令&amp;后台getshell">tomcat复现之弱口令&amp;后台getshell</span>
+            <span class="post-date" title="2019-07-29 17:45:30">2019/07/29</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/17/weblogic-fu-xian-zhi-weak-password/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="weblogic复现之weak_password">weblogic复现之weak_password</span>
+            <span class="post-date" title="2019-07-17 17:11:07">2019/07/17</span>
+        </a>
+        
+        <a class="提权 " href="/2019/07/30/xp-cmdshell-ti-quan/" data-tag="提权" data-author="">
+            <span class="post-title" title="xp_cmdshell提权">xp_cmdshell提权</span>
+            <span class="post-date" title="2019-07-30 15:58:05">2019/07/30</span>
+        </a>
+        
+        <a class="读书笔记 " href="/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/" data-tag="渗透测试" data-author="">
+            <span class="post-title" title="《渗透测试之信息收集》">《渗透测试之信息收集》</span>
+            <span class="post-date" title="2019-07-19 10:05:02">2019/07/19</span>
+        </a>
+        
+        <a class="Web " href="/2018/11/18/bian-liang-fu-gai/" data-tag="web" data-author="">
+            <span class="post-title" title="变量覆盖">变量覆盖</span>
+            <span class="post-date" title="2018-11-18 09:16:34">2018/11/18</span>
+        </a>
+        
+        <a class="CTF " href="/2018/10/23/chang-jian-jia-jie-mi-zong-jie/" data-tag="ctf" data-author="">
+            <span class="post-title" title="常见加解密总结">常见加解密总结</span>
+            <span class="post-date" title="2018-10-23 19:54:01">2018/10/23</span>
+        </a>
+        
+        <a class="SQL注入 " href="/2019/04/04/shou-gong-zhu-ru-zhi-chang-jian-zi-fu-chuan-han-shu/" data-tag="SQL注入" data-author="">
+            <span class="post-title" title="手工注入之常见字符串函数">手工注入之常见字符串函数</span>
+            <span class="post-date" title="2019-04-04 22:33:53">2019/04/04</span>
+        </a>
+        
+        <a class="" href="/2019/05/21/gong-fang-shi-jie-writeup/" data-tag="CTF" data-author="">
+            <span class="post-title" title="攻防世界WriteUP">攻防世界WriteUP</span>
+            <span class="post-date" title="2019-05-21 20:53:51">2019/05/21</span>
+        </a>
+        
+        <a class="" href="/2018/07/31/min-gan-ci-ti-huan/" data-tag="" data-author="">
+            <span class="post-title" title="敏感词替换">敏感词替换</span>
+            <span class="post-date" title="2018-07-31 17:03:29">2018/07/31</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/" data-tag="文件上传" data-author="">
+            <span class="post-title" title="文件上传(一)之绕过姿势">文件上传(一)之绕过姿势</span>
+            <span class="post-date" title="2019-04-06 20:04:27">2019/04/06</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/08/wen-jian-shang-chuan-er-zhi-shi-zhan-pian/" data-tag="文件上传" data-author="">
+            <span class="post-title" title="文件上传(二)之实战篇">文件上传(二)之实战篇</span>
+            <span class="post-date" title="2019-04-08 19:35:50">2019/04/08</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/08/wen-jian-bao-han/" data-tag="文件包含" data-author="">
+            <span class="post-title" title="文件包含">文件包含</span>
+            <span class="post-date" title="2019-04-08 19:36:16">2019/04/08</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/08/wen-jian-xie-lu-lou-dong/" data-tag="源码泄露" data-author="">
+            <span class="post-title" title="文件泄露漏洞">文件泄露漏洞</span>
+            <span class="post-date" title="2019-04-08 18:02:32">2019/04/08</span>
+        </a>
+        
+        <a class="Web " href="/2019/03/10/zheng-ze-biao-da-shi/" data-tag="正则表达式" data-author="">
+            <span class="post-title" title="正则表达式">正则表达式</span>
+            <span class="post-date" title="2019-03-10 16:07:16">2019/03/10</span>
+        </a>
+        
+        <a class="CTF " href="/2019/03/20/ctf-zhi-web-zong-jie/" data-tag="web,ctf" data-author="">
+            <span class="post-title" title="CTF之web总结">CTF之web总结</span>
+            <span class="post-date" title="2019-03-20 18:31:38">2019/03/20</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/13/dvwa-zhi-brute-force/" data-tag="渗透测试,DVWA" data-author="">
+            <span class="post-title" title="DVWA之Brute Force">DVWA之Brute Force</span>
+            <span class="post-date" title="2019-04-13 10:18:11">2019/04/13</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/16/dvwa-zhi-file-upload/" data-tag="DVWA,渗透" data-author="">
+            <span class="post-title" title="DVWA之File Upload">DVWA之File Upload</span>
+            <span class="post-date" title="2019-04-16 19:43:19">2019/04/16</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/31/nginx-lou-dong-fu-xian/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="Nginx漏洞复现">Nginx漏洞复现</span>
+            <span class="post-date" title="2019-07-31 08:53:13">2019/07/31</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/25/weblogic-fu-xian-zhi-ssrf/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="Weblogic复现之ssrf">Weblogic复现之ssrf</span>
+            <span class="post-date" title="2019-07-25 17:45:41">2019/07/25</span>
+        </a>
+        
+        <a class="Web " href="/2019/04/29/kuan-zi-jie-zhu-ru/" data-tag="SQL注入" data-author="">
+            <span class="post-title" title="宽字节注入">宽字节注入</span>
+            <span class="post-date" title="2019-04-29 20:38:38">2019/04/29</span>
+        </a>
+        
+        <a class="CTF " href="/2018/11/19/nan-jing-you-dian-da-xue-wang-luo-gong-fang-xun-lian-ping-tai/" data-tag="ctf" data-author="">
+            <span class="post-title" title="南京邮电大学网络攻防训练平台">南京邮电大学网络攻防训练平台</span>
+            <span class="post-date" title="2018-11-19 22:55:58">2018/11/19</span>
+        </a>
+        
+        <a class="" href="/2019/08/25/docker-fu-xian-ctf/docker-fu-xian-ctf/" data-tag="" data-author="">
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2019-08-25 16:58:51">2019/08/25</span>
+        </a>
+        
+        <a class="" href="/2019/08/02/apache-lou-dong-fu-xian/apache-http-lou-dong-fu-xian/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="Apache http漏洞复现">Apache http漏洞复现</span>
+            <span class="post-date" title="2019-08-02 15:42:43">2019/08/02</span>
+        </a>
+        
+        <a class="漏洞复现 " href="/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/" data-tag="漏洞复现" data-author="">
+            <span class="post-title" title="Weblogic复现之Java反序列化">Weblogic复现之Java反序列化</span>
+            <span class="post-date" title="2019-07-28 09:28:04">2019/07/28</span>
+        </a>
+        
+        <a class="提权 " href="/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/" data-tag="提权" data-author="">
+            <span class="post-title" title="MySQL提权的几种姿势">MySQL提权的几种姿势</span>
+            <span class="post-date" title="2019-07-18 09:37:05">2019/07/18</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-CTF之web总结" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <h1 class="article-title">CTF之web总结</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="CTF">CTF</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">web</a>
+            
+            <a href="javascript:" class="color4">ctf</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-08-19 15:43:42">2019-03-20 18:31</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:3.1k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-前言"><span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-直接查看源代码"><span class="toc-text">0x01 直接查看源代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-10-main-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/10/main.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法："><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-查看修改或添加HTTP请求头响应头"><span class="toc-text">0x02 查看修改或添加HTTP请求头响应头</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-phpaudit"><span class="toc-text">题目：http://ctf5.shiyanbar.com/phpaudit/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-1"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-302跳转的中转网页有信息"><span class="toc-text">0x03 302跳转的中转网页有信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-2"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-查看开发者工具控制台"><span class="toc-text">0x04 查看开发者工具控制台</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-DUTCTF-1-html"><span class="toc-text">题目：http://ctf5.shiyanbar.com/DUTCTF/1.html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-3"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x05-js代码，js加解密"><span class="toc-text">0x05 js代码，js加解密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：-1"><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-4"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x06-使用Burpsuite拦截"><span class="toc-text">0x06 使用Burpsuite拦截</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-basic-catch"><span class="toc-text">题目：http://ctf5.shiyanbar.com/basic/catch/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-5"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x07-robots-txt"><span class="toc-text">0x07 robots.txt</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：-2"><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-6"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x08-asp-php代码审计"><span class="toc-text">0x08 asp,php代码审计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目一：http-ctf5-shiyanbar-com-web-more-php"><span class="toc-text">题目一：http://ctf5.shiyanbar.com/web/more.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-7"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x09-SQL注入"><span class="toc-text">0x09 SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-index-2-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/index_2.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-8"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0A-简单脚本使用"><span class="toc-text">0x0A 简单脚本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-10-10-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/10/10.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-9"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0B-后台登录"><span class="toc-text">0x0B 后台登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-pcat-index-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/pcat/index.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-10"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0C-代码逆向"><span class="toc-text">0x0C 代码逆向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：-3"><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-11"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0D-上传绕过"><span class="toc-text">0x0D 上传绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-upload"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/upload/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-12"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0E-hash函数"><span class="toc-text">0x0E hash函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-false-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/false.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-13"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0F-备份文件"><span class="toc-text">0x0F 备份文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-10-upload-step1-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/10/upload/step1.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-14"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x11-验证码"><span class="toc-text">0x11 验证码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：-4"><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-15"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x12-cookie"><span class="toc-text">0x12 cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-Session-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/Session.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-16"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x13-MD5碰撞"><span class="toc-text">0x13 MD5碰撞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：http-ctf5-shiyanbar-com-web-kzhan-php"><span class="toc-text">题目：http://ctf5.shiyanbar.com/web/kzhan.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题方法：-17"><span class="toc-text">解题方法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x14-总结"><span class="toc-text">0x14 总结</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-4 i,
+    .toc-level-4 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>&#160; &#160; &#160; 身为一只web小白，但也刷了不少CTF方面的web题，趁着今天有时间，坐下来总结一下关于web的解题方法。<a id="more"></a></p>
+<h1 id="0x01-直接查看源代码"><a href="#0x01-直接查看源代码" class="headerlink" title="0x01 直接查看源代码"></a>0x01 直接查看源代码</h1><h2 id="题目：http-ctf5-shiyanbar-com-10-main-php"><a href="#题目：http-ctf5-shiyanbar-com-10-main-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/10/main.php"></a>题目：<a href="http://ctf5.shiyanbar.com/10/main.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/10/main.php</a></h2><h2 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb1.png" alt=""><br>点击右键，查看页面源代码<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb2.png" alt=""><br>将<code>hidden</code>改为<code>text</code>,<code>value=0</code>改为<code>value=1</code>,点击<code>Enter</code>。出现下图：<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb3.png" alt=""><br>这段代码的意思就是，将我们传给<code>PIN</code>的值给<code>a</code>,如果<code>a=-19827747736161128312837161661727773716166727272616149001823847</code>,输出flag。因此，我们直接将该值输入进去，点击Enter即可。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb4.png" alt=""></p>
+<h1 id="0x02-查看修改或添加HTTP请求头响应头"><a href="#0x02-查看修改或添加HTTP请求头响应头" class="headerlink" title="0x02 查看修改或添加HTTP请求头响应头"></a>0x02 查看修改或添加HTTP请求头响应头</h1><h2 id="题目：http-ctf5-shiyanbar-com-phpaudit"><a href="#题目：http-ctf5-shiyanbar-com-phpaudit" class="headerlink" title="题目：http://ctf5.shiyanbar.com/phpaudit/"></a>题目：<a href="http://ctf5.shiyanbar.com/phpaudit/" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/phpaudit/</a></h2><h2 id="解题方法：-1"><a href="#解题方法：-1" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb5.png" alt=""><br>点击<code>View the source code</code>,<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb6.png" alt=""><br>从这段代码可以看出，只要IP为<code>1.1.1.1</code>,即可输出flag。<br>用burpsuite抓包,在请求头中添加<code>X-Forwarded-For:1.1.1.1</code>,<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb7.png" alt=""><br>然后GO即可，<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb8.png" alt=""></p>
+<h1 id="0x03-302跳转的中转网页有信息"><a href="#0x03-302跳转的中转网页有信息" class="headerlink" title="0x03 302跳转的中转网页有信息"></a>0x03 302跳转的中转网页有信息</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><h2 id="解题方法：-2"><a href="#解题方法：-2" class="headerlink" title="解题方法："></a>解题方法：</h2><h1 id="0x04-查看开发者工具控制台"><a href="#0x04-查看开发者工具控制台" class="headerlink" title="0x04 查看开发者工具控制台"></a>0x04 查看开发者工具控制台</h1><h2 id="题目：http-ctf5-shiyanbar-com-DUTCTF-1-html"><a href="#题目：http-ctf5-shiyanbar-com-DUTCTF-1-html" class="headerlink" title="题目：http://ctf5.shiyanbar.com/DUTCTF/1.html"></a>题目：<a href="http://ctf5.shiyanbar.com/DUTCTF/1.html" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/DUTCTF/1.html</a></h2><h2 id="解题方法：-3"><a href="#解题方法：-3" class="headerlink" title="解题方法："></a>解题方法：</h2><p>进去之后发现是一片乱字符，其实不难发现这是js代码，这就可以用到我们的控制台了，复制代码，按F12，<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb10.png" alt=""><br>回车<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb11.png" alt=""></p>
+<h1 id="0x05-js代码，js加解密"><a href="#0x05-js代码，js加解密" class="headerlink" title="0x05 js代码，js加解密"></a>0x05 js代码，js加解密</h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h2><h2 id="解题方法：-4"><a href="#解题方法：-4" class="headerlink" title="解题方法："></a>解题方法：</h2><h1 id="0x06-使用Burpsuite拦截"><a href="#0x06-使用Burpsuite拦截" class="headerlink" title="0x06 使用Burpsuite拦截"></a>0x06 使用Burpsuite拦截</h1><h2 id="题目：http-ctf5-shiyanbar-com-basic-catch"><a href="#题目：http-ctf5-shiyanbar-com-basic-catch" class="headerlink" title="题目：http://ctf5.shiyanbar.com/basic/catch/"></a>题目：<a href="http://ctf5.shiyanbar.com/basic/catch/" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/basic/catch/</a></h2><h2 id="解题方法：-5"><a href="#解题方法：-5" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb12.png" alt=""><br>在输入框中随便输入123，发现报错，然后尝试抓包，发现响应头返回一个字符串<code>MTU1MzA5MzkzOA==</code><br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb13.png" alt=""><br>然后将该字符串提交，即得flag。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb14.png" alt=""></p>
+<p>其实该字符串是经过base64加密的,解密后是<code>1553093938</code></p>
+<h1 id="0x07-robots-txt"><a href="#0x07-robots-txt" class="headerlink" title="0x07 robots.txt"></a>0x07 robots.txt</h1><h2 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a>题目：</h2><h2 id="解题方法：-6"><a href="#解题方法：-6" class="headerlink" title="解题方法："></a>解题方法：</h2><h1 id="0x08-asp-php代码审计"><a href="#0x08-asp-php代码审计" class="headerlink" title="0x08 asp,php代码审计"></a>0x08 asp,php代码审计</h1><h2 id="题目一：http-ctf5-shiyanbar-com-web-more-php"><a href="#题目一：http-ctf5-shiyanbar-com-web-more-php" class="headerlink" title="题目一：http://ctf5.shiyanbar.com/web/more.php"></a>题目一：<a href="http://ctf5.shiyanbar.com/web/more.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/more.php</a></h2><h2 id="解题方法：-7"><a href="#解题方法：-7" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb21.png" alt=""><br>点击查看源代码，</p>
+<pre><code>&lt;?php
+if (isset ($_GET[&#39;password&#39;])) {
+    if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;]) === FALSE)
+    {
+        echo &#39;&lt;p&gt;You password must be alphanumeric&lt;/p&gt;&#39;;
+    }
+    else if (strlen($_GET[&#39;password&#39;]) &lt; 8 &amp;&amp; $_GET[&#39;password&#39;] &gt; 9999999)
+    {
+        if (strpos ($_GET[&#39;password&#39;], &#39;*-*&#39;) !== FALSE)
+        {
+            die(&#39;Flag: &#39; . $flag);
+        }
+        else
+        {
+            echo(&#39;&lt;p&gt;*-* have not been found&lt;/p&gt;&#39;);
+        }
+    }
+    else
+    {
+        echo &#39;&lt;p&gt;Invalid password&lt;/p&gt;&#39;;
+    }
+}
+?&gt;
+</code></pre><p>从这段代码中，可以看出要想得到flag，必须满足以下几个条件：</p>
+<ol>
+<li>输入的<code>password</code>必须是“a-zA-Z0-9]+$”中的</li>
+<li><code>password</code>必须长度小于8</li>
+<li><code>password</code>的值必须大于<code>999999999</code></li>
+<li><code>password</code>必须包含字符串<code>*-*</code></li>
+</ol>
+<p>&#160; &#160; &#160; 对于前三个条件，我们可以用科学计数法<code>password=9e9</code>,最后一个条件，其实<code>ereg()</code>函数有一个截断漏洞，我们可以用<code>%00</code>截断，让<code>password=9e9%00*-*</code>。在提交password的时候我们发现并不会出现flag，这是因为浏览器修改了传进去的参数，我们直接在url后面传参即可。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb22.png" alt=""></p>
+<p>题目二：<a href="http://ctf5.shiyanbar.com/DUTCTF/index.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/DUTCTF/index.php</a><br>解题方法：<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb23.png" alt=""><br>出来这么一句话，查看源代码，源代码简单的不能再简单了。</p>
+<p>但我们发现了这么一个文件<code>index.php.txt</code>,二话不说放进url试试，哎，出现了php源代码</p>
+<pre><code>&lt;?php
+if(eregi(&quot;hackerDJ&quot;,$_GET[id])) {
+  echo(&quot;&lt;p&gt;not allowed!&lt;/p&gt;&quot;);
+  exit();
+}
+
+$_GET[id] = urldecode($_GET[id]);
+if($_GET[id] == &quot;hackerDJ&quot;)
+{
+  echo &quot;&lt;p&gt;Access granted!&lt;/p&gt;&quot;;
+  echo &quot;&lt;p&gt;flag: *****************} &lt;/p&gt;&quot;;
+}
+?&gt;
+</code></pre><p>&#160; &#160; &#160; 这段代码的意思就是说，我们传进去的<code>id</code>经过url解密之后与<code>hackerDJ</code>是一样的，不说废话，行动起来，<code>hackerDJ</code>经url加密之后是<code>%68%61%63%6b%65%72%44%4a</code>,传进去之后依然不行，这是因为浏览器会自动对url进行解码，嗯，所以我们要进行二次加密，再次加密之后变为<code>%25%36%38%25%36%31%25%36%33%25%36%62%25%36%35%25%37%32%25%34%34%25%34%61</code>。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb24.png" alt=""></p>
+<h1 id="0x09-SQL注入"><a href="#0x09-SQL注入" class="headerlink" title="0x09 SQL注入"></a>0x09 SQL注入</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-index-2-php"><a href="#题目：http-ctf5-shiyanbar-com-web-index-2-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/index_2.php"></a>题目：<a href="http://ctf5.shiyanbar.com/web/index_2.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/index_2.php</a></h2><h2 id="解题方法：-8"><a href="#解题方法：-8" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb40.png" alt=""><br>既然是SQL注入，那么我们就要构造注入语句了，这个就要有耐心一个一个去尝试了<br>输入语句</p>
+<p><code>1&#39;and 1=1 #</code></p>
+<p>和</p>
+<p><code>1&#39;and/**/1=1/**/#</code>后</p>
+<p>对比一下，发现是过滤掉了空格，我们用/**/代替空格<br>下面就要构造找flag的语句了</p>
+<p><code>1&#39;/**/union/**/select/**/flag/**/from/**/flag#</code></p>
+<p>最后就能找到flag了，（其实这里面还有一些步骤，用SQLMap跑啊跑~）<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb41.png" alt=""></p>
+<h1 id="0x0A-简单脚本使用"><a href="#0x0A-简单脚本使用" class="headerlink" title="0x0A 简单脚本使用"></a>0x0A 简单脚本使用</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-10-10-php"><a href="#题目：http-ctf5-shiyanbar-com-web-10-10-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/10/10.php"></a>题目：<a href="http://ctf5.shiyanbar.com/web/10/10.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/10/10.php</a></h2><h2 id="解题方法：-9"><a href="#解题方法：-9" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb34.png" alt=""><br>查看源代码<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb37.png" alt=""><br>这句话的意思就是，让我们传一个参数<code>key</code>.<br>根据前面的提示，看响应头<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb35.png" alt=""><br>这个<code>FLAG</code>明显是经过base64加密的，解码之后<code>P0ST_THIS_T0_CH4NGE_FL4G:Lx17DdQma</code><br>用脚本跑一下，</p>
+<pre><code>import re
+import requests
+import base64
+import io
+import sys
+
+r = requests.Session()    #因为reqests请求的和post提交的数据要保持一致
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=&#39;utf-8&#39;)   #改变默认输出的编码
+html = r.head(&#39;http://ctf5.shiyanbar.com/web/10/10.php&#39;)
+result = html.headers
+results = result[&#39;FLAG&#39;]
+print(results)
+de_results = str(base64.b64decode(results.encode(&#39;utf-8&#39;)))
+print(de_results)
+data = de_results.split(&#39;:&#39;,1)[1]
+datas = data.replace(&#39;\&#39;&#39;, &#39;&#39;)
+print(datas)
+flag = {&#39;key&#39;:datas}
+flags = r.post(&#39;http://ctf5.shiyanbar.com/web/10/10.php&#39;, data=flag)
+print(flags.text)
+</code></pre><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb36.png" alt=""></p>
+<h1 id="0x0B-后台登录"><a href="#0x0B-后台登录" class="headerlink" title="0x0B 后台登录"></a>0x0B 后台登录</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-pcat-index-php"><a href="#题目：http-ctf5-shiyanbar-com-web-pcat-index-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/pcat/index.php"></a>题目：<a href="http://ctf5.shiyanbar.com/web/pcat/index.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/pcat/index.php</a></h2><h2 id="解题方法：-10"><a href="#解题方法：-10" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb9.png" alt=""><br>查看源代码<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb38.png" alt=""><br>这点的意思是：原来的程序员在写网页时给自己的一个提醒是源码在这个地方，我们要查看时将source.txt复制到当前地址栏里替换index.php，然后回车<br>就能看到源码了:</p>
+<pre><code>&lt;?php
+error_reporting(0);
+
+if (!isset($_POST[&#39;uname&#39;]) || !isset($_POST[&#39;pwd&#39;])) {
+    echo &#39;&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;&#39;.&quot;&lt;br/&gt;&quot;;
+    echo &#39;&lt;input name=&quot;uname&quot; type=&quot;text&quot;/&gt;&#39;.&quot;&lt;br/&gt;&quot;;
+    echo &#39;&lt;input name=&quot;pwd&quot; type=&quot;text&quot;/&gt;&#39;.&quot;&lt;br/&gt;&quot;;
+    echo &#39;&lt;input type=&quot;submit&quot; /&gt;&#39;.&quot;&lt;br/&gt;&quot;;
+    echo &#39;&lt;/form&gt;&#39;.&quot;&lt;br/&gt;&quot;;
+    echo &#39;&lt;!--source: source.txt--&gt;&#39;.&quot;&lt;br/&gt;&quot;;
+    die;
+}
+
+function AttackFilter($StrKey,$StrValue,$ArrReq){  
+    if (is_array($StrValue)){
+        $StrValue=implode($StrValue);
+    }
+    if (preg_match(&quot;/&quot;.$ArrReq.&quot;/is&quot;,$StrValue)==1){   
+        print &quot;姘村彲杞借垷锛屼害鍙禌鑹囷紒&quot;;
+        exit();
+    }
+}
+
+$filter = &quot;and|select|from|where|union|join|sleep|benchmark|,|\(|\)&quot;;
+foreach($_POST as $key=&gt;$value){ 
+    AttackFilter($key,$value,$filter);
+}
+
+$con = mysql_connect(&quot;XXXXXX&quot;,&quot;XXXXXX&quot;,&quot;XXXXXX&quot;);
+if (!$con){
+    die(&#39;Could not connect: &#39; . mysql_error());
+}
+$db=&quot;XXXXXX&quot;;
+mysql_select_db($db, $con);
+$sql=&quot;SELECT * FROM interest WHERE uname = &#39;{$_POST[&#39;uname&#39;]}&#39;&quot;;
+$query = mysql_query($sql); 
+if (mysql_num_rows($query) == 1) { 
+    $key = mysql_fetch_array($query);
+    if($key[&#39;pwd&#39;] == $_POST[&#39;pwd&#39;]) {
+        print &quot;CTF{XXXXXX}&quot;;
+    }else{
+        print &quot;浜﹀彲璧涜墖锛�&quot;;
+    }
+}else{
+    print &quot;涓€棰楄禌鑹囷紒&quot;;
+}
+mysql_close($con);
+?&gt;
+</code></pre><p>在这代码中有意思的地方是：</p>
+<pre><code>$filter = &quot;and|select|from|where|union|join|sleep|benchmark|,|\(|\)&quot;;
+foreach($_POST as $key=&gt;$value){ 
+    AttackFilter($key,$value,$filter);
+}
+</code></pre><p>他将这些sql注入的语句禁止了</p>
+<pre><code>$sql=&quot;SELECT * FROM interest WHERE uname = &#39;{$_POST[&#39;uname&#39;]}&#39;&quot;;
+$query = mysql_query($sql); 
+if (mysql_num_rows($query) == 1) { 
+    $key = mysql_fetch_array($query);
+    if($key[&#39;pwd&#39;] == $_POST[&#39;pwd&#39;]) {
+        print &quot;CTF{XXXXXX}&quot;;
+    }else{
+        print &quot;浜﹀彲璧涜墖锛�&quot;;
+    }
+}else{
+    print &quot;涓€棰楄禌鑹囷紒&quot;;
+</code></pre><p>这一部分的语句是说将输入进来的用户名与库里的进行对比，如果正确就输出flag，否则就会报错<br>那么接下来我们应该怎么做呢？<br>我们进行SQL注入：</p>
+<p><code>&#39; or 1=1 group by pwd with rollup limit 1 offset 2 #</code></p>
+<p>在这句语句中</p>
+<p><code>&#39; or 1=1</code>  我们都知道这是注入的一个常用语句，异或为真，恒成立</p>
+<p><code>group by pwd with rollup</code>  这句是sql里的添加一行，使得密码为空</p>
+<p><code>limit 1</code> 是查询的意思，查询第一行</p>
+<p><code>offset 2</code> 是从第二条数据开始查询</p>
+<p>将这条语句输入到第一个框内，提交查询就可以的出flag，如果输入其他就会报错<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb39.png" alt=""></p>
+<h1 id="0x0C-代码逆向"><a href="#0x0C-代码逆向" class="headerlink" title="0x0C 代码逆向"></a>0x0C 代码逆向</h1><h2 id="题目：-3"><a href="#题目：-3" class="headerlink" title="题目："></a>题目：</h2><h2 id="解题方法：-11"><a href="#解题方法：-11" class="headerlink" title="解题方法："></a>解题方法：</h2><h1 id="0x0D-上传绕过"><a href="#0x0D-上传绕过" class="headerlink" title="0x0D 上传绕过"></a>0x0D 上传绕过</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-upload"><a href="#题目：http-ctf5-shiyanbar-com-web-upload" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/upload/"></a>题目：<a href="http://ctf5.shiyanbar.com/web/upload/" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/upload/</a></h2><h2 id="解题方法：-12"><a href="#解题方法：-12" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb15.png" alt=""><br>随便上传一个1.jpg文件<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb16.png" alt=""><br>上传一个1.php文件<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb17.png" alt=""><br>显然我们上传的文件被截断了，这就让我们想到了<code>%00</code>截断。<code>%00</code>一般被认为是结束的标志，其后的东西都被认为是不存在的。抓包<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb18.png" alt=""><br>将上传的<code>1.php</code>文件改为<code>1.jpg</code>,在<code>/uploads/</code>后面添加<code>1.php .jpg</code>,并且在hex模块将空格所对应的十六进制<code>20</code>改为<code>00</code>，然后GO。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb19.png" alt=""><br>得到flag<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb20.png" alt=""></p>
+<h1 id="0x0E-hash函数"><a href="#0x0E-hash函数" class="headerlink" title="0x0E hash函数"></a>0x0E hash函数</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-false-php"><a href="#题目：http-ctf5-shiyanbar-com-web-false-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/false.php"></a>题目：<a href="http://ctf5.shiyanbar.com/web/false.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/false.php</a></h2><h2 id="解题方法：-13"><a href="#解题方法：-13" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb45.png" alt=""><br>查看源码</p>
+<pre><code>&lt;?php
+if (isset($_GET[&#39;name&#39;]) and isset($_GET[&#39;password&#39;])) {
+    if ($_GET[&#39;name&#39;] == $_GET[&#39;password&#39;])
+        echo &#39;&lt;p&gt;Your password can not be your name!&lt;/p&gt;&#39;;
+    else if (sha1($_GET[&#39;name&#39;]) === sha1($_GET[&#39;password&#39;]))
+      die(&#39;Flag: &#39;.$flag);
+    else
+        echo &#39;&lt;p&gt;Invalid password.&lt;/p&gt;&#39;;
+}
+else{
+    echo &#39;&lt;p&gt;Login first!&lt;/p&gt;&#39;;
+?&gt;
+</code></pre><p>这段代码的意思就是，输入的<code>name</code>和<code>password</code>经过sha1()函数加密后相等，但二者不一样。<br>应该利用<code>false===false</code>，md5 和 sha1 无法处理数组，但是 php 没有抛出异常，直接返回 fasle<br>payload：<code>?name[]=1&amp;password[]=123</code><br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb46.png" alt=""></p>
+<h1 id="0x0F-备份文件"><a href="#0x0F-备份文件" class="headerlink" title="0x0F 备份文件"></a>0x0F 备份文件</h1><h2 id="题目：http-ctf5-shiyanbar-com-10-upload-step1-php"><a href="#题目：http-ctf5-shiyanbar-com-10-upload-step1-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/10/upload/step1.php"></a>题目：<a href="http://ctf5.shiyanbar.com/10/upload/step1.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/10/upload/step1.php</a></h2><h2 id="解题方法：-14"><a href="#解题方法：-14" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb25.png" alt=""><br>我们先输入一个邮箱试试，发现不行<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb27.png" alt=""><br>查看源代码<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb26.png" alt=""><br>我们发现了管理员邮箱，也知道了这是用vim写的文件。<br>哎，我们刚才还发现了一个<code>step2.php</code>,试试。<br>结果页面一闪而过，嗯，有猫腻，抓包。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb28.png" alt=""><br>抓到一个<code>submit.php</code>,试试，不行。<br>用过Linux的vim的都知道，vim会产生一个临时文件<code>.submit.php.swp</code>。这是一个隐藏文件。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb29.png" alt=""><br>这段代码是说，我们需要传入<code>token</code>和<code>emailAddress</code>，<code>token</code>必须长度为10，大小为0，可令<code>token=0000000000</code>，或用科学计数法，正好，我们刚才发现一个管理员邮箱。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb30.png" alt=""></p>
+<h1 id="0x11-验证码"><a href="#0x11-验证码" class="headerlink" title="0x11 验证码"></a>0x11 验证码</h1><h2 id="题目：-4"><a href="#题目：-4" class="headerlink" title="题目："></a>题目：</h2><h2 id="解题方法：-15"><a href="#解题方法：-15" class="headerlink" title="解题方法："></a>解题方法：</h2><h1 id="0x12-cookie"><a href="#0x12-cookie" class="headerlink" title="0x12 cookie"></a>0x12 cookie</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-Session-php"><a href="#题目：http-ctf5-shiyanbar-com-web-Session-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/Session.php"></a>题目：<a href="http://ctf5.shiyanbar.com/web/Session.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/Session.php</a></h2><h2 id="解题方法：-16"><a href="#解题方法：-16" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb42.png" alt=""><br>查看源代码</p>
+<pre><code>
+&lt;?php
+session_start(); 
+if (isset ($_GET[&#39;password&#39;])) {
+    if ($_GET[&#39;password&#39;] == $_SESSION[&#39;password&#39;])
+        die (&#39;Flag: &#39;.$flag);
+    else
+        print &#39;&lt;p&gt;Wrong guess.&lt;/p&gt;&#39;;
+}
+
+mt_srand((microtime() ^ rand(1, 10000)) % rand(1, 10000) + rand(1, 10000));
+?&gt;
+</code></pre><p>这段代码的关键就在于：<code>password = $_session[&#39;password&#39;]</code><br>Cookie与 Session，一般都会认为这是两个独立完全不同的东西，Session采用的是在服务器端保持状态的方案，而Cookie采用的是在客户端保持状态的方案。在PHP配置中的默认情况下，Session是用Session ID来确定当前对话所对应的服务器Session，而Session ID是通过Cookie来传递的，禁用Cookie相当于失去了Session ID，也就得不到Session了。</p>
+<p>用Burpsuite抓包</p>
+<p>从抓包的内容中我们就能看见在Cookie中已经是包含了Sessid，并且发送的password在URL中以Get的方式传值。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb43.png" alt=""><br>那这里我们就可以以这样的思路来求解。首先我们删除所有的Cookie，将PHPSessid值直接删掉，这样的结果就会使得<code>$_session[&#39;password&#39;]</code>值为空，接下来我们将URL中的password值清空，这样我们就能达到<code>password = $_session[&#39;password&#39;]</code>的效果。<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb44.png" alt=""></p>
+<h1 id="0x13-MD5碰撞"><a href="#0x13-MD5碰撞" class="headerlink" title="0x13 MD5碰撞"></a>0x13 MD5碰撞</h1><h2 id="题目：http-ctf5-shiyanbar-com-web-kzhan-php"><a href="#题目：http-ctf5-shiyanbar-com-web-kzhan-php" class="headerlink" title="题目：http://ctf5.shiyanbar.com/web/kzhan.php"></a>题目：<a href="http://ctf5.shiyanbar.com/web/kzhan.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/kzhan.php</a></h2><h2 id="解题方法：-17"><a href="#解题方法：-17" class="headerlink" title="解题方法："></a>解题方法：</h2><p><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb31.png" alt=""><br>随便输入一些东西，发现什么都没有，抓包<br><img src="http://pp64r48ul.bkt.clouddn.com/CTFweb32.png" alt=""><br>哎，我们发现有一个<code>source=0</code>,改成<code>source=1</code>试试</p>
+<pre><code>$flag = &quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;;
+$secret = &quot;XXXXXXXXXXXXXXX&quot;; // This secret is 15 characters long for security!
+
+$username = $_POST[&quot;username&quot;];
+$password = $_POST[&quot;password&quot;];
+
+if (!empty($_COOKIE[&quot;getmein&quot;])) {
+    if (urldecode($username) === &quot;admin&quot; &amp;&amp; urldecode($password) != &quot;admin&quot;) {
+        if ($COOKIE[&quot;getmein&quot;] === md5($secret . urldecode($username . $password))) {
+            echo &quot;Congratulations! You are a registered user.\n&quot;;
+            die (&quot;The flag is &quot;. $flag);
+        }
+        else {
+            die (&quot;Your cookies don&#39;t match up! STOP HACKING THIS SITE.&quot;);
+        }
+    }
+    else {
+        die (&quot;You are not an admin! LEAVE.&quot;);
+    }
+}
+
+setcookie(&quot;sample-hash&quot;, md5($secret . urldecode(&quot;admin&quot; . &quot;admin&quot;)), time() + (60 * 60 * 24 * 7));
+
+if (empty($_COOKIE[&quot;source&quot;])) {
+    setcookie(&quot;source&quot;, 0, time() + (60 * 60 * 24 * 7));
+}
+else {
+    if ($_COOKIE[&quot;source&quot;] != 0) {
+        echo &quot;&quot;; // This source code is outputted here
+    }
+}
+</code></pre><p>源代码出来了。<br>想要获得flag，需要满足几个条件：<br>1.<code>urldecode($username) === &quot;admin&quot;</code></p>
+<p>2.<code>urldecode($password) != &quot;admin&quot;</code></p>
+<p>3.<code>$COOKIE[&quot;getmein&quot;] === md5($secret . urldecode($username . $password))</code><br>其中$secret是长度为15的未知字符串，而条件1、2很好满足，条件3则需要进行哈希长度扩展攻击来满足关于什么是哈希长度扩展攻击，怎么进行的可以看下面这个链接：<a href="https://github.com/iagox86/hash_extender" target="_blank" rel="noopener">https://github.com/iagox86/hash_extender</a></p>
+<p>在<code>cookie</code>中可以看到<code>sample-hash=571580b26c65f306376d4f64e53cb5c7</code>，<br>这是<code>$secret</code>跟两个admin连接后的字符串的哈希值，<code>md5(???????????????adminadmin)</code>，新字符串长度为25。我们要提交的username必定为admin，也就是说，我们提交的getmein必须是$secret跟admin以及$password连接后的字符串的哈希值。</p>
+<h1 id="0x14-总结"><a href="#0x14-总结" class="headerlink" title="0x14 总结"></a>0x14 总结</h1><p>遇到不会的函数可以自己百度</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395851238@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>CTF之web总结</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">3.1k</span></p>
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="忆时光">忆时光</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-03-20, 18:31:38</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-19, 15:43:42</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/03/20/ctf-zhi-web-zong-jie/" title="CTF之web总结">http://l1395851238.github.io/2019/03/20/ctf-zhi-web-zong-jie/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '8efd2003f7d78f372cd0',
+            clientSecret: 'bbe707da34458695603235f96ceb9da626525ce1',
+            repo: '3-hexo',
+            owner: 'l1395851238',
+            admin: ['l1395851238'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2018-2019 忆时光</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.png" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#web','#渗透测试','#DVWA','#渗透','#Github','#HTTP','#漏洞复现','#ctf','#linux','#XSS','#docker','#PHP','#源码泄露','#php','#SQL注入','#提权','#CTF','#文件上传','#文件包含','#正则表达式',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

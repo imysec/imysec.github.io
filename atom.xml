@@ -5,9 +5,9 @@
   <subtitle>忆时光</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://l1395851238.github.io/"/>
+  <link href="http://imysec.github.io/"/>
   <updated>2019-06-06T13:24:24.000Z</updated>
-  <id>http://l1395851238.github.io/</id>
+  <id>http://imysec.github.io/</id>
   
   <author>
     <name>忆时光</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title></title>
-    <link href="http://l1395851238.github.io/2019/08/25/docker-fu-xian-ctf/docker-fu-xian-ctf/"/>
-    <id>http://l1395851238.github.io/2019/08/25/docker-fu-xian-ctf/docker-fu-xian-ctf/</id>
+    <link href="http://imysec.github.io/2019/08/25/docker-fu-xian-ctf/docker-fu-xian-ctf/"/>
+    <id>http://imysec.github.io/2019/08/25/docker-fu-xian-ctf/docker-fu-xian-ctf/</id>
     <published>2019-08-25T09:17:41.514Z</published>
     <updated>2019-06-06T13:24:24.000Z</updated>
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://l1395851238.github.io/2019/08/25/hello-world/"/>
-    <id>http://l1395851238.github.io/2019/08/25/hello-world/</id>
+    <link href="http://imysec.github.io/2019/08/25/hello-world/"/>
+    <id>http://imysec.github.io/2019/08/25/hello-world/</id>
     <published>2019-08-25T09:11:39.722Z</published>
     <updated>2019-08-25T09:11:39.723Z</updated>
     
@@ -62,8 +62,8 @@
   
   <entry>
     <title>shishi</title>
-    <link href="http://l1395851238.github.io/2019/08/23/shishi/"/>
-    <id>http://l1395851238.github.io/2019/08/23/shishi/</id>
+    <link href="http://imysec.github.io/2019/08/23/shishi/"/>
+    <id>http://imysec.github.io/2019/08/23/shishi/</id>
     <published>2019-08-23T13:04:24.000Z</published>
     <updated>2019-08-23T13:04:26.000Z</updated>
     
@@ -76,8 +76,8 @@
   
   <entry>
     <title>XSS学习</title>
-    <link href="http://l1395851238.github.io/2019/08/03/xss-xue-xi/"/>
-    <id>http://l1395851238.github.io/2019/08/03/xss-xue-xi/</id>
+    <link href="http://imysec.github.io/2019/08/03/xss-xue-xi/"/>
+    <id>http://imysec.github.io/2019/08/03/xss-xue-xi/</id>
     <published>2019-08-03T07:58:01.000Z</published>
     <updated>2019-08-03T09:33:50.000Z</updated>
     
@@ -94,14 +94,14 @@
     </summary>
     
     
-      <category term="XSS" scheme="http://l1395851238.github.io/tags/XSS/"/>
+      <category term="XSS" scheme="http://imysec.github.io/tags/XSS/"/>
     
   </entry>
   
   <entry>
     <title>apache漏洞复现</title>
-    <link href="http://l1395851238.github.io/2019/08/02/apache-lou-dong-fu-xian/"/>
-    <id>http://l1395851238.github.io/2019/08/02/apache-lou-dong-fu-xian/</id>
+    <link href="http://imysec.github.io/2019/08/02/apache-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/08/02/apache-lou-dong-fu-xian/</id>
     <published>2019-08-02T07:42:43.000Z</published>
     <updated>2019-08-19T07:41:04.000Z</updated>
     
@@ -118,17 +118,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>Apache http漏洞复现</title>
-    <link href="http://l1395851238.github.io/2019/08/02/apache-lou-dong-fu-xian/apache-http-lou-dong-fu-xian/"/>
-    <id>http://l1395851238.github.io/2019/08/02/apache-lou-dong-fu-xian/apache-http-lou-dong-fu-xian/</id>
+    <link href="http://imysec.github.io/2019/08/02/apache-lou-dong-fu-xian/apache-http-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/08/02/apache-lou-dong-fu-xian/apache-http-lou-dong-fu-xian/</id>
     <published>2019-08-02T07:42:43.000Z</published>
     <updated>2019-08-03T08:37:20.000Z</updated>
     
@@ -146,14 +146,14 @@
     </summary>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>JBOSS漏洞复现</title>
-    <link href="http://l1395851238.github.io/2019/08/01/jboss-lou-dong-fu-xian/"/>
-    <id>http://l1395851238.github.io/2019/08/01/jboss-lou-dong-fu-xian/</id>
+    <link href="http://imysec.github.io/2019/08/01/jboss-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/08/01/jboss-lou-dong-fu-xian/</id>
     <published>2019-08-01T07:02:15.000Z</published>
     <updated>2019-08-19T07:51:18.000Z</updated>
     
@@ -169,17 +169,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>Nginx漏洞复现</title>
-    <link href="http://l1395851238.github.io/2019/07/31/nginx-lou-dong-fu-xian/"/>
-    <id>http://l1395851238.github.io/2019/07/31/nginx-lou-dong-fu-xian/</id>
+    <link href="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/</id>
     <published>2019-07-31T00:53:13.000Z</published>
     <updated>2019-08-19T07:52:48.000Z</updated>
     
@@ -195,17 +195,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>xp_cmdshell提权</title>
-    <link href="http://l1395851238.github.io/2019/07/30/xp-cmdshell-ti-quan/"/>
-    <id>http://l1395851238.github.io/2019/07/30/xp-cmdshell-ti-quan/</id>
+    <link href="http://imysec.github.io/2019/07/30/xp-cmdshell-ti-quan/"/>
+    <id>http://imysec.github.io/2019/07/30/xp-cmdshell-ti-quan/</id>
     <published>2019-07-30T07:58:05.000Z</published>
     <updated>2019-08-19T07:39:14.000Z</updated>
     
@@ -221,17 +221,17 @@
     
     </summary>
     
-      <category term="提权" scheme="http://l1395851238.github.io/categories/%E6%8F%90%E6%9D%83/"/>
+      <category term="提权" scheme="http://imysec.github.io/categories/%E6%8F%90%E6%9D%83/"/>
     
     
-      <category term="提权" scheme="http://l1395851238.github.io/tags/%E6%8F%90%E6%9D%83/"/>
+      <category term="提权" scheme="http://imysec.github.io/tags/%E6%8F%90%E6%9D%83/"/>
     
   </entry>
   
   <entry>
     <title>tomcat复现之弱口令&amp;后台getshell</title>
-    <link href="http://l1395851238.github.io/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/"/>
-    <id>http://l1395851238.github.io/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/</id>
+    <link href="http://imysec.github.io/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/"/>
+    <id>http://imysec.github.io/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/</id>
     <published>2019-07-29T09:45:30.000Z</published>
     <updated>2019-08-19T07:39:24.000Z</updated>
     
@@ -248,17 +248,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>tomcat复现之远程代码执行漏洞</title>
-    <link href="http://l1395851238.github.io/2019/07/29/tomcat-fu-xian/"/>
-    <id>http://l1395851238.github.io/2019/07/29/tomcat-fu-xian/</id>
+    <link href="http://imysec.github.io/2019/07/29/tomcat-fu-xian/"/>
+    <id>http://imysec.github.io/2019/07/29/tomcat-fu-xian/</id>
     <published>2019-07-29T06:20:44.000Z</published>
     <updated>2019-07-29T12:47:34.000Z</updated>
     
@@ -274,17 +274,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>Weblogic复现之Java反序列化</title>
-    <link href="http://l1395851238.github.io/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/"/>
-    <id>http://l1395851238.github.io/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/</id>
+    <link href="http://imysec.github.io/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/"/>
+    <id>http://imysec.github.io/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/</id>
     <published>2019-07-28T01:28:04.000Z</published>
     <updated>2019-08-19T07:39:18.000Z</updated>
     
@@ -301,17 +301,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>Weblogic复现之XML Decoder反序列化</title>
-    <link href="http://l1395851238.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/"/>
-    <id>http://l1395851238.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/</id>
+    <link href="http://imysec.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/"/>
+    <id>http://imysec.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/</id>
     <published>2019-07-26T11:45:04.000Z</published>
     <updated>2019-08-19T07:38:46.000Z</updated>
     
@@ -327,17 +327,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>Weblogic复现之ssrf</title>
-    <link href="http://l1395851238.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/"/>
-    <id>http://l1395851238.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/</id>
+    <link href="http://imysec.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/"/>
+    <id>http://imysec.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/</id>
     <published>2019-07-25T09:45:41.000Z</published>
     <updated>2019-08-19T07:39:18.000Z</updated>
     
@@ -354,17 +354,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>Weblogic复现之任意文件上传</title>
-    <link href="http://l1395851238.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/"/>
-    <id>http://l1395851238.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/</id>
+    <link href="http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/"/>
+    <id>http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/</id>
     <published>2019-07-24T10:57:00.000Z</published>
     <updated>2019-08-19T07:38:52.000Z</updated>
     
@@ -381,17 +381,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>《渗透测试之信息收集》</title>
-    <link href="http://l1395851238.github.io/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/"/>
-    <id>http://l1395851238.github.io/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/</id>
+    <link href="http://imysec.github.io/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/"/>
+    <id>http://imysec.github.io/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/</id>
     <published>2019-07-19T02:05:02.000Z</published>
     <updated>2019-08-19T07:40:30.000Z</updated>
     
@@ -407,17 +407,17 @@
     
     </summary>
     
-      <category term="读书笔记" scheme="http://l1395851238.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="http://imysec.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="渗透测试" scheme="http://l1395851238.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+      <category term="渗透测试" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>MySQL提权的几种姿势</title>
-    <link href="http://l1395851238.github.io/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/"/>
-    <id>http://l1395851238.github.io/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/</id>
+    <link href="http://imysec.github.io/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/"/>
+    <id>http://imysec.github.io/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/</id>
     <published>2019-07-18T01:37:05.000Z</published>
     <updated>2019-08-19T07:52:28.000Z</updated>
     
@@ -434,17 +434,17 @@
     
     </summary>
     
-      <category term="提权" scheme="http://l1395851238.github.io/categories/%E6%8F%90%E6%9D%83/"/>
+      <category term="提权" scheme="http://imysec.github.io/categories/%E6%8F%90%E6%9D%83/"/>
     
     
-      <category term="提权" scheme="http://l1395851238.github.io/tags/%E6%8F%90%E6%9D%83/"/>
+      <category term="提权" scheme="http://imysec.github.io/tags/%E6%8F%90%E6%9D%83/"/>
     
   </entry>
   
   <entry>
     <title>weblogic复现之weak_password</title>
-    <link href="http://l1395851238.github.io/2019/07/17/weblogic-fu-xian-zhi-weak-password/"/>
-    <id>http://l1395851238.github.io/2019/07/17/weblogic-fu-xian-zhi-weak-password/</id>
+    <link href="http://imysec.github.io/2019/07/17/weblogic-fu-xian-zhi-weak-password/"/>
+    <id>http://imysec.github.io/2019/07/17/weblogic-fu-xian-zhi-weak-password/</id>
     <published>2019-07-17T09:11:07.000Z</published>
     <updated>2019-08-19T07:38:40.000Z</updated>
     
@@ -460,17 +460,17 @@
     
     </summary>
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
     
-      <category term="漏洞复现" scheme="http://l1395851238.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>攻防世界WriteUP</title>
-    <link href="http://l1395851238.github.io/2019/05/21/gong-fang-shi-jie-writeup/"/>
-    <id>http://l1395851238.github.io/2019/05/21/gong-fang-shi-jie-writeup/</id>
+    <link href="http://imysec.github.io/2019/05/21/gong-fang-shi-jie-writeup/"/>
+    <id>http://imysec.github.io/2019/05/21/gong-fang-shi-jie-writeup/</id>
     <published>2019-05-21T12:53:51.000Z</published>
     <updated>2019-05-21T14:03:08.000Z</updated>
     
@@ -487,14 +487,14 @@
     </summary>
     
     
-      <category term="CTF" scheme="http://l1395851238.github.io/tags/CTF/"/>
+      <category term="CTF" scheme="http://imysec.github.io/tags/CTF/"/>
     
   </entry>
   
   <entry>
     <title>cookie注入</title>
-    <link href="http://l1395851238.github.io/2019/05/20/cookie-zhu-ru/"/>
-    <id>http://l1395851238.github.io/2019/05/20/cookie-zhu-ru/</id>
+    <link href="http://imysec.github.io/2019/05/20/cookie-zhu-ru/"/>
+    <id>http://imysec.github.io/2019/05/20/cookie-zhu-ru/</id>
     <published>2019-05-20T08:12:34.000Z</published>
     <updated>2019-05-20T08:12:34.000Z</updated>
     

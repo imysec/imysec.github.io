@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>HTTP消息头 | 忆时光</title>
-  <meta name="keywords" content=" web , HTTP ">
-  <meta name="description" content="HTTP消息头 | 忆时光">
+  <title>Hello World | 忆时光</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Hello World | 忆时光">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="与其临渊羡鱼，不如退而结网。">
 <meta property="og:type" content="website">
@@ -632,38 +632,24 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-HTTP消息头" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">HTTP消息头</h1>
+        <h1 class="article-title">Hello World</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            
-                <a href="javascript:" data-rel="Web">Web</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="javascript:" class="color4">web</a>
-            
-            <a href="javascript:" class="color5">HTTP</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-04-19 22:58:26">2018-07-27 21:15</time>
+        创建时间:<time class="date" title="更新时间: 2019-08-25 17:11:39">2019-08-25 17:11</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:661</span>
+        <span>字数:73</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -693,7 +679,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求头"><span class="toc-text">请求头</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#响应头"><span class="toc-text">响应头</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -708,47 +694,20 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>HTTP消息头是指，在超文本传输协议（ Hypertext Transfer Protocol ，HTTP）的请求和响应消息中，协议头部分的那些组件。HTTP消息头用来准确描述正在获取的资源、服务器或者客户端的行为，定义了HTTP事务中的具体操作参数。</p>
-<h1 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h1><p>HTTP请求报文由3部分组成：<code>请求行</code>+<code>请求头</code>+<code>请求体</code><br><img src="/2018/07/27/http-xiao-xi-tou/HP1.jpg" alt="HTTP请求报文"><br>①是请求方法，GET和POST是最常见的HTTP方法，除此以外还包括DELETE、HEAD、OPTIONS、PUT、TRACE。</p>
-<p>②是请求对于的URL地址，它和报文头的HOST属性组成完整的请求URL。</p>
-<p>③是协议名称和版本号。</p>
-<p>④是HTTP的报文头，报文头包含若干个属性，格式为“属性名：属性值”，服务端据此获取客户端的信息。</p>
-<p>⑤是报文体，它将一个页面表单中的组件值通过param1=value&amp;param2=value2的键值对形式编码成一个格式化串，它承载多个请求参数的数据。不但报文体可以传递请求参数，请求URL也可以通过类似于“/chapter15/user.html? param1=value1&amp;param2=value2”的方式传递请求参数。</p>
-<p><strong>请求报文头属性</strong></p>
-<ul>
-<li><p><strong>Accept</strong><br>请求报文可通过一个“Accept”报文头属性告诉服务端 客户端接受什么类型的响应。 </p>
-<pre><code>Accept:text/plain  
-</code></pre></li>
-<li><strong>Cookie</strong> </li>
-<li><strong>Referer</strong></li>
-<li><strong>Cache-Control</strong></li>
-<li><p><strong>Content-Type</strong><br>关于字符的编码，1.0版规定，头信息必须是 ASCII 码，后面的数据可以是任何格式。因此，服务器回应的时候，必须告诉客户端，数据是什么格式，这就是Content-Type字段的作用。</p>
-<pre><code>text/plain
-text/html
-text/css
-image/jpeg
-image/png
-image/svg+xml
-audio/mp4
-video/mp4
-application/javascript
-application/pdf
-application/zip
-application/atom+xml
-这些数据类型总称为MIME type，每个值包括一级类型和二级类型，之间用斜杠分隔。
-</code></pre><p><code>MIME type</code>还可以在尾部使用分号，添加参数。</p>
-<p><code>Content-Type: text/html; charset=utf-8</code><br>上面的类型表明，发送的是网页，而且编码是UTF-8。</p>
-</li>
-<li><p><strong>Content-Encoding</strong><br>由于发送的数据可以是任何格式，因此可以把数据压缩后再发送。Content-Encoding字段说明数据的压缩方法。</p>
-<pre><code>Content-Encoding: gzip
-Content-Encoding: compress
-Content-Encoding: deflate
-</code></pre></li>
-<li><p><strong>Content-Length</strong><br>一个TCP连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是Content-length字段的作用，声明本次回应的数据长度。</p>
-<p><code>Content-Length: 3495</code><br>上面代码告诉浏览器，本次回应的长度是3495个字节，后面的字节就属于下一个回应了。</p>
-</li>
-</ul>
-<h1 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h1>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395851238@qq.com </span>
     </div>
@@ -761,12 +720,12 @@ Content-Encoding: deflate
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>HTTP消息头</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">661</span></p>
+    <p><span class="copy-title">文章标题:</span>Hello World</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">73</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="忆时光">忆时光</a></p>
-    <p><span class="copy-title">发布时间:</span>2018-07-27, 21:15:29</p>
-    <p><span class="copy-title">最后更新:</span>2019-04-19, 22:58:26</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/07/27/http-xiao-xi-tou/" title="HTTP消息头">http://l1395851238.github.io/2018/07/27/http-xiao-xi-tou/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-25, 17:11:39</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-25, 17:11:39</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/25/hello-world/" title="Hello World">http://l1395851238.github.io/2019/08/25/hello-world/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

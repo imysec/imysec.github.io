@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>about | 忆时光</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="about | 忆时光">
+  <title>Git学习（二） | 忆时光</title>
+  <meta name="keywords" content=" Git ">
+  <meta name="description" content="Git学习（二） | 忆时光">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="与其临渊羡鱼，不如退而结网。">
 <meta property="og:type" content="website">
@@ -627,24 +627,36 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="about-" class="article article-type-about" itemscope="" itemprop="blogPost">
+        <article id="post-Git学习（二）" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">Git学习（二）</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a href="javascript:" data-rel="Github">Github</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">Git</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-04-03 10:55:22">2019-04-03 10:50</time>
+        创建时间:<time class="date" title="更新时间: 2019-09-05 21:03:33">2019-09-04 22:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:1.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -674,7 +686,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-前言"><span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-版本回退"><span class="toc-text">0x01 版本回退</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-工作区和暂存区"><span class="toc-text">0x02 工作区和暂存区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-总结"><span class="toc-text">0x03 总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -689,7 +701,166 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>昨天我们学习了如何创建版本库，如何上传文件到版本库等，今天我们来学习如何对版本库的文件进行管理，修改，删除等操作。</p>
+<h1 id="0x01-版本回退"><a href="#0x01-版本回退" class="headerlink" title="0x01 版本回退"></a>0x01 版本回退</h1><p>我们已经成功提交README.txt文件，我们继续修改README.txt</p>
+<pre><code>Git is a version control system.
+This is my first test for Git!
+hahaha
+</code></pre><p>使用<code>git status</code>查看结果</p>
+<pre><code>$ git status
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+        modified:   README.txt
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+
+</code></pre><p><code>git status</code>命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，README.txt被修改过了，但还没有被提交。</p>
+<p>如果我们忘记了修改了什么地方，我们可以使用<code>git diff</code>命令查看</p>
+<pre><code>$ git diff
+diff --git a/README.txt b/README.txt
+index 2237ae3..fe9c47a 100644
+--- a/README.txt
++++ b/README.txt
+@@ -1,2 +1,3 @@
+ Git is a version control system.
+ This is my first test for Git!
++hahaha
+\ No newline at end of file
+</code></pre><p>其中 <code>-</code>代表的是旧版本，<code>+</code>代表的是新版本</p>
+<p>在实际生活中，我们不可能记住所有的修改，每次修改了什么，这个时候就知道版本控制的好处了。</p>
+<p><code>git log</code>命令可以查看我们提交的历史记录</p>
+<pre><code>$ git log
+commit a78dd792ca848cf12c9ce93ecec4af510a697650 (HEAD -&gt; master)
+Author: imysec &lt;1395851238@qq.com&gt;
+Date:   Thu Sep 5 17:08:43 2019 +0800
+
+    change the README.txt
+
+commit d4892a639ae1c9acbf21635e6c0d88ff35b3a94b
+Author: imysec &lt;1395851238@qq.com&gt;
+Date:   Wed Sep 4 23:19:16 2019 +0800
+
+    add a new README.txt file
+</code></pre><p><code>git log</code>显示的是从最近到最远的提交日志，也就是说，最上面的记录是最近一次提交的。</p>
+<p>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
+<pre><code>$ git log --pretty=oneline
+a78dd792ca848cf12c9ce93ecec4af510a697650 (HEAD -&gt; master) change the README.txt
+d4892a639ae1c9acbf21635e6c0d88ff35b3a94b add a new README.txt file
+</code></pre><p>现在我们要回到上一个版本，也就是“add a new README.txt file”这个版本。</p>
+<p>首先，我们要知道自己当前所处的版本，在Git中，用<code>HEAD</code>表示当前版本，<code>HEAD^</code>表示上一个版本，<code>HEAD^^</code>表示上上一个版本，以此类推，第100个版本，总不能用100个<code>^</code>吧，所以我们可以用<code>HEAD~100</code>表示。</p>
+<p>我们先查看<code>README.txt</code></p>
+<pre><code>$ cat README.txt
+Git is a version control system.
+This is my first test for Git!
+hahaha
+ennnnn
+</code></pre><p>现在我们用<code>git reset</code>命令回退到上一个版本</p>
+<pre><code>$ git reset --hard HEAD^
+HEAD is now at d4892a6 add a new README.txt file
+</code></pre><p>再查看<code>README.txt</code></p>
+<pre><code>$ cat README.txt
+Git is a version control system.
+This is my first test for Git!
+</code></pre><p>果然回到了上一版本。</p>
+<p>再用<code>git log</code>查看日志</p>
+<pre><code>$ git log
+commit d4892a639ae1c9acbf21635e6c0d88ff35b3a94b (HEAD -&gt; master)
+Author: imysec &lt;1395851238@qq.com&gt;
+Date:   Wed Sep 4 23:19:16 2019 +0800
+
+    add a new README.txt file
+</code></pre><p>发现第二次提交的不见了，那我们要想回到那个版本该怎么办呢？？？<br>其实还是有办法的，只要你以前使用<code>git log</code>命令的窗口没有关闭，往上翻，就可以找到以前的版本ID，再使用<code>git reset --hard ID</code>即可回到那个版本。</p>
+<pre><code>$ git reset --hard a78dd792
+HEAD is now at a78dd79 change the README.txt
+
+$ cat README.txt
+Git is a version control system.
+This is my first test for Git!
+hahaha
+ennnnn
+</code></pre><p>这里要说一点，就是版本ID没必要写全，写前面几位就够了，Git会自动匹配，but也不能太少，5,6位就行。</p>
+<p>可以看到Git版本回退的速度非常快，其实在Git内部有一个<code>HEAD</code>指针，指向当前版本，当你想改变版本的时候，仅仅是移动<code>HEAD</code>指针。</p>
+<pre><code>┌────┐
+│HEAD│
+└────┘
+   │           
+   └──&gt; ○ change the README.txt
+        │
+        ○ add a new README.txt file
+</code></pre><p>回到上一个版本</p>
+<pre><code>┌────┐
+│HEAD│
+└────┘
+   │           
+   └──&gt; ○ change the README.txt
+        │
+        ○ add a new README.txt file
+</code></pre><p>在更改版本库的时候，也把本地工作目录也更改了。</p>
+<p>但是，如果我们把<code>git log</code>的窗口关闭了，该怎么办呢？</p>
+<p>稳住，别慌！</p>
+<p><code>git reflog</code>可以记录你的每一次命令</p>
+<pre><code>$ git reflog
+a78dd79 (HEAD -&gt; master) HEAD@{0}: reset: moving to a78dd792
+d4892a6 HEAD@{1}: reset: moving to d4892a639
+d4892a6 HEAD@{2}: reset: moving to HEAD^
+a78dd79 (HEAD -&gt; master) HEAD@{3}: commit: change the README.txt
+d4892a6 HEAD@{4}: commit (initial): add a new README.txt file
+</code></pre><p>即可找到commit ID。</p>
+<h1 id="0x02-工作区和暂存区"><a href="#0x02-工作区和暂存区" class="headerlink" title="0x02 工作区和暂存区"></a>0x02 工作区和暂存区</h1><p>前面我们学到了，添加文件到Git版本库的时候，是分两步的</p>
+<p>第一步： 用<code>git add</code>将文件添加进去，实际上是把文件修改添加到暂存区<br>第二步： 用<code>git commit</code>提交，实际上就是把暂存区的所有内容一次性提交的当前分支</p>
+<p>当我们在创建版本库时，Git自动为我们创建了唯一的master分支，所以，<code>git commit</code>就是往<code>master</code>上提交更改。</p>
+<p>我们现在对<code>README.txt</code>文件进行修改：</p>
+<pre><code>Git is a version control system.
+This is my first test for Git!
+Git is so good!
+</code></pre><p>然后再新建一个<code>LICENSE</code>文件</p>
+<p>先用<code>git status</code>查看一下仓库的状态</p>
+<pre><code>$ git status
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+        modified:   README.txt
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+        LICENSE
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre><p>Git告诉我们，<code>README.txt</code>被修改了，而<code>LICENSE</code>还从来没有被添加过，所以它的状态是<code>Untracked</code>。</p>
+<p>使用两次命令<code>git add</code>，把<code>README.txt</code>和<code>LICENSE</code>都添加后，用<code>git status</code>再查看一下：</p>
+<pre><code>$ git status
+On branch master
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+        new file:   LICENSE
+        modified:   README.txt
+</code></pre><p>now,暂存区的状态就变成了这样：<br><img src="https://i.imgur.com/uzfw7MQ.jpg" alt=""></p>
+<p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
+<pre><code>$ git commit -m &quot;modify README.txt &amp; add LICENSE&quot;
+[master 081378e] modify README.txt &amp; add LICENSE
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+ create mode 100644 LICENSE
+</code></pre><p>提交后，如果你又没有对工作区做任何修改，那么工作区就是“空”的：</p>
+<pre><code>$ git status
+On branch master
+nothing to commit, working tree clean
+</code></pre><p><img src="https://i.imgur.com/lUcN5yh.jpg" alt=""></p>
+<h1 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h1><ul>
+<li><code>git status</code>查看当前工作区的状态</li>
+<li><code>git diff</code>对比发现文件修改前后的修改了哪些内容</li>
+<li><code>HEAD</code>指向当前版本，Git可以在历史版本之间来回穿梭，使用<code>git reset --hard commit_id</code></li>
+<li><code>git log</code>可以查看提交的历史，找到commit_id</li>
+<li><code>git reflog</code>可以查看历史命令，可以回到未来的版本</li>
+<li>工作区指仓库的本地目录</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395851238@qq.com </span>
     </div>
@@ -700,6 +871,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Git学习（二）</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">1.6k</span></p>
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="忆时光">忆时光</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-09-04, 22:30:36</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-05, 21:03:33</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/04/git-xue-xi-er/" title="Git学习（二）">http://imysec.github.io/2019/09/04/git-xue-xi-er/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

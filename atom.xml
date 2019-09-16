@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imysec.github.io/"/>
-  <updated>2019-09-16T03:40:20.120Z</updated>
+  <updated>2019-09-16T03:53:15.433Z</updated>
   <id>http://imysec.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://imysec.github.io/2019/09/16/active-directory/"/>
-    <id>http://imysec.github.io/2019/09/16/active-directory/</id>
-    <published>2019-09-16T03:52:15.253Z</published>
-    <updated>2019-09-16T03:40:20.120Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Active-Directory-活动目录&quot;&gt;&lt;a href=&quot;#Active-Directory-活动目录&quot; class=&quot;headerlink&quot; title=&quot;Active Directory(活动目录)&quot;&gt;&lt;/a&gt;Active
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Active_Directory</title>
@@ -502,6 +480,33 @@
         
         
           &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现XML
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weblogic复现之ssrf</title>
+    <link href="http://imysec.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/"/>
+    <id>http://imysec.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/</id>
+    <published>2019-07-25T09:45:41.000Z</published>
+    <updated>2019-08-19T07:39:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现weblogic中的ssrf漏洞，以前也没学过ssrf，所以趁着这个机会再把ssrf学习一下。&lt;/p&gt;
+&lt;h1
         
       
     

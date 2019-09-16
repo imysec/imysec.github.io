@@ -163,7 +163,7 @@
     
         
             
-            <li><div data-rel="漏洞复现">漏洞复现<small>(11)</small></div>
+            <li><div data-rel="CTF">CTF<small>(4)</small></div>
                 
             </li>
             
@@ -171,7 +171,7 @@
     
         
             
-            <li><div data-rel="CTF">CTF<small>(4)</small></div>
+            <li><div data-rel="漏洞复现">漏洞复现<small>(11)</small></div>
                 
             </li>
             
@@ -286,11 +286,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">Github</a>
+        <a href="javascript:" class="color4">Git</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">Git</a>
+        <a href="javascript:" class="color2">Github</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -298,11 +298,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">漏洞复现</a>
+        <a href="javascript:" class="color4">ctf</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">ctf</a>
+        <a href="javascript:" class="color5">漏洞复现</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -314,15 +314,15 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">PHP</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color5">源码泄露</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">docker</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -664,7 +664,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-09-16 11:53:15">2019-09-15 18:18</time>
+        创建时间:<time class="date" title="更新时间: 2019-09-16 11:58:03">2019-09-15 18:18</time>
         
     </div>
     <div class="article-meta">
@@ -715,7 +715,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Active-Directory-活动目录"><a href="#Active-Directory-活动目录" class="headerlink" title="Active Directory(活动目录)"></a>Active Directory(活动目录)</h1><p><strong>Active Directory</strong>（简称AD。）是微软Windows Server中，负责架构中大型网路环境的集中式目录管理服务（Directory Services），在Windows 2000 Server开始内建于Windows Server产品中，它处理在组织中的网路物件，物件可以是使用者，群组，电脑，网域控制站，邮件，设定档，组织单元，树系等等，只要是在Active Directory结构定义档（schema）中定义的物件，就可以储存在Active Directory资料档中，并利用Active Directory Service Interface来存取。</p>
-<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>Active Directory(AD)以树状的资料结构来组成网路服务的资讯，在简单的网路环境中（例如小公司），通常网域都只有一个，在中型或大型的网路中，网域可能会有很多个，或是和其他公司或组织的AD相互连结（此连结称为信任关系）。<br><img src="/2019/09/15/active-directory/1.png" alt=""></p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>Active Directory(AD)以树状的资料结构来组成网路服务的资讯，在简单的网路环境中（例如小公司），通常网域都只有一个，在中型或大型的网路中，网域可能会有很多个，或是和其他公司或组织的AD相互连结（此连结称为信任关系）。</p>
+<p><img src="/2019/09/15/active-directory/1.png" alt=""></p>
 <h3 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h3><p>Active Directory的最小储存单元为物件（object），每个物件均有自己的schema属性，可以储存不同的资料，像是使用者、群组、电脑、信箱或其他的基本物件等。</p>
 <p>一个网域底下的基本物件有：</p>
 <ul>
@@ -734,7 +735,8 @@
 <p>psexec 首次执行需要验证，这在Shell中使用起来非常不便，可以使用如下命令，避免出面上述问题</p>
 <pre><code>psexec /accepteula
 </code></pre><p>但是psexec也有一些问题：psexec需要对方开启ADMIN$共享，而且需要安装服务，安装服务会留下明显的日志；另外，psexec退出时有可能服务删除失败。</p>
-<p>WMI可以远程执行命令可以用VBS脚本调用WMI来模拟psexec的功能。<br><img src="/2019/09/15/active-directory/2.png" alt=""></p>
+<p>WMI可以远程执行命令可以用VBS脚本调用WMI来模拟psexec的功能。</p>
+<p><img src="/2019/09/15/active-directory/2.png" alt=""></p>
 <p>WMIEXEC支持两种模式，一种是半交互式shell模式，另一种是执行单条命令模式。</p>
 <p>WMIEXEC需要提供账号密码进行远程连接，但是如果没有破解出账号密码，也可以配合WCE的hash注入功能一起使用，先进行hash注入，然后再使用WMIEXEC即可。</p>
 <p><strong>半交互式shell模式</strong></p>
@@ -1083,7 +1085,7 @@
     <p><span class="copy-title">文章字数:</span><span class="post-count">1.7k</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="忆时光">忆时光</a></p>
     <p><span class="copy-title">发布时间:</span>2019-09-15, 18:18:36</p>
-    <p><span class="copy-title">最后更新:</span>2019-09-16, 11:53:15</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-16, 11:58:03</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/15/active-directory/" title="Active_Directory">http://imysec.github.io/2019/09/15/active-directory/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -1166,7 +1168,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#web','#渗透测试','#渗透','#DVWA','#Github','#Git','#HTTP','#漏洞复现','#ctf','#linux','#XSS','#PHP','#源码泄露','#docker','#php','#SQL注入','#提权','#文件上传','#文件包含','#正则表达式',],
+            'data': ['#web','#渗透测试','#渗透','#DVWA','#Git','#Github','#HTTP','#ctf','#漏洞复现','#linux','#XSS','#docker','#PHP','#源码泄露','#php','#SQL注入','#提权','#文件上传','#文件包含','#正则表达式',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

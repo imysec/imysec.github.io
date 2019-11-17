@@ -112,30 +112,6 @@
   
   <entry>
     <title>域渗透远程执行命令的几种姿势</title>
-    <link href="http://imysec.github.io/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi-fu-ben/"/>
-    <id>http://imysec.github.io/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi-fu-ben/</id>
-    <published>2019-10-16T12:08:41.000Z</published>
-    <updated>2019-10-20T06:44:36.195Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;域渗透远程执行命令的几种姿势&quot;&gt;&lt;a href=&quot;#域渗透远程执行命令的几种姿势&quot; class=&quot;headerlink&quot; title=&quot;域渗透远程执行命令的几种姿势&quot;&gt;&lt;/a&gt;域渗透远程执行命令的几种姿势&lt;/h1&gt;&lt;h2 id=&quot;0x00-vmic&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="域渗透" scheme="http://imysec.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>域渗透远程执行命令的几种姿势</title>
     <link href="http://imysec.github.io/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/"/>
     <id>http://imysec.github.io/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/</id>
     <published>2019-10-16T12:08:41.000Z</published>
@@ -509,6 +485,32 @@
     
     
       <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xp_cmdshell提权</title>
+    <link href="http://imysec.github.io/2019/07/30/xp-cmdshell-ti-quan/"/>
+    <id>http://imysec.github.io/2019/07/30/xp-cmdshell-ti-quan/</id>
+    <published>2019-07-30T07:58:05.000Z</published>
+    <updated>2019-08-19T07:39:14.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;xp_cmdshell是Sql
+        
+      
+    
+    </summary>
+    
+      <category term="提权" scheme="http://imysec.github.io/categories/%E6%8F%90%E6%9D%83/"/>
+    
+    
+      <category term="提权" scheme="http://imysec.github.io/tags/%E6%8F%90%E6%9D%83/"/>
     
   </entry>
   

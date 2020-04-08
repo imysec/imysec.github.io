@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://imysec.github.io/"/>
-  <updated>2019-11-17T05:22:15.920Z</updated>
+  <updated>2020-03-16T08:56:56.829Z</updated>
   <id>http://imysec.github.io/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://imysec.github.io/2020/04/08/wen-jian-xia-zai-2020.03.16/"/>
+    <id>http://imysec.github.io/2020/04/08/wen-jian-xia-zai-2020.03.16/</id>
+    <published>2020-04-08T03:22:13.151Z</published>
+    <updated>2020-03-16T08:56:56.829Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;文件下载&quot;&gt;&lt;a href=&quot;#文件下载&quot; class=&quot;headerlink&quot; title=&quot;文件下载&quot;&gt;&lt;/a&gt;文件下载&lt;/h1&gt;&lt;p&gt;write: 2020.3.16&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://imysec.github.io/2020/04/08/nei-wang-xin-xi-shou-ji/"/>
+    <id>http://imysec.github.io/2020/04/08/nei-wang-xin-xi-shou-ji/</id>
+    <published>2020-04-08T03:22:13.135Z</published>
+    <updated>2020-03-23T10:32:07.973Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;内网信息收集&quot;&gt;&lt;a href=&quot;#内网信息收集&quot; class=&quot;headerlink&quot; title=&quot;内网信息收集&quot;&gt;&lt;/a&gt;内网信息收集&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://imysec.github.io/2020/04/08/powershell-xue-xi/"/>
+    <id>http://imysec.github.io/2020/04/08/powershell-xue-xi/</id>
+    <published>2020-04-08T03:22:13.120Z</published>
+    <updated>2020-03-20T03:38:30.299Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;powershell基础&quot;&gt;&lt;a href=&quot;#powershell基础&quot; class=&quot;headerlink&quot; title=&quot;powershell基础&quot;&gt;&lt;/a&gt;powershell基础&lt;/h2&gt;&lt;p&gt;Windows
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>内网文件下载传输</title>
@@ -433,84 +500,6 @@
     
     
       <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JBOSS漏洞复现</title>
-    <link href="http://imysec.github.io/2019/08/01/jboss-lou-dong-fu-xian/"/>
-    <id>http://imysec.github.io/2019/08/01/jboss-lou-dong-fu-xian/</id>
-    <published>2019-08-01T07:02:15.000Z</published>
-    <updated>2019-08-19T07:51:18.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;## 0x00 前言&quot;&gt;&lt;/a&gt;## 0x00 前言&lt;/h2&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-    
-      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx漏洞复现</title>
-    <link href="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/"/>
-    <id>http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/</id>
-    <published>2019-07-31T00:53:13.000Z</published>
-    <updated>2019-08-19T07:52:48.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like
-        
-      
-    
-    </summary>
-    
-      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-    
-      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xp_cmdshell提权</title>
-    <link href="http://imysec.github.io/2019/07/30/xp-cmdshell-ti-quan/"/>
-    <id>http://imysec.github.io/2019/07/30/xp-cmdshell-ti-quan/</id>
-    <published>2019-07-30T07:58:05.000Z</published>
-    <updated>2019-08-19T07:39:14.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;xp_cmdshell是Sql
-        
-      
-    
-    </summary>
-    
-      <category term="提权" scheme="http://imysec.github.io/categories/%E6%8F%90%E6%9D%83/"/>
-    
-    
-      <category term="提权" scheme="http://imysec.github.io/tags/%E6%8F%90%E6%9D%83/"/>
     
   </entry>
   

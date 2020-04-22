@@ -491,4 +491,773 @@
     
   </entry>
   
+  <entry>
+    <title>XSS学习</title>
+    <link href="http://imysec.github.io/2019/08/03/xss-xue-xi/"/>
+    <id>http://imysec.github.io/2019/08/03/xss-xue-xi/</id>
+    <published>2019-08-03T07:58:01.000Z</published>
+    <updated>2019-08-03T09:33:50.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;## 0x00 前言&quot;&gt;&lt;/a&gt;## 0x00 前言&lt;/h2&gt;&lt;p&gt;跨站脚本(Cross-Site
+        
+      
+    
+    </summary>
+    
+    
+      <category term="XSS" scheme="http://imysec.github.io/tags/XSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>apache漏洞复现</title>
+    <link href="http://imysec.github.io/2019/08/02/apache-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/08/02/apache-lou-dong-fu-xian/</id>
+    <published>2019-08-02T07:42:43.000Z</published>
+    <updated>2020-04-22T04:51:22.387Z</updated>
+    
+    <summary type="html">
+    
+      Here&#39;s something encrypted, password is required to continue reading.
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JBOSS漏洞复现</title>
+    <link href="http://imysec.github.io/2019/08/01/jboss-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/08/01/jboss-lou-dong-fu-xian/</id>
+    <published>2019-08-01T07:02:15.000Z</published>
+    <updated>2019-08-19T07:51:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;## 0x00 前言&quot;&gt;&lt;/a&gt;## 0x00 前言&lt;/h2&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx漏洞复现</title>
+    <link href="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/"/>
+    <id>http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/</id>
+    <published>2019-07-31T00:53:13.000Z</published>
+    <updated>2019-08-19T07:52:48.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tomcat复现之弱口令&amp;后台getshell</title>
+    <link href="http://imysec.github.io/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/"/>
+    <id>http://imysec.github.io/2019/07/29/tomcat-fu-xian-zhi-ruo-kou-ling-hou-tai-getshell/</id>
+    <published>2019-07-29T09:45:30.000Z</published>
+    <updated>2019-08-19T07:39:24.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Tomcat支持在后台部署war文件，可以直接将webshell部署到web目录下。&lt;/p&gt;
+&lt;h1 id=&quot;漏洞利用&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tomcat复现之远程代码执行漏洞</title>
+    <link href="http://imysec.github.io/2019/07/29/tomcat-fu-xian/"/>
+    <id>http://imysec.github.io/2019/07/29/tomcat-fu-xian/</id>
+    <published>2019-07-29T06:20:44.000Z</published>
+    <updated>2019-07-29T12:47:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;当 Tomcat 运行在 Windows 主机上，且启用了 HTTP PUT
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weblogic复现之Java反序列化</title>
+    <link href="http://imysec.github.io/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/"/>
+    <id>http://imysec.github.io/2019/07/28/weblogic-fu-xian-zhi-java-fan-xu-lie-hua/</id>
+    <published>2019-07-28T01:28:04.000Z</published>
+    <updated>2019-08-19T07:39:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;weblogic的最后一个漏洞，Java反序列化，以前没学过Java，也没学过Java反序列化。。。。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weblogic复现之XML Decoder反序列化</title>
+    <link href="http://imysec.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/"/>
+    <id>http://imysec.github.io/2019/07/26/weblogic-fu-xian-zhi-xml-decoder-fan-xu-lie-hua/</id>
+    <published>2019-07-26T11:45:04.000Z</published>
+    <updated>2019-08-19T07:38:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现XML
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weblogic复现之ssrf</title>
+    <link href="http://imysec.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/"/>
+    <id>http://imysec.github.io/2019/07/25/weblogic-fu-xian-zhi-ssrf/</id>
+    <published>2019-07-25T09:45:41.000Z</published>
+    <updated>2019-08-19T07:39:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现weblogic中的ssrf漏洞，以前也没学过ssrf，所以趁着这个机会再把ssrf学习一下。&lt;/p&gt;
+&lt;h1
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weblogic复现之任意文件上传</title>
+    <link href="http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/"/>
+    <id>http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/</id>
+    <published>2019-07-24T10:57:00.000Z</published>
+    <updated>2019-08-19T07:38:52.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。&lt;/p&gt;
+&lt;h1 id=&quot;漏洞说明&quot;&gt;&lt;a href=&quot;#漏洞说明&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《渗透测试之信息收集》</title>
+    <link href="http://imysec.github.io/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/"/>
+    <id>http://imysec.github.io/2019/07/19/shen-tou-ce-shi-zhi-xin-xi-shou-ji/</id>
+    <published>2019-07-19T02:05:02.000Z</published>
+    <updated>2019-08-19T07:40:30.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://imysec.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="渗透测试" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL提权的几种姿势</title>
+    <link href="http://imysec.github.io/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/"/>
+    <id>http://imysec.github.io/2019/07/18/mysql-ti-quan-de-ji-chong-zi-shi/</id>
+    <published>2019-07-18T01:37:05.000Z</published>
+    <updated>2019-08-19T07:52:28.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近在学习提权，什么都不懂，只能跟着学长们走一遍吧！！！&lt;/p&gt;
+&lt;h1 id=&quot;MOF提权&quot;&gt;&lt;a href=&quot;#MOF提权&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="提权" scheme="http://imysec.github.io/categories/%E6%8F%90%E6%9D%83/"/>
+    
+    
+      <category term="提权" scheme="http://imysec.github.io/tags/%E6%8F%90%E6%9D%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>weblogic复现之weak_password</title>
+    <link href="http://imysec.github.io/2019/07/17/weblogic-fu-xian-zhi-weak-password/"/>
+    <id>http://imysec.github.io/2019/07/17/weblogic-fu-xian-zhi-weak-password/</id>
+    <published>2019-07-17T09:11:07.000Z</published>
+    <updated>2019-08-19T07:38:40.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+    
+      <category term="漏洞复现" scheme="http://imysec.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ISCC2019-Web</title>
+    <link href="http://imysec.github.io/2019/05/16/iscc2019-web/"/>
+    <id>http://imysec.github.io/2019/05/16/iscc2019-web/</id>
+    <published>2019-05-16T09:47:06.000Z</published>
+    <updated>2019-08-19T07:50:58.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;web1&quot;&gt;&lt;a href=&quot;#web1&quot; class=&quot;headerlink&quot; title=&quot;web1&quot;&gt;&lt;/a&gt;web1&lt;/h1&gt;&lt;h2 id=&quot;源码&quot;&gt;&lt;a href=&quot;#源码&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CTF" scheme="http://imysec.github.io/categories/CTF/"/>
+    
+    
+      <category term="web" scheme="http://imysec.github.io/tags/web/"/>
+    
+      <category term="ctf" scheme="http://imysec.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker复现ctf</title>
+    <link href="http://imysec.github.io/2019/05/13/docker-fu-xian-ctf/"/>
+    <id>http://imysec.github.io/2019/05/13/docker-fu-xian-ctf/</id>
+    <published>2019-05-13T02:18:11.000Z</published>
+    <updated>2019-08-28T12:19:33.417Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;docker复现ctf&quot;&gt;&lt;a href=&quot;#docker复现ctf&quot; class=&quot;headerlink&quot; title=&quot;docker复现ctf&quot;&gt;&lt;/a&gt;docker复现ctf&lt;/h1&gt;&lt;h2 id=&quot;0x00-docker常用命令&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="docker" scheme="http://imysec.github.io/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://imysec.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>宽字节注入</title>
+    <link href="http://imysec.github.io/2019/04/29/kuan-zi-jie-zhu-ru/"/>
+    <id>http://imysec.github.io/2019/04/29/kuan-zi-jie-zhu-ru/</id>
+    <published>2019-04-29T12:38:38.000Z</published>
+    <updated>2019-08-19T07:58:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="SQL注入" scheme="http://imysec.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DVWA之SQL Injecion</title>
+    <link href="http://imysec.github.io/2019/04/22/dvwa-zhi-sql-injecion/"/>
+    <id>http://imysec.github.io/2019/04/22/dvwa-zhi-sql-injecion/</id>
+    <published>2019-04-22T07:24:17.000Z</published>
+    <updated>2019-08-19T07:46:28.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;SQL
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="DVWA" scheme="http://imysec.github.io/tags/DVWA/"/>
+    
+      <category term="渗透" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DVWA之File Inclusion</title>
+    <link href="http://imysec.github.io/2019/04/17/dvwa-zhi-file-inclusion/"/>
+    <id>http://imysec.github.io/2019/04/17/dvwa-zhi-file-inclusion/</id>
+    <published>2019-04-17T13:12:01.000Z</published>
+    <updated>2019-08-19T07:46:14.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;File
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="DVWA" scheme="http://imysec.github.io/tags/DVWA/"/>
+    
+      <category term="渗透" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DVWA之Command Injection</title>
+    <link href="http://imysec.github.io/2019/04/14/dvwa-zhi-command-injection/"/>
+    <id>http://imysec.github.io/2019/04/14/dvwa-zhi-command-injection/</id>
+    <published>2019-04-14T13:25:28.000Z</published>
+    <updated>2019-08-19T07:44:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;命令执行漏洞的原理：在操作系统中， &amp;amp;  、&amp;amp;&amp;amp; 、|  、 ||  
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="渗透测试" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="DVWA" scheme="http://imysec.github.io/tags/DVWA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DVWA之Brute Force</title>
+    <link href="http://imysec.github.io/2019/04/13/dvwa-zhi-brute-force/"/>
+    <id>http://imysec.github.io/2019/04/13/dvwa-zhi-brute-force/</id>
+    <published>2019-04-13T02:18:11.000Z</published>
+    <updated>2019-08-28T14:19:53.491Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Brute
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="渗透测试" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="DVWA" scheme="http://imysec.github.io/tags/DVWA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件上传(二)之实战篇</title>
+    <link href="http://imysec.github.io/2019/04/08/wen-jian-shang-chuan-er-zhi-shi-zhan-pian/"/>
+    <id>http://imysec.github.io/2019/04/08/wen-jian-shang-chuan-er-zhi-shi-zhan-pian/</id>
+    <published>2019-04-08T11:35:50.000Z</published>
+    <updated>2019-08-19T08:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="文件上传" scheme="http://imysec.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件泄露漏洞</title>
+    <link href="http://imysec.github.io/2019/04/08/wen-jian-xie-lu-lou-dong/"/>
+    <id>http://imysec.github.io/2019/04/08/wen-jian-xie-lu-lou-dong/</id>
+    <published>2019-04-08T10:02:32.000Z</published>
+    <updated>2019-08-19T08:00:52.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="源码泄露" scheme="http://imysec.github.io/tags/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件上传(一)之绕过姿势</title>
+    <link href="http://imysec.github.io/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/"/>
+    <id>http://imysec.github.io/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/</id>
+    <published>2019-04-06T12:04:27.000Z</published>
+    <updated>2019-08-19T08:00:08.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="文件上传" scheme="http://imysec.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>手工注入之常见字符串函数</title>
+    <link href="http://imysec.github.io/2019/04/04/shou-gong-zhu-ru-zhi-chang-jian-zi-fu-chuan-han-shu/"/>
+    <id>http://imysec.github.io/2019/04/04/shou-gong-zhu-ru-zhi-chang-jian-zi-fu-chuan-han-shu/</id>
+    <published>2019-04-04T14:33:53.000Z</published>
+    <updated>2019-08-19T07:57:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;http://pp64r48ul.bkt.clouddn.com/sql1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="SQL注入" scheme="http://imysec.github.io/categories/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+    
+      <category term="SQL注入" scheme="http://imysec.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git泄露</title>
+    <link href="http://imysec.github.io/2019/04/04/git-xie-lu/"/>
+    <id>http://imysec.github.io/2019/04/04/git-xie-lu/</id>
+    <published>2019-04-04T10:32:04.000Z</published>
+    <updated>2019-08-19T07:48:52.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近在做ctf的题，碰到了GitHack，刚好大佬学长有一道这方面的题，拿来练练手。现在总结一下。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="PHP" scheme="http://imysec.github.io/tags/PHP/"/>
+    
+      <category term="源码泄露" scheme="http://imysec.github.io/tags/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sql注入之手工注入</title>
+    <link href="http://imysec.github.io/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/"/>
+    <id>http://imysec.github.io/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/</id>
+    <published>2019-04-01T15:02:49.000Z</published>
+    <updated>2019-08-19T07:57:18.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;手工注入虽然原理是一样的，但是在具体手工注入的过程中有好多各种各样的细节不太一样，特此记录汇总下，以方便以后的学习查询。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="SQL注入" scheme="http://imysec.github.io/categories/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+    
+      <category term="SQL注入" scheme="http://imysec.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php伪协议</title>
+    <link href="http://imysec.github.io/2019/03/30/php-wei-xie-yi/"/>
+    <id>http://imysec.github.io/2019/03/30/php-wei-xie-yi/</id>
+    <published>2019-03-30T13:15:28.000Z</published>
+    <updated>2019-08-19T07:53:38.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://imysec.github.io/categories/PHP/"/>
+    
+    
+      <category term="php" scheme="http://imysec.github.io/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sqlmap的基本使用</title>
+    <link href="http://imysec.github.io/2019/03/29/sqlmap-de-ji-ben-shi-yong/"/>
+    <id>http://imysec.github.io/2019/03/29/sqlmap-de-ji-ben-shi-yong/</id>
+    <published>2019-03-29T12:05:23.000Z</published>
+    <updated>2019-08-19T07:55:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;sqlmap也是渗透中常用的一个注入工具，据说，在注入工具方面，一个sqlmap就足够用了，只要你用的熟，秒杀各种工具，只是一个便捷性问题，sql注入另一方面就是手工党了，这个就另当别论了。今天我把一些SQLmap的使用整理一下。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="http://imysec.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="web" scheme="http://imysec.github.io/tags/web/"/>
+    
+      <category term="SQL注入" scheme="http://imysec.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php序列化与反序列化</title>
+    <link href="http://imysec.github.io/2019/03/27/php-xu-lie-hua-yu-fan-xu-lie-hua/"/>
+    <id>http://imysec.github.io/2019/03/27/php-xu-lie-hua-yu-fan-xu-lie-hua/</id>
+    <published>2019-03-27T11:33:32.000Z</published>
+    <updated>2019-08-19T07:53:58.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://pp64r48ul.bkt.clouddn.com/3.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://imysec.github.io/categories/PHP/"/>
+    
+    
+      <category term="php" scheme="http://imysec.github.io/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web渗透测试-信息收集总结</title>
+    <link href="http://imysec.github.io/2019/03/23/web-shen-tou-ce-shi-xin-xi-shou-ji-zong-jie/"/>
+    <id>http://imysec.github.io/2019/03/23/web-shen-tou-ce-shi-xin-xi-shou-ji-zong-jie/</id>
+    <published>2019-03-23T06:30:22.000Z</published>
+    <updated>2019-04-09T09:18:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="http://imysec.github.io/categories/Web/"/>
+    
+    
+      <category term="渗透" scheme="http://imysec.github.io/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
 </feed>

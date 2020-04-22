@@ -63,13 +63,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Inici</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">Qui som</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="/archives/">Articles</a></li>
+          <li><a href="/links/">Links</a></li>
          
-          <li><a href="/projects_url">Projectes</a></li>
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/imysec.github.io">Projectes</a></li>
         
       </ul>
     </span>
@@ -210,13 +212,15 @@ bitsadmin /complete aa
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Inici</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">Qui som</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="/archives/">Articles</a></li>
+          <li><a href="/links/">Links</a></li>
          
-          <li><a href="/projects_url">Projectes</a></li>
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/imysec.github.io">Projectes</a></li>
         
       </ul>
     </div>
@@ -265,13 +269,15 @@ bitsadmin /complete aa
     <nav>
       <ul>
          
-          <li><a href="/">Inici</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">Qui som</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="/archives/">Articles</a></li>
+          <li><a href="/links/">Links</a></li>
          
-          <li><a href="/projects_url">Projectes</a></li>
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/imysec.github.io">Projectes</a></li>
         
       </ul>
     </nav>
@@ -292,7 +298,7 @@ bitsadmin /complete aa
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
     btn += '<i class="far fa-clone"></i>';
     btn += '</span>'; 
     // mount it!
@@ -303,7 +309,7 @@ bitsadmin /complete aa
       }
     });
     clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.trigger.setAttribute('aria-label', "Copied!");
       e.clearSelection();
     })
   })

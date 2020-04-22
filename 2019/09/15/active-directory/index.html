@@ -169,19 +169,16 @@
 <li>活动目录是域的基础</li>
 </ul>
 <h2 id="WMIEXEC"><a href="#WMIEXEC" class="headerlink" title="WMIEXEC"></a>WMIEXEC</h2><p>内网渗透中经常用到psexec这个工具，可以很方便的得到一个半交互式的cmd shell。</p>
-<p>psexec 首次执行需要验证，这在Shell中使用起来非常不便，可以使用如下命令，避免出面上述问题</p>
-<pre><code>psexec /accepteula
-</code></pre><p>但是psexec也有一些问题：psexec需要对方开启ADMIN$共享，而且需要安装服务，安装服务会留下明显的日志；另外，psexec退出时有可能服务删除失败。</p>
+<p>psexec 首次执行需要验证，这在Shell中使用起来非常不便，可以使用如下命令，避免出面上述问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psexec /accepteula</span><br></pre></td></tr></table></figure></p>
+<p>但是psexec也有一些问题：psexec需要对方开启ADMIN$共享，而且需要安装服务，安装服务会留下明显的日志；另外，psexec退出时有可能服务删除失败。</p>
 <p>WMI可以远程执行命令可以用VBS脚本调用WMI来模拟psexec的功能。</p>
 <p><img src="/2019/09/15/active-directory/2.png" alt=""></p>
 <p>WMIEXEC支持两种模式，一种是半交互式shell模式，另一种是执行单条命令模式。</p>
 <p>WMIEXEC需要提供账号密码进行远程连接，但是如果没有破解出账号密码，也可以配合WCE的hash注入功能一起使用，先进行hash注入，然后再使用WMIEXEC即可。</p>
-<p><strong>半交互式shell模式</strong></p>
-<pre><code>cscript.exe //nologo wmiexec.vbs /shell 192.168.72.14 username password
-</code></pre><p><img src="/2019/09/15/active-directory/3.png" alt=""></p>
-<p><strong>单个命令执行的模式</strong></p>
-<pre><code>cscript.exe wmiexec.vbs /cmd 192.168.1.1 username password &quot;command&quot;
-</code></pre><p><img src="/2019/09/15/active-directory/4.png" alt=""></p>
+<p><strong>半交互式shell模式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript.exe //nologo wmiexec.vbs /shell 192.168.72.14 username password</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/09/15/active-directory/3.png" alt=""></p>
+<p><strong>单个命令执行的模式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript.exe wmiexec.vbs /cmd 192.168.1.1 username password &quot;command&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/09/15/active-directory/4.png" alt=""></p>
 <p>下载地址： <a href="http://www.secpulse.com/wp-content/uploads/2015/05/cache-a360611dc24d240989799c29c555e4b7_wmiexec-v1_1.rar" target="_blank" rel="noopener">wmiexec v1.1.rar</a></p>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
 <thead>

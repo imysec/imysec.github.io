@@ -377,7 +377,7 @@
       
         
         
-          &lt;h1 id=&quot;0x00-环境搭建准备&quot;&gt;&lt;a href=&quot;#0x00-环境搭建准备&quot; class=&quot;headerlink&quot; title=&quot;0x00 环境搭建准备&quot;&gt;&lt;/a&gt;0x00 环境搭建准备&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;DC: win server 2008 R2 
+          &lt;h1 id=&quot;0x00-环境搭建准备&quot;&gt;&lt;a href=&quot;#0x00-环境搭建准备&quot; class=&quot;headerlink&quot; title=&quot;0x00 环境搭建准备&quot;&gt;&lt;/a&gt;0x00 环境搭建准备&lt;/h1&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -680,7 +680,10 @@
       
         
         
-          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现XML
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今天复现XML Decoder反序列化漏洞。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;涉及版本&lt;/p&gt;
+&lt;figure
         
       
     

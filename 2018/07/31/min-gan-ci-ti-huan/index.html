@@ -147,25 +147,19 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="流程以及思路确定"><a href="#流程以及思路确定" class="headerlink" title="流程以及思路确定"></a>流程以及思路确定</h2><p>1.用户输入一串文字 ，保存到user_input中<br>2.检查文字是否有敏感词，以及敏感词的具体位置，直接使用relpace方式替换掉敏感词    <a id="more"></a><br>3.一句话中可能含有多个敏感字，这个时候就要重复2的步骤。<br>4.使用 <em> </em>len（str） 替换掉敏感词对应的个数。</p>
-<pre><code># encoding:utf-8   
-user_input = input(&#39;请输入:&#39;)   
-for filter_word in open(&#39;filter.txt&#39;):
-    filter = filter_word.rstrip()
-    if filter in user_input:
-        filter_len = len(filter)
-        user_input = user_input.replace(filter,&#39;*&#39;*filter_len)
-else:
-    print(user_input)
-</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># encoding:utf-8   </span><br><span class="line">user_input = input(&apos;请输入:&apos;)   </span><br><span class="line">for filter_word in open(&apos;filter.txt&apos;):</span><br><span class="line">    filter = filter_word.rstrip()</span><br><span class="line">    if filter in user_input:</span><br><span class="line">        filter_len = len(filter)</span><br><span class="line">        user_input = user_input.replace(filter,&apos;*&apos;*filter_len)</span><br><span class="line">else:</span><br><span class="line">    print(user_input)</span><br></pre></td></tr></table></figure>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
 <li>python中文件的读取<br>函数open(filename,mode)用于读取文件，返回一个file object。 所以现在我们的filter.txt是一个文件对象<br>参数filename:是一个字符串，用来代表文件名.<br>参数mode:决定了打开文件的方式，比如只读(r)， 写入(w)， 追加等。</li>
-<li>rstrip()方法<br>Python rstrip() 删除 string 字符串末尾的指定字符（默认为空格）.<br>基本格式：<pre><code>str.rstrip([chars])
-</code></pre><ul>
+<li><p>rstrip()方法<br>Python rstrip() 删除 string 字符串末尾的指定字符（默认为空格）.<br>基本格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.rstrip([chars])</span><br></pre></td></tr></table></figure>
+<ul>
 <li>chars – 指定删除的字符（默认为空格）</li>
 <li>返回删除 string 字符串末尾的指定字符后生成的新字符串</li>
 </ul>
 </li>
-<li>replace()方法<br>Python replace() 方法把字符串中的 old（旧字符串） 替换成 new(新字符串)，如果指定第三个参数max，则替换不超过 max 次。<br>基本格式：<pre><code>STR.REPLACE(OLD, NEW[, MAX])
-</code></pre><ul>
+<li><p>replace()方法<br>Python replace() 方法把字符串中的 old（旧字符串） 替换成 new(新字符串)，如果指定第三个参数max，则替换不超过 max 次。<br>基本格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STR.REPLACE(OLD, NEW[, MAX])</span><br></pre></td></tr></table></figure>
+<ul>
 <li>old – 将被替换的子字符串。</li>
 <li>new – 新字符串，用于替换old子字符串。</li>
 <li>max – 可选字符串, 替换不超过 max 次</li>

@@ -183,40 +183,9 @@
 <p>GBK编码:<br><img src="https://img-blog.csdnimg.cn/20190503151851416.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt="GBK编码"></p>
 <p>utf-8编码：<br><img src="https://img-blog.csdnimg.cn/20190503152339583.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt="utf-8编码"><br>转义函数：为了过滤用户输入的一些数据，对特殊的字符加上反斜杠“\”进行转义；Mysql中转义的函数<code>addslashes</code>，<code>mysql_real_escape_string</code>，<code>mysql_escape_string</code>等。</p>
 <p>宽字节注入指的是mysql数据库在使用宽字节（GBK）编码时，会认为两个字符是一个汉字（前一个ascii码要大于128（比如%df），才到汉字的范围），而且当我们输入单引号时，mysql会调用转义函数，将单引号变为<code>\’</code>，其中<code>\</code>的十六进制是<code>%5c</code>,mysql的GBK编码，会认为<code>%df%5c</code>是一个宽字节，也就是<code>運</code>，从而使单引号闭合（逃逸），进行注入攻击。</p>
-<p>以下是数据的变化过程:</p>
-<pre><code>%df%27===&gt;(addslashes)====&gt;%df%5c%27====&gt;(GBK)====&gt;運’
-​
-用户输入==&gt;过滤函数==&gt;代码层的$sql==&gt;mysql处理请求==&gt;mysql中的sql
-</code></pre><h1 id="环境搭建及分析"><a href="#环境搭建及分析" class="headerlink" title="环境搭建及分析"></a>环境搭建及分析</h1><h2 id="demo1"><a href="#demo1" class="headerlink" title="demo1"></a>demo1</h2><p>链接：<a href="https://pan.baidu.com/s/1cMFtCpbbaocMjaWJx7YLcQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1cMFtCpbbaocMjaWJx7YLcQ</a> 密码：ykve<br>数据库名为test，数据库的编码全部为gbk。<br>将index.php放到phpStudy的WWW目录下，将test.sql文件导入到数据库中即可<br><strong>核心源码：</strong></p>
-<pre><code>&lt;?php
-//连接数据库部分，注意使用了gbk编码
-$conn = mysql_connect(&#39;localhost&#39;, &#39;root&#39;, &#39;root&#39;) or die(&#39;bad!&#39;);
-mysql_query(&quot;SET NAMES &#39;gbk&#39;&quot;);
-mysql_select_db(&#39;test&#39;, $conn) OR emMsg(&quot;连接数据库失败，未找到您填写的数据库&quot;);
-//执行sql语句
-$id = isset($_GET[&#39;id&#39;]) ? addslashes($_GET[&#39;id&#39;]) : 1;
-$sql = &quot;SELECT * FROM news WHERE tid=&#39;{$id}&#39;&quot;;
-$result = mysql_query($sql, $conn) or die(mysql_error());
-?&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;gbk&quot; /&gt;
-&lt;title&gt;宽字节测试&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;/&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;form action=&quot;test.php&quot; method=&quot;get&quot;&gt;
-   &lt;b&gt;请输入值：&lt;/b&gt; &lt;input type=&quot;text&quot; name=&quot;id&quot;/&gt;
-&lt;/form&gt;
-&lt;?php
-$row = mysql_fetch_array($result, MYSQL_ASSOC);
-echo &quot;&lt;h2&gt;{$row[&#39;title&#39;]}&lt;/h2&gt;&lt;p&gt;{$row[&#39;content&#39;]}&lt;p&gt;\n&quot;;
-mysql_free_result($result);
-?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>sql语句是<code>SELECT * FROM news WHERE tid=&#39;{$id}</code>根据id从数据库表中获取信息。</p>
+<p>以下是数据的变化过程:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%df%27===&gt;(addslashes)====&gt;%df%5c%27====&gt;(GBK)====&gt;運’</span><br><span class="line">​</span><br><span class="line">用户输入==&gt;过滤函数==&gt;代码层的$sql==&gt;mysql处理请求==&gt;mysql中的sql</span><br></pre></td></tr></table></figure></p>
+<h1 id="环境搭建及分析"><a href="#环境搭建及分析" class="headerlink" title="环境搭建及分析"></a>环境搭建及分析</h1><h2 id="demo1"><a href="#demo1" class="headerlink" title="demo1"></a>demo1</h2><p>链接：<a href="https://pan.baidu.com/s/1cMFtCpbbaocMjaWJx7YLcQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1cMFtCpbbaocMjaWJx7YLcQ</a> 密码：ykve<br>数据库名为test，数据库的编码全部为gbk。<br>将index.php放到phpStudy的WWW目录下，将test.sql文件导入到数据库中即可<br><strong>核心源码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//连接数据库部分，注意使用了gbk编码</span><br><span class="line">$conn = mysql_connect(&apos;localhost&apos;, &apos;root&apos;, &apos;root&apos;) or die(&apos;bad!&apos;);</span><br><span class="line">mysql_query(&quot;SET NAMES &apos;gbk&apos;&quot;);</span><br><span class="line">mysql_select_db(&apos;test&apos;, $conn) OR emMsg(&quot;连接数据库失败，未找到您填写的数据库&quot;);</span><br><span class="line">//执行sql语句</span><br><span class="line">$id = isset($_GET[&apos;id&apos;]) ? addslashes($_GET[&apos;id&apos;]) : 1;</span><br><span class="line">$sql = &quot;SELECT * FROM news WHERE tid=&apos;&#123;$id&#125;&apos;&quot;;</span><br><span class="line">$result = mysql_query($sql, $conn) or die(mysql_error());</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;gbk&quot; /&gt;</span><br><span class="line">&lt;title&gt;宽字节测试&lt;/title&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;test.php&quot; method=&quot;get&quot;&gt;</span><br><span class="line">   &lt;b&gt;请输入值：&lt;/b&gt; &lt;input type=&quot;text&quot; name=&quot;id&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">$row = mysql_fetch_array($result, MYSQL_ASSOC);</span><br><span class="line">echo &quot;&lt;h2&gt;&#123;$row[&apos;title&apos;]&#125;&lt;/h2&gt;&lt;p&gt;&#123;$row[&apos;content&apos;]&#125;&lt;p&gt;\n&quot;;</span><br><span class="line">mysql_free_result($result);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>sql语句是<code>SELECT * FROM news WHERE tid=&#39;{$id}</code>根据id从数据库表中获取信息。</p>
 <p>单纯加上单引号没有报错，说明addslashes函数发挥了作用，将<code>&#39;</code> –&gt; <code>\&#39;</code>，这样就不会存在注入了。<br><img src="https://img-blog.csdnimg.cn/2019050320451741.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""><br>执行的SQL语句是：<code>SELECT * FROM news WHERE tid=&#39;1\&#39;&#39;</code></p>
 <p>此时，在单引号前面加上前面讲的<code>%df</code>,使mysql认为<code>%df\</code>是一个汉字，这样<code>’</code>就可以逃逸出来，使<code>tid=&#39;1&#39;</code>闭合。<br><img src="https://img-blog.csdnimg.cn/20190503205449742.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>
 <p>这时候，按说是可以构造查询语句了，可是为什么还在报错呢，因为<code>tid=&#39;1&#39;</code>后面的<code>&#39;</code>没有闭合，需要使用注释符号(– ‘或#)将这个多余的<code>’</code>注释掉，这样就可以构造注入语句了。<br><img src="https://img-blog.csdnimg.cn/20190503205816304.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>

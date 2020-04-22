@@ -166,18 +166,8 @@
 <p><code>git clone https://github.com/lijiejie/GitHack</code></p>
 <p>执行GitHack：</p>
 <p> <code>python GitHack.py http://web.jarvisoj.com:32798/.git/</code></p>
-<p> <img src="/2019/04/04/git-xie-lu/git1.jpg" alt=""><br><strong> <code>index.php</code>核心代码：</strong></p>
-<pre><code> &lt;?php
-    if (isset($_GET[&#39;page&#39;])) {
-            $page = $_GET[&#39;page&#39;];
-    } else {
-            $page = &quot;home&quot;;
-    }
-    $file = &quot;templates/&quot; . $page . &quot;.php&quot;;
-    assert(&quot;strpos(&#39;$file&#39;, &#39;..&#39;) === false&quot;) or die(&quot;Detected hacking attempt!&quot;);
-    assert(&quot;file_exists(&#39;$file&#39;)&quot;) or die(&quot;That file doesn&#39;t exist!&quot;);
-    ?&gt;
-</code></pre><p> 分析代码可以看到：</p>
+<p> <img src="/2019/04/04/git-xie-lu/git1.jpg" alt=""><br><strong> <code>index.php</code>核心代码：</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   if (isset($_GET[&apos;page&apos;])) &#123;</span><br><span class="line">           $page = $_GET[&apos;page&apos;];</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">           $page = &quot;home&quot;;</span><br><span class="line">   &#125;</span><br><span class="line">   $file = &quot;templates/&quot; . $page . &quot;.php&quot;;</span><br><span class="line">   assert(&quot;strpos(&apos;$file&apos;, &apos;..&apos;) === false&quot;) or die(&quot;Detected hacking attempt!&quot;);</span><br><span class="line">   assert(&quot;file_exists(&apos;$file&apos;)&quot;) or die(&quot;That file doesn&apos;t exist!&quot;);</span><br><span class="line">   ?&gt;</span><br></pre></td></tr></table></figure></p>
+<p> 分析代码可以看到：</p>
 <ul>
 <li>需要传个<code>page</code>参数</li>
 <li><code>file = &quot;templates/&quot;.$page.&quot;.php&quot;</code></li>

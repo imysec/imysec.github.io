@@ -209,128 +209,105 @@
 <p>通过本机的相关信息，进一步了解整个域的操作系统版本、软件及补丁安装情况、用户命名方式等。</p>
 <ol>
 <li><p>查询网络配置信息</p>
-<pre><code>ipconfig /all
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/Users\PanLv\AppData\Roaming\Typora\typora-user-images\image-20200320131051116.png" alt="ipconfig /all" style="zoom:67%;"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /all</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/Users\PanLv\AppData\Roaming\Typora\typora-user-images\image-20200320131051116.png" alt="ipconfig /all" style="zoom:67%;"></p>
 </li>
 <li><p>查询操作系统及软件信息</p>
 <p>查询操作系统和版本信息</p>
-<pre><code>systeminfo | findstr /B /C:&quot;OS Name&quot; /C:&quot;OS Version&quot;
-中文版
-systeminfo | findstr /B /C:&quot;OS 名称&quot; /C:&quot;OS 版本&quot;
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320170458113.png" alt="image-20200320170458113"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systeminfo | findstr /B /C:&quot;OS Name&quot; /C:&quot;OS Version&quot;</span><br><span class="line">中文版</span><br><span class="line">systeminfo | findstr /B /C:&quot;OS 名称&quot; /C:&quot;OS 版本&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320170458113.png" alt="image-20200320170458113"></p>
 <p>查看系统体系结构</p>
-<pre><code>echo %PROCESSOR_ARCHITECTURE%
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320170803258.png" alt="image-20200320170803258"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo %PROCESSOR_ARCHITECTURE%</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320170803258.png" alt="image-20200320170803258"></p>
 <p>查看安装的软件及版本、路径等</p>
 <p>利用<code>wmic</code>命令，将输出结果到文本文件中</p>
-<pre><code>wmic product get name,version
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171109489.png" alt="image-20200320171109489"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic product get name,version</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171109489.png" alt="image-20200320171109489"></p>
 <p>利用powershell命令，收集软件的版本信息</p>
-<pre class=" language-powershell"><code class="language-powershell">powershell<span class="token punctuation">.</span>exe <span class="token string">"Get-WmiObject -class Win32_Product |Select-Object -Property name,version"</span>
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe <span class="string">"Get-WmiObject -class Win32_Product |Select-Object -Property name,version"</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171356318.png" alt="image-20200320171356318"></p>
 <p>查询本机服务信息</p>
-<pre><code>wmic service list brief
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171545322.png" alt="image-20200320171545322"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic service list brief</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171545322.png" alt="image-20200320171545322"></p>
 <p>查询进程列表</p>
-<pre><code>tasklist
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171800764.png" alt="当前进程"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171800764.png" alt="当前进程"></p>
 <p>查看进程信息</p>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320171913377.png" alt="进程信息"></p>
 <p>查看启动程序信息</p>
-<pre><code>wmic startup get command,caption
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172134213.png" alt="启动程序信息"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic startup get command,caption</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172134213.png" alt="启动程序信息"></p>
 <p>查看计划任务</p>
-<pre><code>schtasks /query /fo LIST /v
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172338158.png" alt="计划任务"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /query /fo LIST /v</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172338158.png" alt="计划任务"></p>
 <p>查看主机开机时间</p>
-<pre><code>net statistics workstation
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172516571.png" alt="主机开机时间"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net statistics workstation</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172516571.png" alt="主机开机时间"></p>
 <p>查询用户列表（可以找出内网机器的命令规则）</p>
-<pre><code>net user
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172619261.png" alt="用户列表"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172619261.png" alt="用户列表"></p>
 <p>获取本地管理员信息（通常包含域用户）</p>
-<pre><code>net localgroup administrators
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172850280.png" alt="本地管理员"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup administrators</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320172850280.png" alt="本地管理员"></p>
 <p>查询当前在线用户</p>
-<pre><code>query user || qwinsta
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173015257.png" alt="在线用户"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query user || qwinsta</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173015257.png" alt="在线用户"></p>
 <p>列出或断开本地计算机与所连接的客户端之间的会话</p>
-<pre><code>net session
-</code></pre><p>查询端口列表</p>
-<pre><code>netstat -ano
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173231595.png" alt="端口列表"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net session</span><br></pre></td></tr></table></figure>
+<p>查询端口列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173231595.png" alt="端口列表"></p>
 <p>查看补丁列表</p>
-<pre><code>systeminfo
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173416455.png" alt="补丁列表"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173416455.png" alt="补丁列表"></p>
 <p>需要注意系统的版本、位数、域、补丁信息及更新频率等。域内主机的补丁通常是批量安装的通过查看本机的补丁列表，就可以找到为打补丁的漏洞。</p>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173519555.png" alt="补丁"></p>
 <p>使用wmic命令查看安装在系统中的补丁</p>
-<pre><code>wmic qfe get Caption,Description,HotFixID,InstalledOn
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173846237.png" alt="更新补丁"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic qfe get Caption,Description,HotFixID,InstalledOn</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320173846237.png" alt="更新补丁"></p>
 <p>查看本机共享列表和可访问的域共享列表</p>
-<pre><code>net share
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320174007610.png" alt="共享列表"></p>
-<pre><code>wmic share get name,path,status
-</code></pre><p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320174108057.png" alt="wmic共享列表"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net share</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320174007610.png" alt="共享列表"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic share get name,path,status</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320174108057.png" alt="wmic共享列表"></p>
 <p>查询路由表及所有可用接口的ARP（地址解析协议）缓存表</p>
-<pre class=" language-bash"><code class="language-bash">route print
-arp -a
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">route <span class="built_in">print</span></span><br><span class="line">arp -a</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320203520428.png" alt="路由表"></p>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320203601604.png" alt="arp缓存表"></p>
 <p>查询防火墙相关配置</p>
 <ul>
 <li><p>关闭防火墙（管理员权限）</p>
-<pre class=" language-bash"><code class="language-bash">netsh firewall <span class="token keyword">set</span> opmode disable  <span class="token comment" spellcheck="true"># win server 2003及之前的版本</span>
-</code></pre>
-<pre class=" language-bash"><code class="language-bash">netsh advfirewall <span class="token keyword">set</span> allprofiles state off <span class="token comment" spellcheck="true"># win server 2003之后版本</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh firewall <span class="built_in">set</span> opmode <span class="built_in">disable</span>  <span class="comment"># win server 2003及之前的版本</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall <span class="built_in">set</span> allprofiles state off <span class="comment"># win server 2003之后版本</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看防火墙配置</p>
-<pre class=" language-bash"><code class="language-bash">netsh firewall show config
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh firewall show config</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改防火墙配置</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># win server 2003及之前版本，允许指定程序全部连接</span>
-netsh firewall add allowedprogram c:\nc.exe <span class="token string">"allow nc"</span> <span class="token function">enable</span>
-<span class="token comment" spellcheck="true"># win server 2003之后版本</span>
-netsh advfirewall firewall add rule name<span class="token operator">=</span><span class="token string">"pass nc"</span> <span class="token function">dir</span> <span class="token keyword">in</span> action<span class="token operator">=</span>allow program<span class="token operator">=</span><span class="token string">"c:\nc.exe"</span>  <span class="token comment" spellcheck="true"># 允许指定程序进入</span>
-
-netsh advfirewall firewall add rule name<span class="token operator">=</span><span class="token string">"Allow nc"</span> dir<span class="token operator">=</span>out action<span class="token operator">=</span>allow program<span class="token operator">=</span><span class="token string">"c:\nc.exe"</span>  <span class="token comment" spellcheck="true"># 允许指定程序退出</span>
-
-netsh advfirewall firewall add rule name<span class="token operator">=</span><span class="token string">"Remote Desktop"</span> protocol<span class="token operator">=</span>TCP dir<span class="token operator">=</span>in localport<span class="token operator">=</span>3389 action<span class="token operator">=</span>allow  <span class="token comment" spellcheck="true"># 允许3389端口放行</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># win server 2003及之前版本，允许指定程序全部连接</span></span><br><span class="line">netsh firewall add allowedprogram c:\nc.exe <span class="string">"allow nc"</span> <span class="built_in">enable</span></span><br><span class="line"><span class="comment"># win server 2003之后版本</span></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">"pass nc"</span> dir <span class="keyword">in</span> action=allow program=<span class="string">"c:\nc.exe"</span>  <span class="comment"># 允许指定程序进入</span></span><br><span class="line"></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">"Allow nc"</span> dir=out action=allow program=<span class="string">"c:\nc.exe"</span>  <span class="comment"># 允许指定程序退出</span></span><br><span class="line"></span><br><span class="line">netsh advfirewall firewall add rule name=<span class="string">"Remote Desktop"</span> protocol=TCP dir=<span class="keyword">in</span> localport=3389 action=allow  <span class="comment"># 允许3389端口放行</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>自定义防火墙日志的存储位置</p>
-<pre class=" language-bash"><code class="language-bash">netsh advfirewall <span class="token keyword">set</span> currentprofile logging filename <span class="token string">"c:\windows\temp\fw.log"</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall <span class="built_in">set</span> currentprofile logging filename <span class="string">"c:\windows\temp\fw.log"</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>查看代理配置情况</p>
-<pre class=" language-bash"><code class="language-bash">reg query <span class="token string">"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"</span>   <span class="token comment" spellcheck="true"># 可以看到服务器127.0.0.1的1080端口的代理配置信息</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query <span class="string">"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"</span>   <span class="comment"># 可以看到服务器127.0.0.1的1080端口的代理配置信息</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320210146225.png" alt="image-20200320210146225" style="zoom:80%;"></p>
 <p>查询并开启远程连接服务</p>
 <ul>
 <li><p>查看远程连接端口</p>
 <p>在命令行环境中执行注册表查询语句</p>
-<pre class=" language-bash"><code class="language-bash">REG QUERY <span class="token string">"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp"</span> /V PortNumber
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG QUERY <span class="string">"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp"</span> /V PortNumber</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200320210727867.png" alt="远程端口"></p>
 <p>连接的端口为0xd3d，转换后为3389</p>
 </li>
 <li><p>在Windows server 2003中开启3389</p>
-<pre class=" language-bash"><code class="language-bash">wmic path win32_terminalservicesetting where <span class="token punctuation">(</span>_CLASS <span class="token operator">!=</span><span class="token string">""</span><span class="token punctuation">)</span> callsetallowtsconnections 1
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic path win32_terminalservicesetting <span class="built_in">where</span> (_CLASS !=<span class="string">""</span>) callsetallowtsconnections 1</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在Windows server 2008和Windows server 2012中开启3389</p>
-<pre class=" language-bash"><code class="language-bash">wmic/namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting where <span class="token punctuation">(</span>_CLASS <span class="token operator">!=</span><span class="token string">""</span><span class="token punctuation">)</span> call setallowsconnections 1
-</code></pre>
-<pre class=" language-bash"><code class="language-bash">wmic/namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting where <span class="token punctuation">(</span>TerminalName<span class="token operator">=</span><span class="token string">'RDP-Tcp'</span><span class="token punctuation">)</span> call setuserauthenticationrequired 1
-</code></pre>
-<pre class=" language-bash"><code class="language-bash">reg add <span class="token string">"HKLM\SYSTEM\CURRENT\CONTROLSET\CONTROL\TERMINAL SERVER"</span> /v fSingleSessionPerUser /t REG_DWORD /d 0 /f
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic/namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting <span class="built_in">where</span> (_CLASS !=<span class="string">""</span>) call setallowsconnections 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic/namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting <span class="built_in">where</span> (TerminalName=<span class="string">'RDP-Tcp'</span>) call setuserauthenticationrequired 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CURRENT\CONTROLSET\CONTROL\TERMINAL SERVER"</span> /v fSingleSessionPerUser /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -344,8 +321,7 @@ netsh advfirewall firewall add rule name<span class="token operator">=</span><sp
 <p><strong>运行这个模块需要管理员权限。</strong></p>
 <h2 id="查询当前权限"><a href="#查询当前权限" class="headerlink" title="查询当前权限"></a>查询当前权限</h2><ol>
 <li><p>查看当前权限</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">whoami</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
 <p>本地普通用户（commando本机的fireeye用户）</p>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200321150415512.png" alt="image-20200321150415512"></p>
 <p>本地管理员用户（win-nmcuole3s38本机的administrator用户）</p>
@@ -356,22 +332,19 @@ netsh advfirewall firewall add rule name<span class="token operator">=</span><sp
 <p>本地管理员administrator权限可以直接提升为Ntauthority或system权限，因此在域中，除普通用户外，所以的机器都有一个机器用户（用户名是机器名+$）。在本质上，机器的system用户对应的就是域里面的机器用户。所以使用system权限可运行域内的查询命令。</p>
 </li>
 <li><p>获取域SID</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">whoami</span> /all
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami /all</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200321162551515.png" alt="image-20200321162551515" style="zoom:80%;"></p>
 <p>500 为域用户administrator的SID，前面的是test域的SID</p>
 </li>
 <li><p>查询指定用户的详细信息</p>
-<pre class=" language-bash"><code class="language-bash">net user xxx /domain
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user xxx /domain</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200321162905059.png" alt="image-20200321162905059" style="zoom:67%;"></p>
 </li>
 </ol>
 <h2 id="判断是否存在域"><a href="#判断是否存在域" class="headerlink" title="判断是否存在域"></a>判断是否存在域</h2><p>获得了本机的相关信息后，就要判断当前内网中是否存在域，如果存在，就要判断所控主机是否在域内。</p>
 <ol>
 <li><p>使用 ipconfig 命令</p>
-<pre class=" language-bash"><code class="language-bash">ipconfig /all
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /all</span><br></pre></td></tr></table></figure>
 <p>查看网关IP、DNSIP、域名、本机是否和DNS服务器处于同一网段</p>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200321163459590.png" alt="image-20200321163459590" style="zoom:60%;"></p>
 <p>用 nslookup 解析域名的IP地址。用解析得到的IP地址进行对比，判断域控制器和DNS服务器是否在同一台机器上。</p>
@@ -382,13 +355,11 @@ netsh advfirewall firewall add rule name<span class="token operator">=</span><sp
 <p>”域“即域名test.com、“登录服务器”为域控制器，如果“域”为“WORKGROUP”，表示当前机器不在域内。</p>
 </li>
 <li><p>查询当前登录域及登录用户信息</p>
-<pre class=" language-bash"><code class="language-bash">net config workstation
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net config workstation</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200321164309260.png" alt="image-20200321164309260" style="zoom:80%;"></p>
 </li>
 <li><p>判断主域(域服务器通常会同时作为时间服务器使用)</p>
-<pre class=" language-bash"><code class="language-bash">net <span class="token function">time</span> /domain
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net time /domain</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200321164434781.png" alt="image-20200321164434781"></p>
 <p>执行上面的命令，通常有3中情况：</p>
 <ul>
@@ -408,58 +379,27 @@ netsh advfirewall firewall add rule name<span class="token operator">=</span><sp
 <p>nbtscan是一个命令行工具，用于扫描本地或远程TCP/IP网络上的开放NetBIOS名称服务器。有Windows和Linux两个版本，体积很小，不需要安装特殊的库或DLL就能使用。</p>
 <p>将其上传的目标上，然后直接输入IP地址范围并运行。输入<code>nbtscan.exe</code>查看帮助文档。</p>
 <h3 id="利用ICMP协议快速探测内网"><a href="#利用ICMP协议快速探测内网" class="headerlink" title="利用ICMP协议快速探测内网"></a>利用ICMP协议快速探测内网</h3><p>一次对内网中的每个IP地址执行ping命令，可以快速找到内网存活主机。在渗透测试中可以探测整个C段。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token keyword">for</span> /L %I <span class="token keyword">in</span> <span class="token punctuation">(</span>1,1,254<span class="token punctuation">)</span> DO @ping -w 1 -n 1 192.168.1.%I <span class="token operator">|</span> findstr <span class="token string">"TTL="</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /L %I <span class="keyword">in</span> (1,1,254) DO @ping -w 1 -n 1 192.168.1.%I | findstr <span class="string">"TTL="</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200322174613782.png" alt="icmp探测"></p>
 <p>vbs脚本</p>
-<pre class=" language-vbscript"><code class="language-vbscript">strSubNet = "192.168.1."
-Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set objTS = Objfso.CreateTextFile("C:\Windows\Temp\Result.txt")
-For i = 1 To 254
-strComputer = strSubNet & i
-blnResult = Ping(strComputer)
-If blnResult = True Then
-objTS.WriteLine strComputer & " is alived ! :)"
-End If
-Next
-
-objTS.close
-WScript.Echo "All Ping Scan , All Done ! :)"
-Function Ping(strComputer)
-Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
-Set colItems = objWMIService.ExecQuery("Select * From Win32_PingStatus Where Address='" & strComputer & "'")
-For Each objItem In colItems
-Select case objItem.StatusCode
-Case 0
-Ping = True
-Case Else
-Ping = False
-End select
-Exit For
-Next
-End Function
-</code></pre>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">strSubNet = <span class="string">"192.168.1."</span></span><br><span class="line"><span class="keyword">Set</span> objFSO = <span class="built_in">CreateObject</span>(<span class="string">"Scripting.FileSystemObject"</span>)</span><br><span class="line"><span class="keyword">Set</span> objTS = Objfso.CreateTextFile(<span class="string">"C:\Windows\Temp\Result.txt"</span>)</span><br><span class="line"><span class="keyword">For</span> i = <span class="number">1</span> <span class="keyword">To</span> <span class="number">254</span></span><br><span class="line">strComputer = strSubNet &amp; i</span><br><span class="line">blnResult = Ping(strComputer)</span><br><span class="line"><span class="keyword">If</span> blnResult = <span class="literal">True</span> <span class="keyword">Then</span></span><br><span class="line">objTS.WriteLine strComputer &amp; <span class="string">" is alived ! :)"</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">Next</span></span><br><span class="line"></span><br><span class="line">objTS.close</span><br><span class="line">WScript.Echo <span class="string">"All Ping Scan , All Done ! :)"</span></span><br><span class="line"><span class="keyword">Function</span> Ping(strComputer)</span><br><span class="line"><span class="keyword">Set</span> objWMIService = <span class="built_in">GetObject</span>(<span class="string">"winmgmts:\\.\root\cimv2"</span>)</span><br><span class="line"><span class="keyword">Set</span> colItems = objWMIService.ExecQuery(<span class="string">"Select * From Win32_PingStatus Where Address='"</span> &amp; strComputer &amp; <span class="string">"'"</span>)</span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> objItem <span class="keyword">In</span> colItems</span><br><span class="line"><span class="keyword">Select</span> <span class="keyword">case</span> objItem.StatusCode</span><br><span class="line"><span class="keyword">Case</span> <span class="number">0</span></span><br><span class="line">Ping = <span class="literal">True</span></span><br><span class="line"><span class="keyword">Case</span> <span class="keyword">Else</span></span><br><span class="line">Ping = <span class="literal">False</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">select</span></span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">For</span></span><br><span class="line"><span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Function</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/nei-wang-xin-xi-shou-ji/images\image-20200322181818410.png" alt="image-20200322181818410" style="zoom:80%;"></p>
 <h3 id="通过ARP扫描探测内网"><a href="#通过ARP扫描探测内网" class="headerlink" title="通过ARP扫描探测内网"></a>通过ARP扫描探测内网</h3><ol>
 <li><p>arp-scan工具</p>
 <p>直接把arp.exe上传到目标机器中运行，可以自定义掩码、指定扫描范围等</p>
-<pre class=" language-bash"><code class="language-bash">arp.exe -t 192.168.1.0/20
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp.exe -t 192.168.1.0/20</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Empire中的arpscan模块</p>
 <p>该模块用于在局域网内发送ARP数据包、收集活跃主机的IP地址和MAC地址信息。</p>
-<pre class=" language-bash"><code class="language-bash">useodule situational_awareness/network/arpscan
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useodule situational_awareness/network/arpscan</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Nishang中的Invoke-ARPScan.ps1脚本</p>
 <p>将脚本上传到目标机器上运行，也可以直接远程加载脚本、自定义掩码和扫描范围</p>
-<pre class=" language-bash"><code class="language-bash">powershell.exe -exec bypass -Command <span class="token string">"&amp; {Import-Module C:\windows\temp\Invoke-ARPScan.ps1; Invoke-ARPScan -CIDR 192.168.1.0/20}"</span> <span class="token operator">>></span> C:\windows\temp\log.txt
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -<span class="built_in">exec</span> bypass -Command <span class="string">"&amp; &#123;Import-Module C:\windows\temp\Invoke-ARPScan.ps1; Invoke-ARPScan -CIDR 192.168.1.0/20&#125;"</span> &gt;&gt; C:\windows\temp\log.txt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过常规TCP/UDP端口扫描探测内网</p>
 <p>ScanLine是一款经典的端口扫描工具，可以在所有版本的Windows操作系统中使用，体积小，仅使用单个文件，同时支持TCP/UDP端口扫描</p>
-<pre class=" language-bash"><code class="language-bash">scanline -h -t 22,80-89,110,389,445,3389,1099,1433,2049,6379,7001,8080,1521,3306,5432 -u 53,161,137,139 -O c:\windows\temp\log.txt -p 192.168.1.1-254 /b
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scanline -h -t 22,80-89,110,389,445,3389,1099,1433,2049,6379,7001,8080,1521,3306,5432 -u 53,161,137,139 -O c:\windows\temp\log.txt -p 192.168.1.1-254 /b</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="扫描域内端口"><a href="#扫描域内端口" class="headerlink" title="扫描域内端口"></a>扫描域内端口</h3><p>注意以下几点：</p>

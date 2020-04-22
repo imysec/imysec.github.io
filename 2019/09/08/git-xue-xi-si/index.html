@@ -173,139 +173,42 @@
 <p>假如我们在test上的工作完成了，就可以把test并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向test的当前提交，就完成了合并：<br><img src="/2019/09/08/git-xue-xi-si/4.png" alt=""></p>
 <p>合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：<br><img src="/2019/09/08/git-xue-xi-si/5.png" alt=""></p>
 <p>实战到了！！！</p>
-<p>先创建一个test分支，然后切换过去</p>
-<pre><code>$ git checkout -b test
-Switched to a new branch &#39;test&#39;
-</code></pre><p><code>git checkout</code> 命令加上 <code>-b</code> 参数表示创建并切换，相当于以下两条命令：</p>
-<pre><code>$ git branch test
-$ git checkout test
-Switch to branch &#39;test&#39;
-</code></pre><p><code>git branch</code>查看当前分支</p>
-<pre><code>$ git branch
-  master
-* test
-</code></pre><p><code>git branch</code>列出所有分支，当前分支前面会标一个 <code>*</code> 号</p>
-<p>然后我们正常在 test 分支上操作，比如对 <code>README.txt</code> 添加一行：</p>
-<pre><code>Creating a new branch
-</code></pre><p>提交</p>
-<pre><code>$ git add README.txt
-
-$ git commit -m &quot;branch test&quot;
-[test 00fecf0] branch test
- 1 file changed, 1 insertion(+)
-</code></pre><p>切换回 master 分支</p>
-<pre><code>git checkout master
-Switch to branch &#39;master&#39;
-</code></pre><p>切换回 master 分支后，再查看一个<code>README.txt</code>文件，刚才添加的内容不见了！</p>
+<p>先创建一个test分支，然后切换过去<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b test</span><br><span class="line">Switched to a new branch &apos;test&apos;</span><br></pre></td></tr></table></figure></p>
+<p><code>git checkout</code> 命令加上 <code>-b</code> 参数表示创建并切换，相当于以下两条命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch test</span><br><span class="line">$ git checkout test</span><br><span class="line">Switch to branch &apos;test&apos;</span><br></pre></td></tr></table></figure></p>
+<p><code>git branch</code>查看当前分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">  master</span><br><span class="line">* test</span><br></pre></td></tr></table></figure></p>
+<p><code>git branch</code>列出所有分支，当前分支前面会标一个 <code>*</code> 号</p>
+<p>然后我们正常在 test 分支上操作，比如对 <code>README.txt</code> 添加一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch</span><br></pre></td></tr></table></figure></p>
+<p>提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.txt</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;branch test&quot;</span><br><span class="line">[test 00fecf0] branch test</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure></p>
+<p>切换回 master 分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">Switch to branch &apos;master&apos;</span><br></pre></td></tr></table></figure></p>
+<p>切换回 master 分支后，再查看一个<code>README.txt</code>文件，刚才添加的内容不见了！</p>
 <p>因为那个提交是在test分支上，而master分支此刻的提交点并没有变：<br><img src="/2019/09/08/git-xue-xi-si/6.png" alt=""></p>
-<p>现在，我们把dev分支的工作成果合并到master分支上：</p>
-<pre><code>$ git merge test
-Updating d43cb00..00fecf0
-Fast-forward
- README.txt | 1 +
- 1 file changed, 1 insertion(+)
-</code></pre><p><code>git merge</code> 命令用于合并指定分支到当前分支。合并后，再查看<code>README.txt</code>的内容，就可以看到，和dev分支的最新提交是完全一样的。</p>
+<p>现在，我们把dev分支的工作成果合并到master分支上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git merge test</span><br><span class="line">Updating d43cb00..00fecf0</span><br><span class="line">Fast-forward</span><br><span class="line"> README.txt | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure></p>
+<p><code>git merge</code> 命令用于合并指定分支到当前分支。合并后，再查看<code>README.txt</code>的内容，就可以看到，和dev分支的最新提交是完全一样的。</p>
 <p>注意到上面的<code>Fast-forward</code>信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向test的当前提交，所以合并速度非常快。</p>
-<p>合并完成后，就可以删除 test 分支了</p>
-<pre><code>$ git branch -d test
-Deleted branch test (was 00fecf0).
-</code></pre><p>删除后，查看branch，就只剩下master分支了：</p>
-<pre><code>$ git branch
-* master
-</code></pre><h1 id="0x02-解决冲突"><a href="#0x02-解决冲突" class="headerlink" title="0x02 解决冲突"></a>0x02 解决冲突</h1><p>我们新建一个分支<code>feature1</code></p>
-<pre><code>$ git checkout -b feature1
-Switched to a new branch &#39;feature1&#39;
-</code></pre><p>修改<code>README.txt</code>最后一行为：</p>
-<pre><code>Creating a new branch is quick AND simple!
-</code></pre><p>在<code>feature1</code>上提交。</p>
-<p>切换到 master 分支</p>
-<pre><code>git checkout master
-</code></pre><p>在 master 分支上把 <code>README.txt</code> 的最后一行改为：</p>
-<pre><code>Creating a new branch is quick &amp; simple!
-</code></pre><p>提交</p>
-<pre><code>$ git commit -m &quot;AND &amp;&quot;
-On branch master
-nothing to commit, working tree clean
-</code></pre><p>现在， master 分支和 feature1 分支各自都分别提交了新的内容<br><img src="/2019/09/08/git-xue-xi-si/7.png" alt=""></p>
-<p>但是，这样Git在合并分支的时候就会出现冲突，我们看一下：</p>
-<pre><code>$ git merge feature1
-Auto-merging README.txt
-CONFLICT (content): Merge conflict in README.txt
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre><p>果然冲突了！Git告诉我们，<code>README.txt</code>文件存在冲突，必须手动解决冲突后再提交。<code>git status</code>也可以告诉我们冲突的文件：</p>
-<pre><code>$ git status
-On branch master
-You have unmerged paths.
-  (fix conflicts and run &quot;git commit&quot;)
-  (use &quot;git merge --abort&quot; to abort the merge)
-
-Unmerged paths:
-  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
-
-        both modified:   README.txt
-
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-</code></pre><p>我们看一下 <code>README.txt</code> 中的内容:</p>
-<pre><code>$ cat README.txt
-Git is a version control system.
-This is my first test for Git!
-Git is so good!
-Git管理的是修改
-test test test
-It is wrong!
-hahaha
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Creating a new branch quick &amp; simple!
-=======
-Creating a new branch is quick AND simple!
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1
-</code></pre><p>Git用 <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> 标记出不同分支的内容，我们修改如下后保存：</p>
-<pre><code>Creating a new branch is quick and simple!
-</code></pre><p>再提交</p>
-<pre><code>$ git add readme.txt 
-$ git commit -m &quot;conflict fixed&quot;
-[master cf810e4] conflict fixed
-</code></pre><p>带参数的git log也可以看到分支的合并情况：</p>
-<pre><code>$ git log --graph --pretty=oneline --abbrev-commit
-*   db2c0fe (HEAD -&gt; master) and
-|\
-| * 5134c13 (feature1) quick AND simple
-* | 0133d12 AND &amp;
-|/
-* 00fecf0 branch test
-* d43cb00 test branch
-* b2f143d remove test.txt
-* 2a4c645 add test.txt
-* 4c574a8 add a line test
-* 9f9c092 modify README.txt
-* 081378e modify README.txt &amp; add LICENSE
-* a78dd79 change the README.txt
-* d4892a6 add a new README.txt file
-</code></pre><p>最后删除feature1分支</p>
-<pre><code>$ git branch -d feature1
-Deleted branch feature1 (was 5134c13).
-</code></pre><h1 id="0x03-分支管理策略"><a href="#0x03-分支管理策略" class="headerlink" title="0x03 分支管理策略"></a>0x03 分支管理策略</h1><p>通常，合并分支时，如果可能，Git会用<code>Fast forward</code>模式，但这种模式下，删除分支后，会丢掉分支信息。</p>
+<p>合并完成后，就可以删除 test 分支了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d test</span><br><span class="line">Deleted branch test (was 00fecf0).</span><br></pre></td></tr></table></figure></p>
+<p>删除后，查看branch，就只剩下master分支了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure></p>
+<h1 id="0x02-解决冲突"><a href="#0x02-解决冲突" class="headerlink" title="0x02 解决冲突"></a>0x02 解决冲突</h1><p>我们新建一个分支<code>feature1</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b feature1</span><br><span class="line">Switched to a new branch &apos;feature1&apos;</span><br></pre></td></tr></table></figure></p>
+<p>修改<code>README.txt</code>最后一行为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick AND simple!</span><br></pre></td></tr></table></figure></p>
+<p>在<code>feature1</code>上提交。</p>
+<p>切换到 master 分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure></p>
+<p>在 master 分支上把 <code>README.txt</code> 的最后一行改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick &amp; simple!</span><br></pre></td></tr></table></figure></p>
+<p>提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;AND &amp;&quot;</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure></p>
+<p>现在， master 分支和 feature1 分支各自都分别提交了新的内容<br><img src="/2019/09/08/git-xue-xi-si/7.png" alt=""></p>
+<p>但是，这样Git在合并分支的时候就会出现冲突，我们看一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge feature1</span><br><span class="line">Auto-merging README.txt</span><br><span class="line">CONFLICT (content): Merge conflict in README.txt</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure></p>
+<p>果然冲突了！Git告诉我们，<code>README.txt</code>文件存在冲突，必须手动解决冲突后再提交。<code>git status</code>也可以告诉我们冲突的文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">  (fix conflicts and run &quot;git commit&quot;)</span><br><span class="line">  (use &quot;git merge --abort&quot; to abort the merge)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)</span><br><span class="line"></span><br><span class="line">        both modified:   README.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>我们看一下 <code>README.txt</code> 中的内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ cat README.txt</span><br><span class="line">Git is a version control system.</span><br><span class="line">This is my first test for Git!</span><br><span class="line">Git is so good!</span><br><span class="line">Git管理的是修改</span><br><span class="line">test test test</span><br><span class="line">It is wrong!</span><br><span class="line">hahaha</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">Creating a new branch quick &amp; simple!</span><br><span class="line">=======</span><br><span class="line">Creating a new branch is quick AND simple!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</span><br></pre></td></tr></table></figure></p>
+<p>Git用 <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> 标记出不同分支的内容，我们修改如下后保存：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick and simple!</span><br></pre></td></tr></table></figure></p>
+<p>再提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt </span><br><span class="line">$ git commit -m &quot;conflict fixed&quot;</span><br><span class="line">[master cf810e4] conflict fixed</span><br></pre></td></tr></table></figure></p>
+<p>带参数的git log也可以看到分支的合并情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">*   db2c0fe (HEAD -&gt; master) and</span><br><span class="line">|\</span><br><span class="line">| * 5134c13 (feature1) quick AND simple</span><br><span class="line">* | 0133d12 AND &amp;</span><br><span class="line">|/</span><br><span class="line">* 00fecf0 branch test</span><br><span class="line">* d43cb00 test branch</span><br><span class="line">* b2f143d remove test.txt</span><br><span class="line">* 2a4c645 add test.txt</span><br><span class="line">* 4c574a8 add a line test</span><br><span class="line">* 9f9c092 modify README.txt</span><br><span class="line">* 081378e modify README.txt &amp; add LICENSE</span><br><span class="line">* a78dd79 change the README.txt</span><br><span class="line">* d4892a6 add a new README.txt file</span><br></pre></td></tr></table></figure></p>
+<p>最后删除feature1分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d feature1</span><br><span class="line">Deleted branch feature1 (was 5134c13).</span><br></pre></td></tr></table></figure></p>
+<h1 id="0x03-分支管理策略"><a href="#0x03-分支管理策略" class="headerlink" title="0x03 分支管理策略"></a>0x03 分支管理策略</h1><p>通常，合并分支时，如果可能，Git会用<code>Fast forward</code>模式，但这种模式下，删除分支后，会丢掉分支信息。</p>
 <p>如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。</p>
-<p><code>--no-ff</code>表示禁用<code>Fast Forward</code>模式<br>首先，创建并切换到dev分支</p>
-<pre><code>$ git checkout -b dev
-Switched to a new branch &#39;dev&#39;
-</code></pre><p>修改 README.txt 并提交commit<br>切换回 master 分支</p>
-<p>合并分支，使用<code>--no-ff</code>参数</p>
-<pre><code>$ git merge --no-ff -m &quot;merge with no-ff&quot; dev
-Merge made by the &#39;recursive&#39; strategy.
- README.txt | 1 -
- 1 file changed, 1 deletion(-)
-</code></pre><p>因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。</p>
-<p>合并后，我们用git log看看分支历史：</p>
-<pre><code>$ git log --graph --pretty=oneline --abbrev-commit
-*   41d9b17 (HEAD -&gt; master) merge with no-ff
-|\
-| * 20a127c (dev) add branch
-|/
-* 6a76d54 modify README.txt
-*   db2c0fe and
-...
-</code></pre><p>可以看到，不使用Fast forward模式，merge后就像这样：<br><img src="/2019/09/08/git-xue-xi-si/7.png" alt=""></p>
+<p><code>--no-ff</code>表示禁用<code>Fast Forward</code>模式<br>首先，创建并切换到dev分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev</span><br><span class="line">Switched to a new branch &apos;dev&apos;</span><br></pre></td></tr></table></figure></p>
+<p>修改 README.txt 并提交commit<br>切换回 master 分支</p>
+<p>合并分支，使用<code>--no-ff</code>参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line"> README.txt | 1 -</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br></pre></td></tr></table></figure></p>
+<p>因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。</p>
+<p>合并后，我们用git log看看分支历史：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">*   41d9b17 (HEAD -&gt; master) merge with no-ff</span><br><span class="line">|\</span><br><span class="line">| * 20a127c (dev) add branch</span><br><span class="line">|/</span><br><span class="line">* 6a76d54 modify README.txt</span><br><span class="line">*   db2c0fe and</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，不使用Fast forward模式，merge后就像这样：<br><img src="/2019/09/08/git-xue-xi-si/7.png" alt=""></p>
 <h1 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h1><ol>
 <li><ul>
 <li>查看分支： <code>git branch</code></li>

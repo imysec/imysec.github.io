@@ -179,11 +179,10 @@
 <li><p>可以使用nmap的“-O”参数，来初步判断服务器系统类型：<br><img src="/2019/03/23/web-shen-tou-ce-shi-xin-xi-shou-ji-zong-jie/1.png" alt=""></p>
 </li>
 <li><p>大小写<br>访问网站：</p>
-<pre><code>http://www.xxx.com/index.html
-http://www.xxx.com/inDex.html
-</code></pre><p>Windows操作系统不区分大小写，Linux系统大小写敏感，用此方法能够判断是Windows还是Linux系统。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.xxx.com/index.html</span><br><span class="line">http://www.xxx.com/inDex.html</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>Windows操作系统不区分大小写，Linux系统大小写敏感，用此方法能够判断是Windows还是Linux系统。</p>
 <h2 id="网站容器-Apache-Nginx-Tomcat-IIS"><a href="#网站容器-Apache-Nginx-Tomcat-IIS" class="headerlink" title="网站容器(Apache/Nginx/Tomcat/IIS)"></a>网站容器(Apache/Nginx/Tomcat/IIS)</h2><p>知道了这些信息之后，我们就需要知道网站用的web服务器是什么类型的：Apache、Nginx、Tomcat 还是 IIS。知道了web服务器是哪种类型后，我们还要探测web服务器具体的版本。比如Ngnix版本&lt;0.83会有解析漏洞 ，IIS6.0会有文件名解析漏洞、IIS7.0会有畸形解析漏洞等。不同的web服务器版本，存在着不同漏洞。</p>
 <p>探测网站是哪种web服务器，可以使用工具 whatweb 。</p>
 <p>传送门：<a href="https://blog.csdn.net/qq_36119192/article/details/84061734" target="_blank" rel="noopener">网站指纹识别工具Whatweb的使用</a></p>

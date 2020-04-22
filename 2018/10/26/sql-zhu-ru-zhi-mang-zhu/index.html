@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="0x00 基于布尔盲注截取字符串常用函数：① MID(column_name,start[,length])      //截取字符串的一部分    参数 描述     column_name 必需。要提取字符的字段。   start 必需。规定开始位置（起始值是 1）。   length 可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。    例： str = &amp;quot;as">
+    <meta name="description" content="0x00 基于布尔盲注截取字符串常用函数：① MID(column_name,start[,length])      //截取字符串的一部分    参数 描述     column_name 必需。要提取字符的字段。   start 必需。规定开始位置（起始值是 1）。   length 可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。    例：123str = &amp;quot;">
 <meta name="keywords" content="SQL注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql注入之盲注">
 <meta property="og:url" content="http://imysec.github.io/2018/10/26/sql-zhu-ru-zhi-mang-zhu/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="0x00 基于布尔盲注截取字符串常用函数：① MID(column_name,start[,length])      //截取字符串的一部分    参数 描述     column_name 必需。要提取字符的字段。   start 必需。规定开始位置（起始值是 1）。   length 可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。    例： str = &amp;quot;as">
+<meta property="og:description" content="0x00 基于布尔盲注截取字符串常用函数：① MID(column_name,start[,length])      //截取字符串的一部分    参数 描述     column_name 必需。要提取字符的字段。   start 必需。规定开始位置（起始值是 1）。   length 可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。    例：123str = &amp;quot;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-08-19T07:55:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql注入之盲注">
-<meta name="twitter:description" content="0x00 基于布尔盲注截取字符串常用函数：① MID(column_name,start[,length])      //截取字符串的一部分    参数 描述     column_name 必需。要提取字符的字段。   start 必需。规定开始位置（起始值是 1）。   length 可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。    例： str = &amp;quot;as">
+<meta name="twitter:description" content="0x00 基于布尔盲注截取字符串常用函数：① MID(column_name,start[,length])      //截取字符串的一部分    参数 描述     column_name 必需。要提取字符的字段。   start 必需。规定开始位置（起始值是 1）。   length 可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。    例：123str = &amp;quot;">
     
     
         
@@ -180,11 +180,8 @@
 </tr>
 </tbody>
 </table>
-<p>例：</p>
-<pre><code>str = &quot;asdf&quot;
-p = mid(str,2,1)
-p = s
-</code></pre><p>Sql用例：</p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;asdf&quot;</span><br><span class="line">p = mid(str,2,1)</span><br><span class="line">p = s</span><br></pre></td></tr></table></figure></p>
+<p>Sql用例：</p>
 <p>（1）MID(DATABASE(),1,1)&gt;’a’,查看数据库名第一位，MID(DATABASE(),2,1)查看数据库名第二位，依次查看各位字符。<br>（2）MID((SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE T table_schema=0xxxxxxx LIMIT 0,1),1,1)&gt;’a’此处column_name参数可以为sql语句，可自行构造sql语句进行注入。</p>
 <p>② substr()函数</p>
 <pre><code>Substr()和substring()函数实现的功能是一样的，均为截取字符串。
@@ -204,15 +201,15 @@ string substr(string, start, length)
 <p>(2) 同样的string可以为自行构造的sql语句。</p>
 <p>同时也要介绍ORD()函数，此函数为返回第一个字符的ASCII码，经常与上面的函数进行组合使用。</p>
 <p>例如：</p>
-<pre><code> ORD(MID(DATABASE(),1,1))&gt;114 意为检测database()的第一位ASCII码是否大于114，也即是‘r’
+<pre><code>ORD(MID(DATABASE(),1,1))&gt;114 意为检测database()的第一位ASCII码是否大于114，也即是‘r’
 </code></pre><h1 id="0x01-基于时间盲注"><a href="#0x01-基于时间盲注" class="headerlink" title="0x01 基于时间盲注"></a>0x01 基于时间盲注</h1><p>常用的判断语句:</p>
-<pre><code>&#39; and if(1=0,1, sleep(10)) --+    
+<pre><code>&apos; and if(1=0,1, sleep(10)) --+    
 
 &quot; and if(1=0,1, sleep(10)) --+
 
 ) and if(1=0,1, sleep(10)) --+
 
-&#39;) and if(1=0,1, sleep(10)) --+
+&apos;) and if(1=0,1, sleep(10)) --+
 
 &quot;) and if(1=0,1, sleep(10)) --+
 </code></pre><p><strong>1.爆数据库的版本长度</strong></p>

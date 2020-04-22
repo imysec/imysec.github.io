@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。 手工注入字符串常用函数三个老朋友: concat() group_concat() concat_ws() concat基本格式CONCAT(str1,str2) 返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以">
+    <meta name="description" content="前言前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。 手工注入字符串常用函数三个老朋友:123concat()group_concat()concat_ws() concat基本格式1CONCAT(str1,str2) 返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可">
 <meta name="keywords" content="SQL注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手工注入之常见字符串函数">
 <meta property="og:url" content="http://imysec.github.io/2019/04/04/shou-gong-zhu-ru-zhi-chang-jian-zi-fu-chuan-han-shu/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="前言前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。 手工注入字符串常用函数三个老朋友: concat() group_concat() concat_ws() concat基本格式CONCAT(str1,str2) 返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以">
+<meta property="og:description" content="前言前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。 手工注入字符串常用函数三个老朋友:123concat()group_concat()concat_ws() concat基本格式1CONCAT(str1,str2) 返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pp64r48ul.bkt.clouddn.com/sql1.png">
 <meta property="og:updated_time" content="2019-08-19T07:57:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手工注入之常见字符串函数">
-<meta name="twitter:description" content="前言前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。 手工注入字符串常用函数三个老朋友: concat() group_concat() concat_ws() concat基本格式CONCAT(str1,str2) 返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以">
+<meta name="twitter:description" content="前言前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。 手工注入字符串常用函数三个老朋友:123concat()group_concat()concat_ws() concat基本格式1CONCAT(str1,str2) 返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可">
 <meta name="twitter:image" content="http://pp64r48ul.bkt.clouddn.com/sql1.png">
     
     
@@ -161,101 +161,24 @@
   <div class="content" itemprop="articleBody">
     <p><img src="http://pp64r48ul.bkt.clouddn.com/sql1.png" alt=""></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前两天整理了一下关于手工注入的方法，今天来说一说手工注入的几个字符串函数。在手工注入中常常需要一次查询多个结果，这里字符串函数就派上用场了。</p>
-<p>手工注入字符串常用函数三个老朋友:</p>
-<pre><code>concat()
-group_concat()
-concat_ws()
-</code></pre><h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><pre><code>CONCAT(str1,str2)
-</code></pre><p>返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以有一个或多个参数。</p>
+<p>手工注入字符串常用函数三个老朋友:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">concat()</span><br><span class="line">group_concat()</span><br><span class="line">concat_ws()</span><br></pre></td></tr></table></figure></p>
+<h1 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h1><h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONCAT(str1,str2)</span><br></pre></td></tr></table></figure>
+<p>返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以有一个或多个参数。</p>
 <h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><ul>
 <li><p>参数中有NULL</p>
-<pre><code>mysql&gt; SELECT CONCAT(id,&#39;,&#39;,NULL,&#39;,&#39;,password) AS users FROM users LIMIT 1,1;
-+-------+
-| users |
-+-------+
-| NULL  |
-+-------+
-1 row in set (0.00 sec)
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  mysql&gt; SELECT CONCAT(id,&apos;,&apos;,NULL,&apos;,&apos;,password) AS users FROM users LIMIT 1,1;</span><br><span class="line">+-------+</span><br><span class="line">| users |</span><br><span class="line">+-------+</span><br><span class="line">| NULL  |</span><br><span class="line">+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>使用LIMIT来控制结果数量</p>
-<pre><code>mysql&gt; SELECT CONCAT(id,&#39;,&#39;,username,&#39;,&#39;,password) AS users FROM users;          
-+-----------------------+                                                        
-| users                 |                                                        
-+-----------------------+                                                        
-| 1,Dumb,Dumb           |                                                        
-| 2,Angelina,I-kill-you |                                                        
-| 3,Dummy,p@ssword      |                                                        
-| 4,secure,crappy       |                                                        
-| 5,stupid,stupidity    |                                                        
-| 6,superman,genious    |                                                        
-| 7,batman,mob!le       |                                                        
-| 8,admin,admin         |                                                        
-| 9,admin1,admin1       |                                                        
-| 10,admin2,admin2      |                                                        
-| 11,admin3,admin3      |                                                        
-| 12,dhakkan,dumbo      |                                                        
-| 14,admin4,admin4      |                                                        
-+-----------------------+                                                        
-13 rows in set (0.00 sec)
-mysql&gt; SELECT CONCAT(id,&#39;,&#39;,username,&#39;,&#39;,password) AS users FROM users LIMIT 1;  
-+-------------+                                                                  
-| users       |                                                                  
-+-------------+                                                                  
-| 1,Dumb,Dumb |                                                                  
-+-------------+                                                                  
-1 row in set (0.00 sec)                                                          
-mysql&gt; SELECT CONCAT(id,&#39;,&#39;,username,&#39;,&#39;,password) AS users FROM users LIMIT 2;  
-+-----------------------+                                                        
-| users                 |                                                        
-+-----------------------+                                                        
-| 1,Dumb,Dumb           |                                                        
-| 2,Angelina,I-kill-you |                                                        
-+-----------------------+                                                        
-2 rows in set (0.00 sec)                                                         
-mysql&gt; SELECT CONCAT(id,&#39;,&#39;,username,&#39;,&#39;,password) AS users FROM users LIMIT 0,1;
-+-------------+                                                                  
-| users       |                                                                  
-+-------------+                                                                  
-| 1,Dumb,Dumb |                                                                  
-+-------------+                                                                  
-1 row in set (0.00 sec)                                                          
-mysql&gt; SELECT CONCAT(id,&#39;,&#39;,username,&#39;,&#39;,password) AS users FROM users LIMIT 0,2;
-+-----------------------+                                                        
-| users                 |                                                        
-+-----------------------+                                                        
-| 1,Dumb,Dumb           |                                                        
-| 2,Angelina,I-kill-you |                                                        
-+-----------------------+                                                        
-2 rows in set (0.00 sec)                                                         
-mysql&gt; SELECT CONCAT(id,&#39;,&#39;,username,&#39;,&#39;,password) AS users FROM users LIMIT 1,1;
-+-----------------------+                                                        
-| users                 |                                                        
-+-----------------------+                                                        
-| 2,Angelina,I-kill-you |                                                        
-+-----------------------+                                                        
-1 row in set (0.00 sec)
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CONCAT(id,&apos;,&apos;,username,&apos;,&apos;,password) AS users FROM users;          </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| users                 |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| 1,Dumb,Dumb           |                                                        </span><br><span class="line">| 2,Angelina,I-kill-you |                                                        </span><br><span class="line">| 3,Dummy,p@ssword      |                                                        </span><br><span class="line">| 4,secure,crappy       |                                                        </span><br><span class="line">| 5,stupid,stupidity    |                                                        </span><br><span class="line">| 6,superman,genious    |                                                        </span><br><span class="line">| 7,batman,mob!le       |                                                        </span><br><span class="line">| 8,admin,admin         |                                                        </span><br><span class="line">| 9,admin1,admin1       |                                                        </span><br><span class="line">| 10,admin2,admin2      |                                                        </span><br><span class="line">| 11,admin3,admin3      |                                                        </span><br><span class="line">| 12,dhakkan,dumbo      |                                                        </span><br><span class="line">| 14,admin4,admin4      |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">13 rows in set (0.00 sec)</span><br><span class="line">mysql&gt; SELECT CONCAT(id,&apos;,&apos;,username,&apos;,&apos;,password) AS users FROM users LIMIT 1;  </span><br><span class="line">+-------------+                                                                  </span><br><span class="line">| users       |                                                                  </span><br><span class="line">+-------------+                                                                  </span><br><span class="line">| 1,Dumb,Dumb |                                                                  </span><br><span class="line">+-------------+                                                                  </span><br><span class="line">1 row in set (0.00 sec)                                                          </span><br><span class="line">mysql&gt; SELECT CONCAT(id,&apos;,&apos;,username,&apos;,&apos;,password) AS users FROM users LIMIT 2;  </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| users                 |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| 1,Dumb,Dumb           |                                                        </span><br><span class="line">| 2,Angelina,I-kill-you |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">2 rows in set (0.00 sec)                                                         </span><br><span class="line">mysql&gt; SELECT CONCAT(id,&apos;,&apos;,username,&apos;,&apos;,password) AS users FROM users LIMIT 0,1;</span><br><span class="line">+-------------+                                                                  </span><br><span class="line">| users       |                                                                  </span><br><span class="line">+-------------+                                                                  </span><br><span class="line">| 1,Dumb,Dumb |                                                                  </span><br><span class="line">+-------------+                                                                  </span><br><span class="line">1 row in set (0.00 sec)                                                          </span><br><span class="line">mysql&gt; SELECT CONCAT(id,&apos;,&apos;,username,&apos;,&apos;,password) AS users FROM users LIMIT 0,2;</span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| users                 |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| 1,Dumb,Dumb           |                                                        </span><br><span class="line">| 2,Angelina,I-kill-you |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">2 rows in set (0.00 sec)                                                         </span><br><span class="line">mysql&gt; SELECT CONCAT(id,&apos;,&apos;,username,&apos;,&apos;,password) AS users FROM users LIMIT 1,1;</span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| users                 |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">| 2,Angelina,I-kill-you |                                                        </span><br><span class="line">+-----------------------+                                                        </span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h1 id="CONCAT-WS"><a href="#CONCAT-WS" class="headerlink" title="CONCAT_WS"></a>CONCAT_WS</h1><p><code>CONCAT_WS()</code> 代表 <code>CONCAT With Separator</code> ，是<code>CONCAT()</code>的特殊形式。第一个参数是其它参数的分隔符。感觉比<code>CONCAT</code>更方便了呀，这样参数多的话就不用手动的去添加分隔符了。</p>
-<h2 id="基本格式-1"><a href="#基本格式-1" class="headerlink" title="基本格式"></a>基本格式</h2><pre><code>CONCAT_WS(separator,str1,str2,…)
-</code></pre><h2 id="使用案例-1"><a href="#使用案例-1" class="headerlink" title="使用案例"></a>使用案例</h2><pre><code>mysql&gt; SELECT CONCAT_WS(&#39;~&#39;,id,username,password) AS users FROM users LIMIT 0,2;
-+-----------------------+                                                       
-| users                 |                                                       
-+-----------------------+                                                       
-| 1~Dumb~Dumb           |                                                       
-| 2~Angelina~I-kill-you |                                                       
-+-----------------------+                                                       
-2 rows in set (0.00 sec)    
-</code></pre><h1 id="GROUP-CONCAT"><a href="#GROUP-CONCAT" class="headerlink" title="GROUP_CONCAT"></a>GROUP_CONCAT</h1><p><code>GROUP_CONCAT</code>函数返回一个字符串结果，默认查询所有结果。该结果由分组中的值连接组合而成。</p>
-<h2 id="基本格式-2"><a href="#基本格式-2" class="headerlink" title="基本格式"></a>基本格式</h2><pre><code>GROUP_CONCAT(str1,str2,…)
-</code></pre><h2 id="使用案例-2"><a href="#使用案例-2" class="headerlink" title="使用案例"></a>使用案例</h2><pre><code>mysql&gt; SELECT GROUP_CONCAT(id,username,password) AS users FROM users;                                                                                                                               
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| users                                                                                                                                                                                            |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 1DumbDumb,2AngelinaI-kill-you,3Dummyp@ssword,4securecrappy,5stupidstupidity,6supermangenious,7batmanmob!le,8adminadmin,9admin1admin1,10admin2admin2,11admin3admin3,12dhakkandumbo,14admin4admin4 |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-1 row in set (0.00 sec)   
-</code></pre><h1 id="sql注入中一般使用方法"><a href="#sql注入中一般使用方法" class="headerlink" title="sql注入中一般使用方法"></a>sql注入中一般使用方法</h1><ul>
+<h2 id="基本格式-1"><a href="#基本格式-1" class="headerlink" title="基本格式"></a>基本格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONCAT_WS(separator,str1,str2,…)</span><br></pre></td></tr></table></figure>
+<h2 id="使用案例-1"><a href="#使用案例-1" class="headerlink" title="使用案例"></a>使用案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CONCAT_WS(&apos;~&apos;,id,username,password) AS users FROM users LIMIT 0,2;</span><br><span class="line">+-----------------------+                                                       </span><br><span class="line">| users                 |                                                       </span><br><span class="line">+-----------------------+                                                       </span><br><span class="line">| 1~Dumb~Dumb           |                                                       </span><br><span class="line">| 2~Angelina~I-kill-you |                                                       </span><br><span class="line">+-----------------------+                                                       </span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h1 id="GROUP-CONCAT"><a href="#GROUP-CONCAT" class="headerlink" title="GROUP_CONCAT"></a>GROUP_CONCAT</h1><p><code>GROUP_CONCAT</code>函数返回一个字符串结果，默认查询所有结果。该结果由分组中的值连接组合而成。</p>
+<h2 id="基本格式-2"><a href="#基本格式-2" class="headerlink" title="基本格式"></a>基本格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GROUP_CONCAT(str1,str2,…)</span><br></pre></td></tr></table></figure>
+<h2 id="使用案例-2"><a href="#使用案例-2" class="headerlink" title="使用案例"></a>使用案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT GROUP_CONCAT(id,username,password) AS users FROM users;                                                                                                                               </span><br><span class="line">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| users                                                                                                                                                                                            |</span><br><span class="line">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| 1DumbDumb,2AngelinaI-kill-you,3Dummyp@ssword,4securecrappy,5stupidstupidity,6supermangenious,7batmanmob!le,8adminadmin,9admin1admin1,10admin2admin2,11admin3admin3,12dhakkandumbo,14admin4admin4 |</span><br><span class="line">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h1 id="sql注入中一般使用方法"><a href="#sql注入中一般使用方法" class="headerlink" title="sql注入中一般使用方法"></a>sql注入中一般使用方法</h1><ul>
 <li><p>列出所有的数据库</p>
 <p><code>select group_concat(schema_name) from information_schema.schemata</code></p>
 </li>

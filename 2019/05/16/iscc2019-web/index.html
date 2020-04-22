@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="web1源码&amp;lt;?php error_reporting(0); require &amp;#39;flag.php&amp;#39;; $value = $_GET[&amp;#39;value&amp;#39;]; $password = $_GET[&amp;#39;password&amp;#39;]; $username = &amp;#39;&amp;#39;;  for ($i = 0; $i &amp;lt; count($value); ++$i">
+    <meta name="description" content="web1源码123456789101112131415&amp;lt;?phperror_reporting(0);require &amp;apos;flag.php&amp;apos;;$value = $_GET[&amp;apos;value&amp;apos;];$password = $_GET[&amp;apos;password&amp;apos;];$username = &amp;apos;&amp;apos;;for ($i = 0; $i &amp;l">
 <meta name="keywords" content="web,ctf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ISCC2019-Web">
 <meta property="og:url" content="http://imysec.github.io/2019/05/16/iscc2019-web/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="web1源码&amp;lt;?php error_reporting(0); require &amp;#39;flag.php&amp;#39;; $value = $_GET[&amp;#39;value&amp;#39;]; $password = $_GET[&amp;#39;password&amp;#39;]; $username = &amp;#39;&amp;#39;;  for ($i = 0; $i &amp;lt; count($value); ++$i">
+<meta property="og:description" content="web1源码123456789101112131415&amp;lt;?phperror_reporting(0);require &amp;apos;flag.php&amp;apos;;$value = $_GET[&amp;apos;value&amp;apos;];$password = $_GET[&amp;apos;password&amp;apos;];$username = &amp;apos;&amp;apos;;for ($i = 0; $i &amp;l">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-08-19T07:50:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ISCC2019-Web">
-<meta name="twitter:description" content="web1源码&amp;lt;?php error_reporting(0); require &amp;#39;flag.php&amp;#39;; $value = $_GET[&amp;#39;value&amp;#39;]; $password = $_GET[&amp;#39;password&amp;#39;]; $username = &amp;#39;&amp;#39;;  for ($i = 0; $i &amp;lt; count($value); ++$i">
+<meta name="twitter:description" content="web1源码123456789101112131415&amp;lt;?phperror_reporting(0);require &amp;apos;flag.php&amp;apos;;$value = $_GET[&amp;apos;value&amp;apos;];$password = $_GET[&amp;apos;password&amp;apos;];$username = &amp;apos;&amp;apos;;for ($i = 0; $i &amp;l">
     
     
         
@@ -157,22 +157,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><pre><code>&lt;?php
-error_reporting(0);
-require &#39;flag.php&#39;;
-$value = $_GET[&#39;value&#39;];
-$password = $_GET[&#39;password&#39;];
-$username = &#39;&#39;;
-
-for ($i = 0; $i &lt; count($value); ++$i) {
-    if ($value[$i] &gt; 32 &amp;&amp; $value[$i] &lt; 127) unset($value);
-    else $username .= chr($value[$i]);
-    if ($username == &#39;w3lc0me_To_ISCC2019&#39; &amp;&amp; intval($password) &lt; 2333 &amp;&amp; intval($password + 1) &gt; 2333) {
-        echo &#39;Hello &#39;.$username.&#39;!&#39;, &#39;&lt;br&gt;&#39;, PHP_EOL;
-        echo $flag, &#39;&lt;hr&gt;&#39;;
-    }
-}
-</code></pre><p>需要传入两个变量<code>value</code>和<code>password</code>.</p>
+    <h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">require &apos;flag.php&apos;;</span><br><span class="line">$value = $_GET[&apos;value&apos;];</span><br><span class="line">$password = $_GET[&apos;password&apos;];</span><br><span class="line">$username = &apos;&apos;;</span><br><span class="line"></span><br><span class="line">for ($i = 0; $i &lt; count($value); ++$i) &#123;</span><br><span class="line">    if ($value[$i] &gt; 32 &amp;&amp; $value[$i] &lt; 127) unset($value);</span><br><span class="line">    else $username .= chr($value[$i]);</span><br><span class="line">    if ($username == &apos;w3lc0me_To_ISCC2019&apos; &amp;&amp; intval($password) &lt; 2333 &amp;&amp; intval($password + 1) &gt; 2333) &#123;</span><br><span class="line">        echo &apos;Hello &apos;.$username.&apos;!&apos;, &apos;&lt;br&gt;&apos;, PHP_EOL;</span><br><span class="line">        echo $flag, &apos;&lt;hr&gt;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要传入两个变量<code>value</code>和<code>password</code>.</p>
 <p>count():返回数组中元素的数目<br>unset():销毁指定的变量<br>chr():返回相对应于 ascii 所指定的单个字符<br>.= : 拼接字符串<br>intval():通过使用指定的进制 base 转换（默认是十进制），返回变量 var 的 integer 数值。 intval() 不能用于 object，否则会产生 E_NOTICE 错误并返回 1</p>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><code>$username == &#39;w3lc0me_To_ISCC2019&#39;</code></p>
 

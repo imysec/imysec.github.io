@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。 漏洞说明版本此漏洞涉及版本 10.3.6.0 12.1.3.0 12.2.1.2 12.2.1.3  环境部署 进入该漏洞环境目录 cd vulhub/weblogic/CVE-2018-2094  环境构建 sudo docker-compose build  启动 sudo docker-compose up -d   漏洞">
+    <meta name="description" content="前言最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。 漏洞说明版本此漏洞涉及版本 123410.3.6.012.1.3.012.2.1.212.2.1.3 环境部署 进入该漏洞环境目录 cd vulhub/weblogic/CVE-2018-2094  环境构建 sudo docker-compose build  启动 sudo docker-compose up -d   漏洞">
 <meta name="keywords" content="漏洞复现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Weblogic复现之任意文件上传">
 <meta property="og:url" content="http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="前言最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。 漏洞说明版本此漏洞涉及版本 10.3.6.0 12.1.3.0 12.2.1.2 12.2.1.3  环境部署 进入该漏洞环境目录 cd vulhub/weblogic/CVE-2018-2094  环境构建 sudo docker-compose build  启动 sudo docker-compose up -d   漏洞">
+<meta property="og:description" content="前言最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。 漏洞说明版本此漏洞涉及版本 123410.3.6.012.1.3.012.2.1.212.2.1.3 环境部署 进入该漏洞环境目录 cd vulhub/weblogic/CVE-2018-2094  环境构建 sudo docker-compose build  启动 sudo docker-compose up -d   漏洞">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/1.png">
 <meta property="og:image" content="http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/2.png">
@@ -21,7 +21,7 @@
 <meta property="og:updated_time" content="2019-08-19T07:38:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Weblogic复现之任意文件上传">
-<meta name="twitter:description" content="前言最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。 漏洞说明版本此漏洞涉及版本 10.3.6.0 12.1.3.0 12.2.1.2 12.2.1.3  环境部署 进入该漏洞环境目录 cd vulhub/weblogic/CVE-2018-2094  环境构建 sudo docker-compose build  启动 sudo docker-compose up -d   漏洞">
+<meta name="twitter:description" content="前言最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。 漏洞说明版本此漏洞涉及版本 123410.3.6.012.1.3.012.2.1.212.2.1.3 环境部署 进入该漏洞环境目录 cd vulhub/weblogic/CVE-2018-2094  环境构建 sudo docker-compose build  启动 sudo docker-compose up -d   漏洞">
 <meta name="twitter:image" content="http://imysec.github.io/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/1.png">
     
     
@@ -164,12 +164,8 @@
   <div class="content" itemprop="articleBody">
     <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在复现weblogic，今天复现一下其中的任意文件上传漏洞。</p>
 <h1 id="漏洞说明"><a href="#漏洞说明" class="headerlink" title="漏洞说明"></a>漏洞说明</h1><h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>此漏洞涉及版本</p>
-<pre><code>10.3.6.0
-12.1.3.0
-12.2.1.2
-12.2.1.3
-
-</code></pre><h2 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h2><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10.3.6.0</span><br><span class="line">12.1.3.0</span><br><span class="line">12.2.1.2</span><br><span class="line">12.2.1.3</span><br></pre></td></tr></table></figure>
+<h2 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h2><ul>
 <li><p>进入该漏洞环境目录</p>
 <p><code>cd vulhub/weblogic/CVE-2018-2094</code></p>
 </li>
@@ -184,12 +180,8 @@
 <p><img src="/2019/07/24/weblogic-fu-xian-zhi-ren-yi-wen-jian-shang-chuan/1.png" alt="登录界面"></p>
 <p>在CVE-2018-2894环境目录下，查看账号密码，运行以下命令：</p>
 <p><code>sudo docker-compose logs | grep password</code></p>
-<pre><code>root@localhost:vulhub/weblogic/CVE-2018-2894# docker-compose logs | grep password
-weblogic_1  |       ----&gt; &#39;weblogic&#39; admin password: ofX5JwIc
-weblogic_1  | admin password  : [ofX5JwIc]
-weblogic_1  | *  password assigned to an admin-level user.  For *
-weblogic_1  | *  password assigned to an admin-level user.  For *
-</code></pre><p>输入用户名和密码，进入后台</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:vulhub/weblogic/CVE-2018-2894# docker-compose logs | grep password</span><br><span class="line">weblogic_1  |       ----&gt; &apos;weblogic&apos; admin password: ofX5JwIc</span><br><span class="line">weblogic_1  | admin password  : [ofX5JwIc]</span><br><span class="line">weblogic_1  | *  password assigned to an admin-level user.  For *</span><br><span class="line">weblogic_1  | *  password assigned to an admin-level user.  For *</span><br></pre></td></tr></table></figure>
+<p>输入用户名和密码，进入后台</p>
 <p>勾选在“base_domain”下的“高级”下的“启用web服务测试页”这个选项，点击保存。</p>
 <h2 id="复现流程"><a href="#复现流程" class="headerlink" title="复现流程"></a>复现流程</h2><ol>
 <li>进入上传界面：<a href="http://192.168.220.141:7001/ws_utc/config.do" target="_blank" rel="noopener">http://192.168.220.141:7001/ws_utc/config.do</a></li>

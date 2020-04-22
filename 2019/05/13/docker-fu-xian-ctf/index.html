@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="docker复现ctf0x00 docker常用命令 拉取镜像  docker pull [image]  查看docker当前镜像  docker image ls    docker images  新建docker容器，并映射端口号  docker run -d -p [host port]:[docker port][image]  查看运行中的docker容器  docker ps -a">
+    <meta name="description" content="docker复现ctf0x00 docker常用命令 拉取镜像  1docker pull [image]  查看docker当前镜像  123docker image ls docker images  新建docker容器，并映射端口号  1docker run -d -p [host port]:[docker port][image]  查看运行中的docker容器  1docker ps">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker复现ctf">
 <meta property="og:url" content="http://imysec.github.io/2019/05/13/docker-fu-xian-ctf/index.html">
 <meta property="og:site_name" content="忆时光">
-<meta property="og:description" content="docker复现ctf0x00 docker常用命令 拉取镜像  docker pull [image]  查看docker当前镜像  docker image ls    docker images  新建docker容器，并映射端口号  docker run -d -p [host port]:[docker port][image]  查看运行中的docker容器  docker ps -a">
+<meta property="og:description" content="docker复现ctf0x00 docker常用命令 拉取镜像  1docker pull [image]  查看docker当前镜像  123docker image ls docker images  新建docker容器，并映射端口号  1docker run -d -p [host port]:[docker port][image]  查看运行中的docker容器  1docker ps">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190606212613587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190606224903772.png">
@@ -25,7 +25,7 @@
 <meta property="og:updated_time" content="2019-08-28T12:19:33.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker复现ctf">
-<meta name="twitter:description" content="docker复现ctf0x00 docker常用命令 拉取镜像  docker pull [image]  查看docker当前镜像  docker image ls    docker images  新建docker容器，并映射端口号  docker run -d -p [host port]:[docker port][image]  查看运行中的docker容器  docker ps -a">
+<meta name="twitter:description" content="docker复现ctf0x00 docker常用命令 拉取镜像  1docker pull [image]  查看docker当前镜像  123docker image ls docker images  新建docker容器，并映射端口号  1docker run -d -p [host port]:[docker port][image]  查看运行中的docker容器  1docker ps">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190606212613587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70">
     
     
@@ -168,69 +168,62 @@
   <div class="content" itemprop="articleBody">
     <h1 id="docker复现ctf"><a href="#docker复现ctf" class="headerlink" title="docker复现ctf"></a>docker复现ctf</h1><h2 id="0x00-docker常用命令"><a href="#0x00-docker常用命令" class="headerlink" title="0x00 docker常用命令"></a>0x00 docker常用命令</h2><ol>
 <li><p>拉取镜像</p>
-<pre><code> docker pull [image]
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull [image]</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看docker当前镜像</p>
-<pre><code> docker image ls 
-
- docker images
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker image ls </span><br><span class="line"></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>新建docker容器，并映射端口号</p>
-<pre><code> docker run -d -p [host port]:[docker port][image]
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p [host port]:[docker port][image]</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看运行中的docker容器</p>
-<pre><code> docker ps -a
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>进入一个docker容器</p>
-<pre><code> docker exec -it [container id] bash
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it [container id] bash</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>拷贝本地文件到docker</p>
-<pre><code> docker cp [本地路径] [container id]:[container 路径]
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp [本地路径] [container id]:[container 路径]</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>启动/停止一个docker容器</p>
-<pre><code> docker start [container id]
- docker stop [container id]
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start [container id]</span><br><span class="line">docker stop [container id]</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>删除一个docker容器（注意:在镜像对应的容器后才可以删除镜像ID）</p>
-<pre><code> docker rm [container id]
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm [container id]</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h2 id="0x01-使用docker搭建一道简单的ctf题目"><a href="#0x01-使用docker搭建一道简单的ctf题目" class="headerlink" title="0x01 使用docker搭建一道简单的ctf题目"></a>0x01 使用docker搭建一道简单的ctf题目</h2><ol>
 <li><p>搜索lamp环境的docker镜像</p>
-<pre><code> docker search lamp
-</code></pre><p> <img src="https://img-blog.csdnimg.cn/20190606212613587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search lamp</span><br></pre></td></tr></table></figure>
+<p> <img src="https://img-blog.csdnimg.cn/20190606212613587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>
 </li>
 <li><p>拉取“tutum/lamp”镜像</p>
-<pre><code> docker pull tutum/lamp
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull tutum/lamp</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>拉取完成以后，查看本地docker镜像</p>
-<pre><code> docker images
-</code></pre><p> <img src="https://img-blog.csdnimg.cn/20190606224903772.png" alt=""></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p> <img src="https://img-blog.csdnimg.cn/20190606224903772.png" alt=""></p>
 </li>
 <li><p>新建一个docker容器</p>
-<pre><code> docker run -d -p 100:80 -p 3307:3306 tutum/lamp
- -d    //容器后台运行
- -p    //指定映射端口
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 100:80 -p 3307:3306 tutum/lamp</span><br><span class="line">-d	//容器后台运行</span><br><span class="line">-p	//指定映射端口</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看系统中运行的docker容器</p>
-<pre><code> docker ps -a
-</code></pre><p> <img src="https://img-blog.csdnimg.cn/20190606225305489.png" alt=""></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p> <img src="https://img-blog.csdnimg.cn/20190606225305489.png" alt=""></p>
 </li>
 <li><p>使用浏览器访问一下主页，查看映射是否正常</p>
 <p> <img src="https://img-blog.csdnimg.cn/20190606225446502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>
 </li>
 <li><p>将ctf题目源码拷贝到container的主目录中</p>
-<pre><code> docker cp test_ctf/ a47e911ecebf:/var/www/html/
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp test_ctf/ a47e911ecebf:/var/www/html/</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>进入docker container</p>
-<pre><code> docker exec -it a47e911ecebf bash
- -i    //让容器的标准输入保持打开
- -t    //让docker分配一个伪终端并绑定到容器的标准输出上
-</code></pre><p> <img src="https://img-blog.csdnimg.cn/20190606230157180.png" alt=""></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it a47e911ecebf bash</span><br><span class="line">-i	//让容器的标准输入保持打开</span><br><span class="line">-t	//让docker分配一个伪终端并绑定到容器的标准输出上</span><br></pre></td></tr></table></figure>
+<p> <img src="https://img-blog.csdnimg.cn/20190606230157180.png" alt=""></p>
 </li>
 <li><p>进入容器中的数据库，创建好ctf题目需要的数据库、数据表等等。<br>（数据库密码为空）</p>
-<pre><code> mysql -uroot -p
-</code></pre><p> <img src="https://img-blog.csdnimg.cn/20190606230404383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+<p> <img src="https://img-blog.csdnimg.cn/20190606230404383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt=""></p>
 </li>
 <li><p>到这里，这个ctf题目就搭建好了，我们访问一下</p>
 <p><img src="https://img-blog.csdnimg.cn/201906062306271.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjMyMDEy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>

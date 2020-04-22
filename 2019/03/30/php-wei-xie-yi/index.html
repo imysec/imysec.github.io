@@ -69,7 +69,7 @@
          
           <li><a href="/about/">About</a></li>
          
-          <li><a href="/imysec.github.io">Projects</a></li>
+          <li><a href="/projects_url">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -87,10 +87,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -246,6 +246,12 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
   </div>
 </article>
 
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Si us plau, activa JavaScript per poder veure el contingut.</noscript>
+        </div>
+    </div>
+
 
 
         
@@ -263,7 +269,7 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
          
           <li><a href="/about/">About</a></li>
          
-          <li><a href="/imysec.github.io">Projects</a></li>
+          <li><a href="/projects_url">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -292,10 +298,10 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -322,7 +328,7 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
          
           <li><a href="/about/">About</a></li>
          
-          <li><a href="/imysec.github.io">Projects</a></li>
+          <li><a href="/projects_url">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -345,7 +351,7 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
     btn += '<i class="far fa-clone"></i>';
     btn += '</span>'; 
     // mount it!
@@ -356,7 +362,7 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
       }
     });
     clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
+      e.trigger.setAttribute('aria-label', "Kopiert!");
       e.clearSelection();
     })
   })
@@ -370,6 +376,18 @@ phar://...（当前脚本的绝对路径）.../1.jpg/1（分割不加后缀名�
 <!-- Baidu Analytics -->
 
 <!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'SITENAME';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
 
 </body>
